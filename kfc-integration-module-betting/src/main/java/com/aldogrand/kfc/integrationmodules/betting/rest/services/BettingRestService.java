@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.aldogrand.kfc.integrationmodules.betting.services.BettingKafkaSenderService;
 
 /**
- * REST service endpoint for Betgenius Integration
+ * REST service endpoint for betting Integration
  * 
  * @author aldogrand
  *
  */
-@Path(value="/betgenius")
+@Path(value="/betting")
 public class BettingRestService {
 
 	private final Logger logger = Logger.getLogger(getClass());
@@ -32,7 +32,7 @@ public class BettingRestService {
 	@Produces({MediaType.TEXT_XML})
     public Response receiveEventManagement(String eventMgntXML){
 		try {
-			this.kafkaSenderService.sendContent(eventMgntXML, "BETGENIUS", "PROCESS_MESSAGE");
+			this.kafkaSenderService.sendContent(eventMgntXML, "BETTING", "PROCESS_MESSAGE");
 		} catch (Throwable e) {
 			logger.error("Unexpected exception processing message {}\"", e);
 			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(new Error(e.getMessage())).build();
@@ -45,7 +45,7 @@ public class BettingRestService {
 	@Path("/status")
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response getStatus() {
-		return Response.ok().entity("Betgenius Up").build();
+		return Response.ok().entity("BETTING Up").build();
 	}
 
 	@POST

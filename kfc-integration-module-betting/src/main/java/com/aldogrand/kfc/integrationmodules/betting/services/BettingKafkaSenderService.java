@@ -19,7 +19,7 @@ import com.aldogrand.kfc.interfaces.Producer;
  * Service to send message to kafka
  * 
  * <p>
- * <b>Title</b> BetgeniusKafkaSenderService
+ * <b>Title</b> BettingKafkaSenderService
  * </p>
  * <p>
  * <b>Description</b>
@@ -40,14 +40,14 @@ public class BettingKafkaSenderService {
     @Autowired
     private Producer producer;
         
-    private String betgeniusContentType;
+    private String bettingContentType;
 
 	public void sendContent(String content, String topic, String key) {
 		try {
 			Map <String, Object> header = new HashMap <String, Object>();
 	        header.put("topic", topic);
 	        header.put("key", key);
-	        header.put("contentType", betgeniusContentType);
+	        header.put("contentType", bettingContentType);
 			Message<String> message = new GenericMessage<String>(content, header);
 			
 			producer.send(message, topic, key);			
@@ -55,7 +55,7 @@ public class BettingKafkaSenderService {
 			logger.error(String.format("Error sending Betgenius kafka-message %s", content), pe);			
 			
 		} catch (IOException e) {
-			logger.error(String.format("Error sending Betgenius kafka-message %s", content), e);			
+			logger.error(String.format("Error sending betting kafka-message %s", content), e);			
 		}	
 	}
 
@@ -67,11 +67,11 @@ public class BettingKafkaSenderService {
 		this.producer = producer;
 	}
 
-	public String getBetgeniusContentType() {
-		return betgeniusContentType;
+	public String getBettingContentType() {
+		return bettingContentType;
 	}
 
-	public void setBetgeniusContentType(String betgeniusContentType) {
-		this.betgeniusContentType = betgeniusContentType;
+	public void setBettingContentType(String bettingContentType) {
+		this.bettingContentType = bettingContentType;
 	}
 }

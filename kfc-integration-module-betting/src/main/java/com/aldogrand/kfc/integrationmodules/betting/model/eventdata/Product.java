@@ -13,7 +13,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
- * Represents details of Betgenius Event Management Interface
+ * Represents details of betting Event Management Interface
  * 
  * @author aldogrand
  *

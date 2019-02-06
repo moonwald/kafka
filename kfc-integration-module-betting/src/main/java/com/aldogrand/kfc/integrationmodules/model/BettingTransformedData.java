@@ -8,7 +8,7 @@ import com.aldogrand.sbpc.connectors.model.Runner;
 
 /**
  * Encapsulating all transformed data received from
- * Betgenius for event management
+ * betting for event management
  * 
  * @author aldogrand
  *
@@ -42,7 +42,7 @@ public class BettingTransformedData {
 
 	/**
 	 * 
-	 * @return new event from Betgenius which 
+	 * @return new event from betting which 
 	 * needs to be created
 	 */
 	public Event getTransformedCreateEvent() {
@@ -60,7 +60,7 @@ public class BettingTransformedData {
 
 	/**
 	 * 
-	 * @return {@link Event} detail from Betgenius which 
+	 * @return {@link Event} detail from betting which 
 	 * needs to be updated
 	 */
 	public Event getTransformedUpdateEvent() {
@@ -78,7 +78,7 @@ public class BettingTransformedData {
 
 	/**
 	 * 
-	 * @return {@link Market} detail from Betgenius which 
+	 * @return {@link Market} detail from betting which 
 	 * needs to be created
 	 */
 	public List<Market> getTransformedCreateMarkets() {
@@ -96,7 +96,7 @@ public class BettingTransformedData {
 
 	/**
 	 * 
-	 * @return {@link Market} detail from Betgenius which 
+	 * @return {@link Market} detail from betting which 
 	 * needs to be updated
 	 */
 	public List<Market> getTransformedUpdateMarkets() {
@@ -114,7 +114,7 @@ public class BettingTransformedData {
 
 	/**
 	 * 
-	 * @return {@link Runner} detail from Betgenius which 
+	 * @return {@link Runner} detail from betting which 
 	 * needs to be created
 	 */
 	public List<Runner> getTransformedCreateRunners() {
@@ -132,7 +132,7 @@ public class BettingTransformedData {
 
 	/**
 	 * 
-	 * @return {@link Runner} detail from Betgenius which 
+	 * @return {@link Runner} detail from betting which 
 	 * needs to be updated
 	 */
 	public List<Runner> getTransformedUpdateRunners() {
@@ -150,7 +150,7 @@ public class BettingTransformedData {
 	
 	/**
 	 * 
-	 * @return {@link Market} result data from Betgenius
+	 * @return {@link Market} result data from betting
 	 * which needs to be updated
 	 */
 	public Market getTransformedResultMarket() {

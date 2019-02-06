@@ -14,7 +14,7 @@ import com.aldogrand.kfc.integrationmodules.betting.model.eventdata.MatchPhase;
 import com.aldogrand.kfc.integrationmodules.betting.model.eventdata.ResultStatus;
 
 /**
- * Base class for Betgenius Data transformations and constants
+ * Base class for betting Data transformations and constants
  * 
  * @author aldogrand
  *
@@ -26,7 +26,7 @@ public class BettingTransformationBase {
 	
 	protected static final String PRODUCT_IN_RUNNING = "In Running";
 	
-	//This value is simply to fit correct score runners into the existing structure. Correct score runners do not have an outcome id in BetGenius.
+	//This value is simply to fit correct score runners into the existing structure. Correct score runners do not have an outcome id in betting.
 	protected static final int CORRECT_SCORE = 100;
 	
 	protected static final int DRAW = 2;

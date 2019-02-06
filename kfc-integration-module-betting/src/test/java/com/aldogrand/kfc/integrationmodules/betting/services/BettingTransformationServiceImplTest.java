@@ -1,4 +1,4 @@
-package com.aldogrand.kfc.integrationmodules.betgenius.services;
+package com.aldogrand.kfc.integrationmodules.betting.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -70,7 +70,7 @@ import com.aldogrand.kfc.integrationmodules.model.BettingTransformedData;
 /**
  *
  * <p>
- * <b>Title</b>: BetgeniusTransformationServiceImplTest.java
+ * <b>Title</b>: BettingTransformationServiceImplTest.java
  * </p>
  * <p>
  * <b>Description</b>
@@ -86,7 +86,7 @@ import com.aldogrand.kfc.integrationmodules.model.BettingTransformedData;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/kfc-integration-module-betgenius-test.xml" })
+@ContextConfiguration(locations = { "classpath:/kfc-integration-module-betting-test.xml" })
 public class BettingTransformationServiceImplTest extends BettingTransformationBase {
 
 	private JAXBContext jaxbContext;

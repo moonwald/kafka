@@ -29,13 +29,13 @@ import com.aldogrand.kfc.msg.events.fetcher.EventIncidentReceivedEvent;
 
 public class BettingInPlayConnector implements BettingListener {
 
-	private static String BETGENIUS_CONNECTOR_NOT_ENABLED = "Betgenius InPlay Connector is not enabled";
+	private static String BETTING_CONNECTOR_NOT_ENABLED = "Betting InPlay Connector is not enabled";
 
 	private Logger logger = LogManager.getLogger(getClass());
 
 	private JAXBContext jaxbContext;
 
-	private BettingTransformationService betgeniusTransformationService;
+	private BettingTransformationService bettingTransformationService;
 
 	private boolean enabled;
 	
@@ -47,7 +47,7 @@ public class BettingInPlayConnector implements BettingListener {
 	@Override
 	public void onEventManagementMessage(String message) {
 //		if (!enabled) {
-//			logger.debug(BETGENIUS_CONNECTOR_NOT_ENABLED);
+//			logger.debug(BETTING_CONNECTOR_NOT_ENABLED);
 //			return;
 //		}
 //		
@@ -56,7 +56,7 @@ public class BettingInPlayConnector implements BettingListener {
 //			Updategram updateGram = (Updategram) unmarshaller
 //					.unmarshal(new StringReader(message));
 //
-//			BetgeniusTransformedData transformedData = this.betgeniusTransformationService
+//			BettingTransformedData transformedData = this.bettingTransformationService
 //					.transformEvent(updateGram);
 //			logger.debug("Notifying listeners of event update");
 //			
@@ -68,7 +68,7 @@ public class BettingInPlayConnector implements BettingListener {
 	@Override
 	public void onInPlayFootballMessage(String message) {
 		if (!enabled) {
-			logger.debug(BETGENIUS_CONNECTOR_NOT_ENABLED);
+			logger.debug(BETTING_CONNECTOR_NOT_ENABLED);
 			return;
 		}
 
@@ -76,8 +76,8 @@ public class BettingInPlayConnector implements BettingListener {
 			ObjectMapper mapper = new ObjectMapper();
 			MatchStateFootball matchState = mapper.readValue(message, MatchStateFootball.class);
 
-			// Transform the Betgenius in-play feed
-			List<EventIncident> transformedFootballIncidents = this.betgeniusTransformationService
+			// Transform the betting in-play feed
+			List<EventIncident> transformedFootballIncidents = this.bettingTransformationService
 					.transformMatchState(matchState);
 			
 			// send to kafka for each EventIncident
@@ -96,7 +96,7 @@ public class BettingInPlayConnector implements BettingListener {
 	public void onInPlayTennisMessage(String message) {
 		// TODO Auto-generated method stub
 		if (!enabled) {
-			logger.debug(BETGENIUS_CONNECTOR_NOT_ENABLED);
+			logger.debug(BETTING_CONNECTOR_NOT_ENABLED);
 			return;
 		}
 
@@ -104,8 +104,8 @@ public class BettingInPlayConnector implements BettingListener {
 			ObjectMapper mapper = new ObjectMapper();
 			MatchStateTennis matchState = mapper.readValue(message, MatchStateTennis.class);
 
-			// Transform the Betgenius in-play feed
-			List<EventIncident> transformedTennisIncidents = this.betgeniusTransformationService
+			// Transform the BETTING in-play feed
+			List<EventIncident> transformedTennisIncidents = this.bettingTransformationService
 					.transformMatchState(matchState);
 			
 			// send to kafka for each EventIncident
@@ -153,13 +153,13 @@ public class BettingInPlayConnector implements BettingListener {
 		return jaxbContext.createUnmarshaller();
 	}
 
-	public BettingTransformationService getBetgeniusTransformationService() {
-		return betgeniusTransformationService;
+	public BettingTransformationService getBettingTransformationService() {
+		return bettingTransformationService;
 	}
 
-	public void setBetgeniusTransformationService(
-			BettingTransformationService betgeniusTransformationService) {
-		this.betgeniusTransformationService = betgeniusTransformationService;
+	public void setBettingTransformationService(
+			BettingTransformationService bettingTransformationService) {
+		this.bettingTransformationService = bettingTransformationService;
 	}
 
 	public boolean isEnabled() {

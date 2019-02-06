@@ -7,7 +7,7 @@ import com.aldogrand.kfc.msg.interfaces.KeyGenerator;
  * <b>Title</b> KeyGenerator Interface
  * </p>
  * <p>
- * <b>Description</b> Betgenius partition Key Generator for Kafka Interface.
+ * <b>Description</b> BETTING partition Key Generator for Kafka Interface.
  * </p>
  * <p>
  * <b>Company</b> AldoGrand Consultancy Ltd
@@ -21,9 +21,9 @@ import com.aldogrand.kfc.msg.interfaces.KeyGenerator;
 public interface BettingKeyGenerator extends KeyGenerator {
 
   /**
-   * Generate Key searching the most important value inside raw XML from Betgenius
+   * Generate Key searching the most important value inside raw XML from BETTING
    * 
-   * @param message Raw XML from Betgenius
+   * @param message Raw XML from BETTING
    * @param contentType Value of content-type header to parse the XML
    * @return Key value
    *

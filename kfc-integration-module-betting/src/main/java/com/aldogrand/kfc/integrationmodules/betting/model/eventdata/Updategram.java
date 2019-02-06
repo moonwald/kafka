@@ -12,11 +12,11 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
- * Representation of root element of Betgenius Event Management feed
+ * Representation of root element of BETTING Event Management feed
  * 
  * @author aldogrand
  */
-@XmlRootElement(name = "Updategram", namespace = "http://schemas.betgenius.com/2009/07/integration")
+@XmlRootElement(name = "Updategram", namespace = "http://schemas.betting.com/2009/07/integration")
 public class Updategram implements Serializable {
 
 	private static final long serialVersionUID = 1478529015735267819L;
@@ -67,7 +67,7 @@ public class Updategram implements Serializable {
 	}
 
 	@XmlElementWrapper(name = "CreateMarketCommands")
-	@XmlElement(name = "CreateMarket", namespace = "http://schemas.betgenius.com/2009/07/integration")
+	@XmlElement(name = "CreateMarket", namespace = "http://schemabettingus.com/2009/07/integration")
 	public List<CreateMarket> getCreateMarkets() {
 		return createMarkets;
 	}
@@ -87,7 +87,7 @@ public class Updategram implements Serializable {
 	}
 
 	@XmlElementWrapper(name = "UpdateMarketCommands", nillable = true)
-	@XmlElement(name = "UpdateMarket", namespace = "http://schemas.betgenius.com/2009/07/integration")
+	@XmlElement(name = "UpdateMarket", namespace = "http://schemas.betting.com/2009/07/integration")
 	public List<UpdateMarket> getUpdateMarkets() {
 		return updateMarkets;
 	}

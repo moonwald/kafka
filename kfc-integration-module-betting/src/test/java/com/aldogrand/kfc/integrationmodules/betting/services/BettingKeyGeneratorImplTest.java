@@ -1,4 +1,4 @@
-package com.aldogrand.kfc.integrationmodules.betgenius.services;
+package com.aldogrand.kfc.integrationmodules.betting.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -26,7 +26,7 @@ import com.aldogrand.kfc.integrationmodules.betting.msg.interfaces.BettingKeyGen
 /**
  * 
  * <p>
- * <b>Title</b> BetgeniusKeyGeneratorImplTest
+ * <b>Title</b> BettingKeyGeneratorImplTest
  * </p>
  * <p>
  * <b>Description</b>

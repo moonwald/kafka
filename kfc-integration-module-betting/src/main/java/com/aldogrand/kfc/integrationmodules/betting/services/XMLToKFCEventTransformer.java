@@ -27,7 +27,7 @@ import com.aldogrand.kfc.integrationmodules.betting.msg.events.BettingUpdategram
 import com.aldogrand.kfc.msg.events.fetcher.OffersReceivedEvent;
 
 /**
- * Transformer from Betgenius XML document to kfc event 
+ * Transformer from betting XML document to kfc event 
  * <p>
  * <b>Title</b> XMLToKFCEventTransformer
  * </p>
@@ -55,16 +55,16 @@ public class XMLToKFCEventTransformer {
 	/**
 	 * Transform Message<String> to KFCEvent 
 	 * 
-	 * @param message Payload is a XML from Betgenius
+	 * @param message Payload is a XML from betting
 	 * 
-	 * @return BetgeniusUpdategramReceivedEvent <KFCEvent>
+	 * @return bettingUpdategramReceivedEvent <KFCEvent>
 	 */
 	public BettingUpdategramReceivedEvent transform(Message<String> message) {
 		BettingUpdategramReceivedEvent updategramReceivedEvent = new BettingUpdategramReceivedEvent();
 		
 		if (serviceInfo == null) {
   		  updategramReceivedEvent.setIntegrationModuleId("10");
-  		  updategramReceivedEvent.setIntegrationModuleName("Betgenius");
+  		  updategramReceivedEvent.setIntegrationModuleName("Betting");
 		} else {
 		  updategramReceivedEvent.setIntegrationModuleId(serviceInfo.getIntegrationModuleId());
           updategramReceivedEvent.setIntegrationModuleName(serviceInfo.getIntegrationModuleName());
@@ -75,7 +75,7 @@ public class XMLToKFCEventTransformer {
 			if (contentTypeName == null) {
 				throw new IllegalArgumentException(
 						"no content type given in message " + message.getHeaders());
-			} else if (contentTypeName.equalsIgnoreCase("BETGENIUS_UPDATEGRAM_RAW") && message.getPayload() != null) {
+			} else if (contentTypeName.equalsIgnoreCase("BETTING_UPDATEGRAM_RAW") && message.getPayload() != null) {
 		        
 				Unmarshaller unmarshaller = getUnmarshaller(Updategram.class);				
 				InputStream is = new ByteArrayInputStream(message.getPayload().getBytes(StandardCharsets.UTF_8));
@@ -95,9 +95,9 @@ public class XMLToKFCEventTransformer {
 	}
 	
 	/**
-	 * Transform XML content type to BetgeniusUpdategramReceivedEvent
-	 * @param content Raw XML from Betgenius
-	 * @return BetgeniusUpdategramReceivedEvent
+	 * Transform XML content type to bettingUpdategramReceivedEvent
+	 * @param content Raw XML from betting
+	 * @return bettingUpdategramReceivedEvent
 	 */
 	public BettingUpdategramReceivedEvent transform(String content, String contentType) {	  
 	  Map <String, Object> header = new HashMap <String, Object>();     

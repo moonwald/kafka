@@ -16,8 +16,8 @@ import org.springframework.ws.test.server.MockWebServiceClient;
 import org.springframework.xml.transform.StringSource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:kfc-integration-module-betgenius.xml", "kfc-integration-module-betgenius-test.xml" })
-public class BetgeniusWebServiceTest {
+@ContextConfiguration({"classpath:kfc-integration-module-betting.xml", "kfc-integration-module-betting-test.xml" })
+public class BettingWebServiceTest {
 
 	@Autowired
 	private ApplicationContext applicationContext;

@@ -30,7 +30,7 @@ import com.aldogrand.kfc.integrationmodules.betting.services.XMLToKFCEventTransf
 /**
  * 
  * <p>
- * <b>Title</b> BetgeniusKeyGeneratorImpl
+ * <b>Title</b> BETTINGKeyGeneratorImpl
  * </p>
  * <p>
  * <b>Description</b>
@@ -89,7 +89,7 @@ public class BettingKeyGeneratorImpl implements BettingKeyGenerator {
 
   /*
    * (non-Javadoc)
-   * @see com.aldogrand.kfc.integrationmodules.betgenius.msg.interfaces.BetgeniusKeyGenerator#generateKey(java.lang.String, java.lang.String)
+   * @see com.aldogrand.kfc.integrationmodules.BETTING.msg.interfaces.BETTINGKeyGenerator#generateKey(java.lang.String, java.lang.String)
    */
   @Override
   public String generateKey(String message, String contentType) throws ParseException, EvaluationException,

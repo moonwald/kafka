@@ -31,7 +31,7 @@ import com.aldogrand.kfc.integrationmodules.http.server.AbstractHttpRequestHandl
 /**
  * 
  * <p>
- * <b>Title</b> BetgeniusHttpRequestHandler
+ * <b>Title</b> BETTINGHttpRequestHandler
  * </p>
  * <p>
  * <b>Description</b>
@@ -48,9 +48,9 @@ import com.aldogrand.kfc.integrationmodules.http.server.AbstractHttpRequestHandl
 public class BettingHttpRequestHandler extends AbstractHttpRequestHandler {
 
 	// End points
-	private static final String STATUS_URI = "/betgenius/status";
-	private static final String PROCESS_MESSAGE_URI = "/betgenius/process-message";
-	private static final String HEARTBEAT_URI = "/betgenius/heartbeat";
+	private static final String STATUS_URI = "/betting/status";
+	private static final String PROCESS_MESSAGE_URI = "/betting/process-message";
+	private static final String HEARTBEAT_URI = "/betting/heartbeat";
 	
 	// Content type
 	private static final String BODY_TYPE_HEADER_NAME = "Content-Type";
@@ -58,9 +58,9 @@ public class BettingHttpRequestHandler extends AbstractHttpRequestHandler {
     private static final String CONTENT_TYPE_SHORT = "text/xml";
     
     // Constants
-    private static final String RESPONSE_STATUS = "Betgenius interfaces Up";    
+    private static final String RESPONSE_STATUS = "Betting interfaces Up";    
     private static final String PROCESS_MESSAGE_KEY = "PROCESS_MESSAGE";
-    private static final String DEFAULT_TOPIC_NAME = "BETGENIUS_UPDATEGRAM_IN";
+    private static final String DEFAULT_TOPIC_NAME = "BETTING_UPDATEGRAM_IN";
         
     private ObjectMapper objectMapper;    
     private String moduleTopicName;    
@@ -73,7 +73,7 @@ public class BettingHttpRequestHandler extends AbstractHttpRequestHandler {
     private BettingHeartbeatService heartbeatService;
     
     @Autowired
-    private BettingKeyGenerator betgeniusKeyGenerator;
+    private BettingKeyGenerator bettingKeyGenerator;
     
     protected Logger logger = LogManager.getLogger(getClass());
       
@@ -136,7 +136,7 @@ public class BettingHttpRequestHandler extends AbstractHttpRequestHandler {
     }
     
     /**
-     * Handle process message request from Betgenius. 
+     * Handle process message request from Betting. 
      * @param context
      * @param request
      */
@@ -157,7 +157,7 @@ public class BettingHttpRequestHandler extends AbstractHttpRequestHandler {
 	        }
 	        
 	        String content = (String) object;
-	        String key = betgeniusKeyGenerator.generateKey(content, kafkaSenderService.getBetgeniusContentType());
+	        String key = bettingKeyGenerator.generateKey(content, kafkaSenderService.getBettingContentType());
 			kafkaSenderService.sendContent(content, 
 						moduleTopicName != null? moduleTopicName : DEFAULT_TOPIC_NAME, 
 						key != null? key : PROCESS_MESSAGE_KEY);
@@ -178,7 +178,7 @@ public class BettingHttpRequestHandler extends AbstractHttpRequestHandler {
 	}
     
 	/**
-	 * Handle Betgenius heartbeat
+	 * Handle Betting heartbeat
 	 * @param context
 	 * @param request
 	 */
@@ -347,12 +347,12 @@ public class BettingHttpRequestHandler extends AbstractHttpRequestHandler {
 		this.heartbeatService = heartbeatService;
 	}
 
-  public BettingKeyGenerator getBetgeniusKeyGenerator() {
-    return betgeniusKeyGenerator;
+  public BettingKeyGenerator getBettingKeyGenerator() {
+    return bettingKeyGenerator;
   }
 
-  public void setBetgeniusKeyGenerator(BettingKeyGenerator betgeniusKeyGenerator) {
-    this.betgeniusKeyGenerator = betgeniusKeyGenerator;
+  public void setBettingKeyGenerator(BettingKeyGenerator bettingKeyGenerator) {
+    this.bettingKeyGenerator = bettingKeyGenerator;
   }
 
 }

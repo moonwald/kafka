@@ -10,7 +10,7 @@ import com.aldogrand.kfc.interfaces.KFCProducer;
 /**
  * 
  * <p>
- * <b>Title</b> BetgeniusHeartbeatService
+ * <b>Title</b> BettingHeartbeatService
  * </p>
  * <p>
  * <b>Description</b>
@@ -62,7 +62,7 @@ public class BettingHeartbeatService extends AbstractHeartBeatService {
 
 	/**
 	 * Return period in milliseconds allowed without receive
-	 * betgenius heartbeat.
+	 * Betting heartbeat.
 	 *  
 	 * @return Period in milliseconds.
 	 */

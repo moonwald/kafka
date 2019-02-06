@@ -3,7 +3,7 @@ package com.aldogrand.kfc.integrationmodules.model;
 import java.util.List;
 
 /**
- * Holds the received transformed Betgenius in-play data
+ * Holds the received transformed betting in-play data
  * 
  * @author aldogrand
  *

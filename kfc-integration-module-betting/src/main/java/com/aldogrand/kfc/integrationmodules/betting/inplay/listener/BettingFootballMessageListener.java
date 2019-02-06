@@ -8,7 +8,7 @@ import org.springframework.amqp.core.MessageListener;
 import com.aldogrand.kfc.integrationmodules.betting.BettingListener;
 
 /**
- * Betgenius connector for all in-play feeds
+ * betting connector for all in-play feeds
  * 
  * @author aldogrand
  *
@@ -17,21 +17,21 @@ public class BettingFootballMessageListener implements MessageListener {
 
 	private final Logger logger = LogManager.getLogger(getClass());
 
-	private BettingListener betgeniusInPlayConnector;
+	private BettingListener bettingInPlayConnector;
 
 	@Override
 	public void onMessage(Message message) {
 	  logger.debug("Football InPlay received: " + message.toString());
       String inplayJson = new String(message.getBody());
-      this.betgeniusInPlayConnector.onInPlayFootballMessage(inplayJson);
+      this.bettingInPlayConnector.onInPlayFootballMessage(inplayJson);
 	}
 
-	public BettingListener getBetgeniusInPlayConnector() {
-		return betgeniusInPlayConnector;
+	public BettingListener getBettingInPlayConnector() {
+		return bettingInPlayConnector;
 	}
 
-	public void setBetgeniusInPlayConnector(
+	public void setBettingInPlayConnector(
 			BettingListener betgeniusInPlayConnector) {
-		this.betgeniusInPlayConnector = betgeniusInPlayConnector;
+		this.bettingInPlayConnector = betgeniusInPlayConnector;
 	}
 }

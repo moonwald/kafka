@@ -27,18 +27,19 @@ import com.aldogrand.kfc.msg.events.fetcher.SourceMarketsReceivedEvent;
 import com.aldogrand.kfc.msg.events.fetcher.SourceRunnersReceivedEvent;
 
 /**
- * Implementation of  interfaces with Betgenius Event
+ * Implementation of  interfaces with betting Event
  * Management Feeds
  * 
  * @author aldogrand, aldogrand
  * 
  *
  */
+@SuppressWarnings("deprecation")
 public class BettingConnector {
 
 	private final Logger	logger	= Logger.getLogger(getClass());
 
-	private BettingTransformationService betgeniusTransformationService;
+	private BettingTransformationService bettingTransformationService;
 	
 	private boolean enabled;
 	
@@ -53,18 +54,18 @@ public class BettingConnector {
 	private IntegrationModuleServiceInfo integrationModuleServiceInfo;
 
 	/**
-	 * Process the message received from Betgenius PreMatch end-point
+	 * Process the message received from betting PreMatch end-point
 	 * @param headers Header of the Message
 	 * @param updateGram Payload of the Message
 	 * @throws Exception
 	 */
 	public void process(@Headers MessageHeaders headers, @Payload BettingUpdategramReceivedEvent updateGram) throws Exception{		
 		if (!enabled) {
-			logger.debug("Betgenius Connector is not enabled");
+			logger.debug("betting Connector is not enabled");
 			return;
 		}
 		try {
-			BettingTransformedData transformedData = this.betgeniusTransformationService
+			BettingTransformedData transformedData = this.bettingTransformationService
 					.transformEvent(updateGram.getUpdategram());
 			logger.debug("Notifying listeners of event update.");
 			sendToKafka(transformedData);
@@ -76,10 +77,10 @@ public class BettingConnector {
 
 	/**
 	 * sendToKafka for create/update of data received from
-	 * Betgenius
+	 * betting
 	 * 
 	 * @param transformedData
-	 *            Transformed Betgenius data
+	 *            Transformed betting data
 	 * @throws DataUpdateException
 	 */
 	public void sendToKafka(BettingTransformedData transformedData)
@@ -202,26 +203,26 @@ public class BettingConnector {
 	
 
 	/**
-	 * Retrieves the service for transforming Betgenius data to internal model
+	 * Retrieves the service for transforming betting data to internal model
 	 * 
 	 * @return
 	 */
-	public BettingTransformationService getBetgeniusTransformationService() {
-		return betgeniusTransformationService;
+	public BettingTransformationService getBettingTransformationService() {
+		return bettingTransformationService;
 	}
 
 	/**
-	 * Sets the service for transforming Betgenius data to internal model
+	 * Sets the service for transforming betting data to internal model
 	 * 
-	 * @param betgeniusMappingService
+	 * @param bettingMappingService
 	 */
-	public void setBetgeniusTransformationService(
-			BettingTransformationService betgeniusTransformationService) {
-		this.betgeniusTransformationService = betgeniusTransformationService;
+	public void setBettingTransformationService(
+			BettingTransformationService bettingTransformationService) {
+		this.bettingTransformationService = bettingTransformationService;
 	}
 
 	/**
-	 * @return true if connector is enabled to recieve Betgenius data
+	 * @return true if connector is enabled to recieve betting data
 	 * 
 	 */
 	public boolean isEnabled() {
@@ -229,7 +230,7 @@ public class BettingConnector {
 	}
 
 	/**
-	 * Set enabled to true if connector to receive Betgenius data
+	 * Set enabled to true if connector to receive betting data
 	 */
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
