@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="120">
+    <!-- Properties -->
+    <Properties>
+        <Property name="log_location">logs</Property>
+    </Properties>
+    
+    <!-- Log Appenders -->
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="consoleLog" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS z}{UTC} || %-5level || [%c{1}] - %m%n" />
+        </Console>
+        
+        <!-- Default File Appender -->
+        <RollingRandomAccessFile name="fileLog" 
+                fileName="${log_location}/kfc-mysql-dw/mysqlDataWriter.log" 
+                filePattern="${log_location}/kfc-mysql-dw/mysqlDataWriter_%d{yyyy-MM-dd}-%i.log.gz" 
+                immediateFlush="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS z}{UTC} || %-5level || [%c{1}] - %m%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="25MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="400" />
+        </RollingRandomAccessFile>
+            
+        <!-- Mapper data writer File Appender -->
+        <RollingRandomAccessFile name="mapperFileLog" 
+                fileName="${log_location}/kfc-mysql-dw/mapper.log" 
+                filePattern="${log_location}/kfc-mysql-dw/mapper_%d{yyyy-MM-dd}-%i.log.gz" 
+                immediateFlush="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS z}{UTC} || %-5level || [%c{1}] - %m%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="25MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="400" />
+        </RollingRandomAccessFile>
+                
+        <!-- Source data writer File Appender -->
+        <RollingRandomAccessFile name="sourceDWFileLog" 
+                fileName="${log_location}/kfc-mysql-dw/sourceDW.log" 
+                filePattern="${log_location}/kfc-mysql-dw/sourceDW_%d{yyyy-MM-dd}-%i.log.gz" 
+                immediateFlush="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS z}{UTC} || %-5level || [%c{1}] - %m%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="25MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="400" />
+        </RollingRandomAccessFile>
+        
+        <!-- Process data writer File Appender -->
+        <RollingRandomAccessFile name="processDWFileLog" 
+                fileName="${log_location}/kfc-mysql-dw/processDW.log" 
+                filePattern="${log_location}/kfc-mysql-dw/processDW_%d{yyyy-MM-dd}-%i.log.gz" 
+                immediateFlush="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS z}{UTC} || %-5level || [%c{1}] - %m%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="25MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="400" />
+        </RollingRandomAccessFile>
+        
+        <!-- SQL File Appender -->
+        <RollingRandomAccessFile name="sqlFileLog" 
+                fileName="${log_location}/kfc-mysql-dw/sql.log" 
+                filePattern="${log_location}/kfc-mysql-dw/sql_%d{yyyy-MM-dd}-%i.log.gz" 
+                immediateFlush="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS z}{UTC} || %-5level || [%c{1}] - %m%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="25MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="400" />
+        </RollingRandomAccessFile>
+        
+        <!-- Example Syslog Appender -->
+        <Syslog name="syslog" format="RFC5424" facility="USER" appName="SBPC" 
+                id="SBPC" messageId="SBPC" protocol="UDP" host="localhost" port="8514" 
+                reconnectionDelay="10000" newLine="true" immediateFlush="false">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+        </Syslog>
+        
+        <!-- Example MongoDB Appender -->
+<!--         <NoSQL name="mongodbLog" bufferSize="100">
+            <MongoDb server="localhost" port="27017" username="" password="" 
+                    databaseName="logs" collectionName="logs" 
+                    writeConcernConstant="ACKNOWLEDGED" />
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+        </NoSQL> -->
+    </Appenders>
+    
+    <!-- Loggers -->
+    <Loggers>
+        <!-- Application Logs -->
+        <asyncLogger name="com.aldogrand" level="INFO" />
+
+        <!-- Mapper Logs -->
+        <asyncLogger name="com.aldogrand.kfc.services.mysql.impl.MapperDataWriterServiceImpl" level="DEBUG" additivity="false">
+            <AppenderRef ref="mapperFileLog" />
+        </asyncLogger>
+        
+         <!-- Source Logs -->
+        <asyncLogger name="com.aldogrand.kfc.services.mysql.impl.SourceDataWriterServiceImpl" level="DEBUG" additivity="false">
+            <AppenderRef ref="sourceDWFileLog" />
+        </asyncLogger>
+        
+         <!-- Process Logs -->
+        <asyncLogger name="com.aldogrand.kfc.services.mysql.impl.ProcessDataWriterServiceImpl" level="DEBUG" additivity="false">
+            <AppenderRef ref="processDWFileLog" />
+        </asyncLogger>
+        
+        <!-- SQL Log -->
+        <asyncLogger name="org.hibernate.SQL" level="ERROR" additivity="false">
+            <AppenderRef ref="sqlFileLog" />
+        </asyncLogger>
+        <asyncLogger name="org.hibernate.engine.jdbc.spi.SqlExceptionHelper" level="ERROR" />
+        <asyncLogger name="org.hibernate.hql.internal.ast.QueryTranslatorImpl" level="ERROR" />
+        <asyncLogger name="org.hibernate.cache.ehcache.internal.strategy.AbstractReadWriteEhcacheAccessStrategy" level="ERROR" />
+        
+        <!-- Root Logger -->
+        <asyncRoot level="ERROR">
+            <AppenderRef ref="consoleLog" />
+            <AppenderRef ref="fileLog" />
+        </asyncRoot>
+    </Loggers>
+</Configuration>

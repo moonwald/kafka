@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/integration/kafka
+        http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.aldogrand.kfc">
+		<context:include-filter type="regex"
+			expression=".*Event" />
+	</context:component-scan>
+
+	<!-- Load properties from properties files -->
+	<context:property-placeholder
+		location="classpath:kfc-mysql-datawriter.properties,file:${xd.home}/modules/source/kfc-mysql-datawriter/config/kfc-mysql-datawriter.properties"
+		ignore-resource-not-found="false" order="1" />
+
+	<!-- --> 
+	<!-- Beans Definitions 														-->
+	<!-- -->
+	<!-- Set any System properties that are required to configure other beans -->
+	<bean id="systemPropertyConfigurator"
+		class="com.aldogrand.kfc.utils.configuration.SystemPropertyConfiguratorBean"
+		lazy-init="false">
+		<property name="properties">
+			<props>
+				<!-- Ehcache properties -->
+				<prop key="net.sf.ehcache.disabled">${ehcache.disabled}</prop>
+				<prop key="kfc.mysql.ehcache.heap.max">${ehcache.heap.max}</prop>
+				<prop key="kfc.mysql.ehcache.bigmem.max">${ehcache.bigmem.max}</prop>
+				<prop key="kfc.mysql.ehcache.logging">${ehcache.logging}</prop>
+				<prop key="kfc.mysql.ehcache.statistics">${ehcache.statistics}</prop>
+				<prop key="kfc.mysql.ehcache.host">${ehcache.host}</prop>
+				<prop key="kfc.mysql.ehcache.multicast.address">${ehcache.multicast.address}</prop>
+				<prop key="kfc.mysql.ehcache.multicast.port">${ehcache.multicast.port}</prop>
+				<prop key="kfc.mysql.ehcache.rmi.port">${ehcache.rmi.port}</prop>
+				<prop key="kfc.mysql.ehcache.rmi.remoteObjectPort">${ehcache.rmi.remoteObjectPort}</prop>
+				<prop key="kfc.mysql.ehcache.management.enabled">${ehcache.management.enabled}</prop>
+				<prop key="kfc.mysql.ehcache.management.port">${ehcache.management.port}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Database access -->
+	<bean id="kfcDS"
+		class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy"
+		lazy-init="false">
+		<property name="defaultAutoCommit" value="false" />
+		<property name="targetDataSource">
+			<bean class="org.apache.commons.dbcp.BasicDataSource" lazy-init="false"
+				destroy-method="close">
+				<property name="driverClassName" value="${jdbc.driverClassName}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="kfcDS" />
+		<property name="persistenceUnitName" value="persistence-datawriter" />
+		<property name="persistenceXmlLocation"
+			value="classpath:/META-INF/datawriter-persistence.xml" />
+		<property name="jpaDialect">
+			<bean
+				class="com.aldogrand.kfc.utils.database.IsolationAwareHibernateJpaDialect" />
+		</property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="${jdbc.hibernate.generateDdl:true}" />
+				<property name="showSql" value="false" />
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.hibernate.dialect:org.hibernate.dialect.MySQL5Dialect}
+				</prop>
+				<prop key="hibernate.id.new_generator_mappings">${jdbc.hibernate.id.new_generator_mappings:false}
+				</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache:false}
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache:false}</prop>
+				<prop key="hibernate.cache.use_minimal_puts">true</prop>
+				<prop key="hibernate.generate_statistics">${hibernate.cache.generate_statistics:false}</prop>
+				<prop key="hibernate.cache.use_structured_entries">true</prop>
+				<prop key="net.sf.ehcache.configurationResourceName">/${ehcache.config.file}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="txManager" />
+	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="accountDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.AccountDaoJpaImpl" />
+	<bean id="betDao" class="com.aldogrand.sbpc.dataaccess.jpa.BetDaoJpaImpl" />
+	<bean id="bettingPlatformDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.BettingPlatformDaoJpaImpl" />
+	<bean id="connectorDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.ConnectorDaoJpaImpl" />
+	<bean id="eventDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.EventDaoJpaImpl" />
+	<bean id="gFeedMidPointDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.GFeedMidPointDaoJpaImpl" />
+	<bean id="gFeedSettingDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.GFeedSettingDaoJpaImpl" />
+	<bean id="marketDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.MarketDaoJpaImpl" />
+	<bean id="metaTagDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.MetaTagDaoJpaImpl" />
+	<bean id="offerDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.OfferDaoJpaImpl" />
+	<bean id="participantDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.ParticipantDaoJpaImpl" />
+	<bean id="positionDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.PositionDaoJpaImpl" />
+	<bean id="priceDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.PriceDaoJpaImpl" />
+	<bean id="runnerDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.RunnerDaoJpaImpl" />
+	<bean id="sourceEventDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.SourceEventDaoJpaImpl" />
+	<bean id="sourceMarketDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.SourceMarketDaoJpaImpl" />
+	<bean id="sourceRunnerDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.SourceRunnerDaoJpaImpl" />
+		
+	<bean id="sourceEventIncidentDao" class="com.aldogrand.sbpc.dataaccess.jpa.SourceEventIncidentDaoJpaImpl" />
+	
+	<bean id="reportJobInfoDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.ReportJobInfoDaoJpaImpl" />
+	<bean id="settledBetDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.SettledBetDaoJpaImpl" />
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<!-- kafka producer -->
+	<bean id="kafkaProducerProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="metadata.broker.list">${kafka.metadata.broker.list}</prop>
+				<prop key="serializer.class">${kafka.serializer.class}</prop>
+				<prop key="key.serializer.class">${kafka.key.serializer.class}</prop>
+				<prop key="producer.type">${kafka.producer.type}</prop>
+				<prop key="partitioner.class">${kafka.partitioner.class}</prop>
+				<prop key="request.required.acks">${kafka.request.required.acks}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="KFCEventFactory" class="com.aldogrand.kfc.msg.KFCEventFactoryImpl" />
+	<bean id="topicGenerator"
+		class="com.aldogrand.kfc.kafka.generator.TopicGeneratorImpl" />
+	<bean id="keyEventGenerator"
+		class="com.aldogrand.kfc.kafka.generator.KeyGeneratorImpl" />
+
+	<bean id="kafkaProducer"
+		class="com.aldogrand.kfc.msg.producer.kafka.KafkaProducer">
+		<constructor-arg name="topicGenerator" ref="topicGenerator" />
+		<constructor-arg name="keyGenerator" ref="keyEventGenerator" />
+		<constructor-arg name="properties" ref="kafkaProducerProperties"
+			type="java.util.Properties" />
+	</bean>
+
+	<bean id="valueDecoder" class="com.aldogrand.kfc.consumer.MessageDecoder" />
+	<bean id="kfcKafkaProducer" class="com.aldogrand.kfc.producer.KFCProducerImpl" />
+	<bean id="kafkaSplitter" class="com.aldogrand.kfc.consumer.Splitter" />
+
+
+	<int-kafka:zookeeper-connect id="zookeeperConnect"
+		zk-connect="${zk-connect}" zk-connection-timeout="6000"
+		zk-session-timeout="6000" zk-sync-time="2000" />
+
+
+
+	<!-- --> 
+	<!-- Spring Integration														-->
+	<!-- -->
+
+	<bean id="consumerProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="auto.offset.reset">largest</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- -->
+	<!-- Channels -->
+	<!-- -->
+	<int:channel id="kafka1">
+		<int:interceptors>
+			<int:wire-tap channel="wireTapChannel" />
+		</int:interceptors>
+	</int:channel>
+	<int:channel id="LMAXInputChannelDATA_IN" />
+	<int:channel id="kafka2">
+	<int:interceptors>
+			<int:wire-tap channel="wireTapChannel" />
+		</int:interceptors>
+	</int:channel>
+	<int:channel id="LMAXInputChannelDATA_MAP_FOUND" />
+	<int:channel id="kafkaPrices">
+		<int:interceptors>
+			<int:wire-tap channel="wireTapChannel" />
+		</int:interceptors>
+	</int:channel>
+	<int:channel id="LMAXInputChannelDATA_IN_PRICES" />
+	<int:channel id="kafkaOffers">
+		<int:interceptors>
+			<int:wire-tap channel="wireTapChannel" />
+		</int:interceptors>
+	</int:channel>
+	<int:channel id="LMAXInputChannelDATA_IN_OFFERS" />
+	<int:channel id="kafkaPositions">
+		<int:interceptors>
+			<int:wire-tap channel="wireTapChannel" />
+		</int:interceptors>
+	</int:channel>
+	<int:channel id="LMAXInputChannelDATA_IN_POSITIONS" />
+	<int:channel id="write-requests"/>
+	<int:channel id="processed-requests" />
+	<int:channel id="map-requests" />
+	<int:channel id="notify" />
+	<int:channel id="KafkaProducerChannel">
+		<int:interceptors>
+			<int:wire-tap channel="wireTapChannel" />
+		</int:interceptors>
+	</int:channel>
+	<int:channel id="LMAXInputChannelDataProcessor" />
+	<int:channel id="dataProcessorInputChannel" />
+	<int:channel id="datawriter" />
+
+	<!-- -->
+	<!-- Consumer Contexts -->
+	<!-- -->
+	<int-kafka:consumer-context id="consumerContext1"
+		consumer-timeout="100" zookeeper-connect="zookeeperConnect"
+		consumer-properties="consumerProperties">
+		<int-kafka:consumer-configurations>
+			<int-kafka:consumer-configuration
+				group-id="dataWriterSource" value-decoder="valueDecoder"
+				key-decoder="valueDecoder" max-messages="1000">
+				<int-kafka:topic id="DATA_IN" streams="10" />
+			</int-kafka:consumer-configuration>
+		</int-kafka:consumer-configurations>
+	</int-kafka:consumer-context>
+	
+	<int-kafka:consumer-context id="consumerContext2"
+		consumer-timeout="100" zookeeper-connect="zookeeperConnect"
+		consumer-properties="consumerProperties">
+		<int-kafka:consumer-configurations>
+			<int-kafka:consumer-configuration
+				group-id="dataWriterMap" value-decoder="valueDecoder" key-decoder="valueDecoder"
+				max-messages="1000">
+				<int-kafka:topic id="DATA_MAP_FOUND" streams="10" />
+			</int-kafka:consumer-configuration>
+		</int-kafka:consumer-configurations>
+	</int-kafka:consumer-context>
+	
+	<int-kafka:consumer-context id="consumerContextPrices"
+		consumer-timeout="100" zookeeper-connect="zookeeperConnect"
+		consumer-properties="consumerProperties">
+		<int-kafka:consumer-configurations>
+			<int-kafka:consumer-configuration
+				group-id="dataWriterSourcePrices" value-decoder="valueDecoder"
+				key-decoder="valueDecoder" max-messages="1000">
+				<int-kafka:topic id="DATA_IN_PRICES" streams="10" />
+			</int-kafka:consumer-configuration>
+		</int-kafka:consumer-configurations>
+	</int-kafka:consumer-context>
+	
+	<int-kafka:consumer-context id="consumerContextOffers"
+		consumer-timeout="100" zookeeper-connect="zookeeperConnect"
+		consumer-properties="consumerProperties">
+		<int-kafka:consumer-configurations>
+			<int-kafka:consumer-configuration
+				group-id="dataWriterSourceOffers" value-decoder="valueDecoder"
+				key-decoder="valueDecoder" max-messages="1000">
+				<int-kafka:topic id="DATA_IN_OFFERS" streams="10" />
+			</int-kafka:consumer-configuration>
+		</int-kafka:consumer-configurations>
+	</int-kafka:consumer-context>
+
+	<int-kafka:consumer-context id="consumerContextPositions"
+		consumer-timeout="100" zookeeper-connect="zookeeperConnect"
+		consumer-properties="consumerProperties">
+		<int-kafka:consumer-configurations>
+			<int-kafka:consumer-configuration
+				group-id="dataWriterSourcePositions" value-decoder="valueDecoder"
+				key-decoder="valueDecoder" max-messages="1000">
+				<int-kafka:topic id="DATA_IN_POSITIONS" streams="10" />
+			</int-kafka:consumer-configuration>
+		</int-kafka:consumer-configurations>
+	</int-kafka:consumer-context>
+
+	<!-- -->
+	<!-- Inbound Channel Adapters -->
+	<!-- -->
+	<int-kafka:inbound-channel-adapter
+		id="kafkaInboundChannelAdapter1" kafka-consumer-context-ref="consumerContext1"
+		auto-startup="true" channel="kafka1">
+		<int:poller fixed-delay="10" time-unit="MILLISECONDS"
+			max-messages-per-poll="1000" />
+	</int-kafka:inbound-channel-adapter>
+
+	<int-kafka:inbound-channel-adapter
+		id="kafkaInboundChannelAdapter2" kafka-consumer-context-ref="consumerContext2"
+		auto-startup="true" channel="kafka2">
+		<int:poller fixed-delay="10" time-unit="MILLISECONDS"
+			max-messages-per-poll="1000" />
+	</int-kafka:inbound-channel-adapter>
+	
+	<int-kafka:inbound-channel-adapter
+		id="kafkaInboundChannelAdapterPrices" kafka-consumer-context-ref="consumerContextPrices"
+		auto-startup="true" channel="kafkaPrices">
+		<int:poller fixed-delay="10" time-unit="MILLISECONDS"
+			max-messages-per-poll="1000" />
+	</int-kafka:inbound-channel-adapter>
+	
+	<int-kafka:inbound-channel-adapter
+		id="kafkaInboundChannelAdapterOffers" kafka-consumer-context-ref="consumerContextOffers"
+		auto-startup="true" channel="kafkaOffers">
+		<int:poller fixed-delay="10" time-unit="MILLISECONDS"
+			max-messages-per-poll="1000" />
+	</int-kafka:inbound-channel-adapter>
+
+	<int-kafka:inbound-channel-adapter
+		id="kafkaInboundChannelAdapterPositions" kafka-consumer-context-ref="consumerContextPositions"
+		auto-startup="true" channel="kafkaPositions">
+		<int:poller fixed-delay="10" time-unit="MILLISECONDS"
+			max-messages-per-poll="1000" />
+	</int-kafka:inbound-channel-adapter>
+
+	<!-- -->
+	<!-- Splitter -->
+	<!-- -->
+	<int:splitter input-channel="kafka1" output-channel="LMAXInputChannelDATA_IN"
+		ref="kafkaSplitter" method="splitKafkaMessage" />
+
+	<int:splitter input-channel="kafka2"
+		output-channel="LMAXInputChannelDATA_MAP_FOUND" ref="kafkaSplitter"
+		method="splitKafkaMessage" />
+
+	<int:splitter input-channel="kafkaPrices"
+		output-channel="LMAXInputChannelDATA_IN_PRICES" ref="kafkaSplitter"
+		method="splitKafkaMessage" />
+
+	<int:splitter input-channel="kafkaOffers"
+		output-channel="LMAXInputChannelDATA_IN_OFFERS" ref="kafkaSplitter"
+		method="splitKafkaMessage" />
+
+	<int:splitter input-channel="kafkaPositions"
+		output-channel="LMAXInputChannelDATA_IN_POSITIONS" ref="kafkaSplitter"
+		method="splitKafkaMessage" />
+
+	<!-- -->
+	<!-- Service Activator -->
+	<!-- -->
+	<int:service-activator input-channel="LMAXInputChannelDATA_IN"
+		ref="LMaxService1" method="onData" />
+
+	<int:service-activator input-channel="LMAXInputChannelDATA_MAP_FOUND"
+		ref="LMaxService2" method="onData" />
+
+	<int:service-activator input-channel="LMAXInputChannelDATA_IN_PRICES"
+		ref="LMaxServicePrices" method="onData" />
+
+	<int:service-activator input-channel="LMAXInputChannelDATA_IN_OFFERS"
+		ref="LMaxServiceOffers" method="onData" />
+
+	<int:service-activator input-channel="LMAXInputChannelDATA_IN_POSITIONS"
+		ref="LMaxServicePositions" method="onData" />
+
+	<int:service-activator input-channel="write-requests"
+		ref="sourceDataWriter" method="write">
+	</int:service-activator>
+
+	<int:service-activator input-channel="processed-requests"
+		ref="processDataWriterService" method="update">
+	</int:service-activator>
+
+	<int:service-activator input-channel="map-requests"
+		output-channel="notify" ref="mappingDataWriter" method="map">
+	</int:service-activator>
+
+	<int:outbound-channel-adapter channel="notify"
+		ref="mappingNotificationGenerator" method="generateEvent" />
+
+	<int:service-activator input-channel="errorChannel"
+		ref="errorHandler" method="handleError" />
+
+	<int:service-activator input-channel="LMAXInputChannelDataProcessor"
+		ref="LMaxDataProcessorService" method="onData" />
+	
+	<int:service-activator input-channel="dataProcessorInputChannel"
+		output-channel="processed-requests" ref="dataProcessService" method="process" />
+
+	<int:service-activator input-channel="KafkaProducerChannel"
+		ref="kafkaProducer" method="send" />
+
+	<!-- -->
+	<!-- Beans -->
+	<!-- -->
+	<bean id="LMaxService1" class="com.aldogrand.kfc.lmax.LMAXServiceImpl"
+		destroy-method="destroy">
+		<constructor-arg name="numThreads" value="20" />
+		<constructor-arg name="channel" ref="datawriter" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<bean id="LMaxService2" class="com.aldogrand.kfc.lmax.LMAXServiceImpl"
+		destroy-method="destroy">
+		<constructor-arg name="numThreads" value="10" />
+		<constructor-arg name="channel" ref="datawriter" />
+		<constructor-arg name="bufferSize" value="1024" />
+	</bean>
+
+	<bean id="LMaxServicePrices" class="com.aldogrand.kfc.lmax.LMAXServiceImpl"
+		destroy-method="destroy">
+		<constructor-arg name="numThreads" value="20" />
+		<constructor-arg name="channel" ref="datawriter" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<bean id="LMaxServiceOffers" class="com.aldogrand.kfc.lmax.LMAXServiceImpl"
+		destroy-method="destroy">
+		<constructor-arg name="numThreads" value="20" />
+		<constructor-arg name="channel" ref="datawriter" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<bean id="LMaxServicePositions" class="com.aldogrand.kfc.lmax.LMAXServiceImpl"
+		destroy-method="destroy">
+		<constructor-arg name="numThreads" value="20" />
+		<constructor-arg name="channel" ref="datawriter" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<bean id="jsonToKFCEventTransformer"
+		class="com.aldogrand.kfc.consumer.JSONToKFCEventTransformer">
+		<property name="objectMapper">
+			<bean class="org.codehaus.jackson.map.ObjectMapper" />
+		</property>
+	</bean>
+
+	<bean id="errorHandler" class="com.aldogrand.kfc.error.ErrorHandler" />
+
+	<bean id="processDataWriterService"
+		class="com.aldogrand.kfc.services.mysql.impl.ProcessDataWriterServiceImpl">
+		<property name="kafkaPublisher" ref="kfcKafkaProducer" />
+		<property name="eventDao" ref="eventDao" />
+		<property name="marketDao" ref="marketDao" />
+		<property name="runnerDao" ref="runnerDao" />
+	</bean>
+
+	<bean id="sourceDataWriter"
+		class="com.aldogrand.kfc.services.mysql.impl.SourceDataWriterServiceImpl">
+		<property name="kafkaPublisher" ref="kfcKafkaProducer" />
+		<property name="connectorDao" ref="connectorDao" />
+		<property name="accountDao" ref="accountDao" />
+		<property name="bettingPlatformDao" ref="bettingPlatformDao" />
+		<property name="eventDao" ref="eventDao" />
+		<property name="sourceEventDao" ref="sourceEventDao" />
+		<property name="metaTagDao" ref="metaTagDao" />
+		<property name="marketDao" ref="marketDao" />
+		<property name="sourceMarketDao" ref="sourceMarketDao" />
+		<property name="runnerDao" ref="runnerDao" />
+		<property name="sourceRunnerDao" ref="sourceRunnerDao" />
+		<property name="priceDao" ref="priceDao" />
+		<property name="positionDao" ref="positionDao" />
+		<property name="offerDao" ref="offerDao" />
+		<property name="betDao" ref="betDao" />
+		<property name="reportJobInfoDao" ref="reportJobInfoDao" />
+		<property name="settledBetDao" ref="settledBetDao"></property>
+		<property name="sourceEventIncidentDao" ref="sourceEventIncidentDao" />
+		<property name="dangerballConnectors" value="${service.update.price.dangerball.connector}" />
+        <property name="dangerballBettingPlatforms" value="${service.update.price.dangerball.bettingplatform}" />
+	</bean>
+
+	<bean id="LMaxDataProcessorService" class="com.aldogrand.kfc.lmax.LMAXServiceImpl"
+		destroy-method="destroy">
+		<constructor-arg name="numThreads" value="3" />
+		<constructor-arg name="channel" ref="dataProcessorInputChannel" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<bean id="dataProcessService"
+		class="com.aldogrand.kfc.services.impl.DataProcessServiceImpl">
+		<constructor-arg name="connectorDao" ref="connectorDao" />
+		<constructor-arg name="sourceEventDao" ref="sourceEventDao" />
+		<constructor-arg name="sourceMarketDao" ref="sourceMarketDao" />
+		<constructor-arg name="sourceRunnerDao" ref="sourceRunnerDao" />
+	</bean>
+
+	<bean id="eventMappingWriter"
+		class="com.aldogrand.kfc.services.mysql.mapper.impl.EventMappingWriter">
+		<constructor-arg ref="eventDao"></constructor-arg>
+		<constructor-arg ref="sourceEventDao"></constructor-arg>
+	</bean>
+
+	<bean id="marketMappingWriter"
+		class="com.aldogrand.kfc.services.mysql.mapper.impl.MarketMappingWriter">
+		<constructor-arg ref="marketDao"></constructor-arg>
+		<constructor-arg ref="sourceMarketDao"></constructor-arg>
+	</bean>
+
+	<bean id="runnerMappingWriter"
+		class="com.aldogrand.kfc.services.mysql.mapper.impl.RunnerMappingWriter">
+		<constructor-arg ref="sourceRunnerDao"></constructor-arg>
+		<constructor-arg ref="runnerDao"></constructor-arg>
+		<constructor-arg ref="participantDao"></constructor-arg>
+	</bean>
+
+	<bean id="sendMappedEventsToKafka"
+		class="com.aldogrand.kfc.services.mysql.mapper.impl.MappingNotificationEventGenerator">
+		<constructor-arg ref="kfcKafkaProducer"></constructor-arg>
+	</bean>
+
+	<bean id="mappingDataWriter"
+		class="com.aldogrand.kfc.services.mysql.impl.MappingDataWriterServiceImpl">
+		<constructor-arg ref="eventMappingWriter"></constructor-arg>
+		<constructor-arg ref="marketMappingWriter"></constructor-arg>
+		<constructor-arg ref="runnerMappingWriter"></constructor-arg>
+	</bean>
+
+	<!-- -->
+	<!-- Chain -->
+	<!-- -->
+	<int:chain id="datawriterChain" input-channel="datawriter">
+		<int:transformer ref="jsonToKFCEventTransformer"
+			method="transform" />
+		<int:header-value-router header-name="contentType"
+			resolution-required="false" default-output-channel="nullChannel">
+			<!-- Write Request Mapping -->
+			<!-- Source Data Writer -->
+			<int:mapping value="SOURCE_EVENT_RECEIVED" channel="write-requests" />
+			<int:mapping value="SOURCE_MARKETS_RECEIVED" channel="write-requests" />
+			<int:mapping value="SOURCE_RUNNER_RECEIVED" channel="write-requests" />
+			<int:mapping value="ACCOUNT_RECEIVED" channel="write-requests" />
+			<int:mapping value="SETTLED_BETS_RECEIVED" channel="write-requests" />
+			<int:mapping value="PRICE_RECEIVED" channel="write-requests" />
+			<int:mapping value="POSITION_RECEIVED" channel="write-requests" />
+			<int:mapping value="OFFER_RECEIVED" channel="write-requests" />
+			<int:mapping value="EVENT_CLOSED_STATUS_RECEIVED" channel="write-requests" />
+			<int:mapping value="MARKETS_CLOSED_STATUS_RECEIVED" channel="write-requests" />
+			<int:mapping value="EVENT_INCIDENT_RECEIVED" channel="write-requests" />
+			<int:mapping value="CONNECTOR_RECEIVED" channel="write-requests" />
+			<int:mapping value="BETTING_PLATFORM_RECEIVED" channel="write-requests" />
+
+			<!-- Mapping Data Writer -->
+			<int:mapping value="EVENT_MAP_FOUND" channel="map-requests" />
+			<int:mapping value="EVENT_MAP_NEW" channel="map-requests" />
+			<int:mapping value="MARKET_MAP_FOUND" channel="map-requests" />
+			<int:mapping value="MARKET_MAP_NEW" channel="map-requests" />
+			<int:mapping value="RUNNER_MAP_FOUND" channel="map-requests" />
+			<int:mapping value="RUNNER_MAP_NEW" channel="map-requests" />
+
+		</int:header-value-router>
+	</int:chain>
+
+	<!-- -->
+	<!-- Wire Tap -->
+	<!-- -->
+	<int:logging-channel-adapter id="wireTapChannel"
+		expression="'payload: ' + getPayload()" level="DEBUG" logger-name="WIRETAP" />
+</beans>

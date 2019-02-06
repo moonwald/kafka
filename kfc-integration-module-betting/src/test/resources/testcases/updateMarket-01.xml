@@ -1,0 +1,1879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Updategram xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.betgenius.com/2009/07/integration">
+	<Product>
+		<Id>1</Id>
+		<Name>Event Management</Name>
+	</Product>
+	<ChannelId>0</ChannelId>
+	<CustomerId>15</CustomerId>
+	<CreateEventCommand i:nil="true" />
+	<CreateMarketCommands i:nil="true" />
+	<UpdateEventCommand i:nil="true" />
+	<UpdateMarketCommands>
+		<UpdateMarket>
+			<Market>
+				<Id>90845608</Id>
+				<Name>1st Half Handicap</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>8</Id>
+					<Name>1st Half Handicap</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160611</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160612</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160613</Id>
+						<Name>Handicap Tie</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>13</Numerator>
+						<Denominator>8</Denominator>
+						<European>2.625</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>6</Id>
+							<Description>Handicap Tie</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845287</Id>
+				<Name>Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>103</Id>
+					<Name>Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905158915</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905158916</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845609</Id>
+				<Name>Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>106</Id>
+					<Name>Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160614</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160615</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845610</Id>
+				<Name>Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>263</Id>
+					<Name>Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160616</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160617</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845611</Id>
+				<Name>1st Quarter Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>264</Id>
+					<Name>1st Quarter Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160618</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160619</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845612</Id>
+				<Name>2nd Quarter Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>265</Id>
+					<Name>2nd Quarter Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160620</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160621</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845613</Id>
+				<Name>3rd Quarter Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>266</Id>
+					<Name>3rd Quarter Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160622</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160623</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845614</Id>
+				<Name>4th Quarter Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>267</Id>
+					<Name>4th Quarter Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160624</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160625</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845615</Id>
+				<Name>First Team to Score</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6539</Id>
+					<Name>First Team to Score</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160626</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160627</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845616</Id>
+				<Name>Half-time/Full-time</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6551</Id>
+					<Name>Half-time/Full-time</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160628</Id>
+						<Name>Miami Dolphins [Test]/Miami Dolphins [Test]</Name>
+						<DisplayOrder>11</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>10</Id>
+							<Description>Home/Home</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160629</Id>
+						<Name>Miami Dolphins [Test]/Draw</Name>
+						<DisplayOrder>12</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>11</Id>
+							<Description>Home/Draw</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160630</Id>
+						<Name>Miami Dolphins [Test]/San Francisco 49ers [Test]</Name>
+						<DisplayOrder>13</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>12</Id>
+							<Description>Home/Away</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160631</Id>
+						<Name>Draw/Miami Dolphins [Test]</Name>
+						<DisplayOrder>21</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>13</Id>
+							<Description>Draw/Home</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160632</Id>
+						<Name>Draw/Draw</Name>
+						<DisplayOrder>22</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>14</Id>
+							<Description>Draw/Draw</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160633</Id>
+						<Name>Draw/San Francisco 49ers [Test]</Name>
+						<DisplayOrder>23</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>15</Id>
+							<Description>Draw/Away</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160634</Id>
+						<Name>San Francisco 49ers [Test]/Miami Dolphins [Test]</Name>
+						<DisplayOrder>31</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>16</Id>
+							<Description>Away/Home</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160635</Id>
+						<Name>San Francisco 49ers [Test]/Draw</Name>
+						<DisplayOrder>32</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>17</Id>
+							<Description>Away/Draw</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160636</Id>
+						<Name>San Francisco 49ers [Test]/San Francisco 49ers [Test]</Name>
+						<DisplayOrder>33</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>18</Id>
+							<Description>Away/Away</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845617</Id>
+				<Name>1st Quarter Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6552</Id>
+					<Name>1st Quarter Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160637</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160638</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845618</Id>
+				<Name>First Team to Score Wins Game</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6559</Id>
+					<Name>First Team to Score Wins Game</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160639</Id>
+						<Name>Yes</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>39</Id>
+							<Description>Yes</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160640</Id>
+						<Name>No</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>40</Id>
+							<Description>No</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845619</Id>
+				<Name>Match Result</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6571</Id>
+					<Name>Match Result</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160641</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160642</Id>
+						<Name>Draw</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>2</Id>
+							<Description>Draw</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160643</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>13</Numerator>
+						<Denominator>8</Denominator>
+						<European>2.625</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845620</Id>
+				<Name>2nd Quarter Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6572</Id>
+					<Name>2nd Quarter Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160644</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160645</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845621</Id>
+				<Name>3rd Quarter Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6573</Id>
+					<Name>3rd Quarter Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160646</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160647</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845622</Id>
+				<Name>4th Quarter Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6574</Id>
+					<Name>4th Quarter Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160648</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160649</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845623</Id>
+				<Name>2nd Half Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6640</Id>
+					<Name>2nd Half Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160650</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160651</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845624</Id>
+				<Name>1st Half Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6766</Id>
+					<Name>1st Half Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160652</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160653</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845625</Id>
+				<Name>1st Half Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6767</Id>
+					<Name>1st Half Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160654</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160655</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845626</Id>
+				<Name>Odd or Even Total</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6788</Id>
+					<Name>Odd or Even Total</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160656</Id>
+						<Name>Even</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>32</Id>
+							<Description>Even</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160657</Id>
+						<Name>Odd</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>33</Id>
+							<Description>Odd</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845627</Id>
+				<Name>Handicap Result</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6789</Id>
+					<Name>Handicap Result</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160658</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160659</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160660</Id>
+						<Name>Handicap Tie</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>13</Numerator>
+						<Denominator>8</Denominator>
+						<European>2.625</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>6</Id>
+							<Description>Handicap Tie</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845628</Id>
+				<Name>Highest Scoring Quarter</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6792</Id>
+					<Name>Highest Scoring Quarter</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160661</Id>
+						<Name>First Quarter</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>44</Id>
+							<Description>First Quarter</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160662</Id>
+						<Name>Second Quarter</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>45</Id>
+							<Description>Second Quarter</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160663</Id>
+						<Name>Third Quarter</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>46</Id>
+							<Description>Third Quarter</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160664</Id>
+						<Name>Fourth Quarter</Name>
+						<DisplayOrder>3</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>47</Id>
+							<Description>Fourth Quarter</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845630</Id>
+				<Name>1st Half Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6801</Id>
+					<Name>1st Half Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160667</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160668</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845631</Id>
+				<Name>1st Quarter Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6805</Id>
+					<Name>1st Quarter Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160669</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160670</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845632</Id>
+				<Name>2nd Quarter Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6806</Id>
+					<Name>2nd Quarter Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160671</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160672</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845633</Id>
+				<Name>3rd Quarter Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6807</Id>
+					<Name>3rd Quarter Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160673</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160674</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845634</Id>
+				<Name>4th Quarter Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6808</Id>
+					<Name>4th Quarter Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160675</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160676</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845635</Id>
+				<Name>Last Team to Score</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6809</Id>
+					<Name>Last Team to Score</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160677</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160678</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845636</Id>
+				<Name>Half-time Result</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6834</Id>
+					<Name>Half-time Result</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160679</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160680</Id>
+						<Name>Draw</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>13</Numerator>
+						<Denominator>8</Denominator>
+						<European>2.625</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>2</Id>
+							<Description>Draw</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160681</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845637</Id>
+				<Name>2nd Half Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>8251</Id>
+					<Name>2nd Half Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160682</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160683</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845638</Id>
+				<Name>2nd Half Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>8259</Id>
+					<Name>2nd Half Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090220</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160684</Id>
+						<Name>Miami Dolphins [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004150</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160685</Id>
+						<Name>San Francisco 49ers [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004151</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+	</UpdateMarketCommands>
+	<CreateResultCommand i:nil="true" />
+</Updategram>

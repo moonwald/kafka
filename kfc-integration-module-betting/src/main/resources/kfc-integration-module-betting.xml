@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+	xmlns:int-http="http://www.springframework.org/schema/integration/http"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration/http http://www.springframework.org/schema/integration/http/spring-integration-http.xsd
+		http://www.springframework.org/schema/integration/kafka http://www.springframework.org/schema/integration/kafka/spring-integration-kafka.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd">
+
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.aldogrand.kfc">
+		<context:include-filter type="regex" expression=".*Event" />
+	</context:component-scan>
+
+	<!-- Load properties from properties files -->
+	<context:property-placeholder
+		location="classpath:kfc-integration-module-betting.properties,file:${xd.home}/modules/source/kfc-integration-module-betting/config/kfc-integration-module-betting.properties"
+		ignore-resource-not-found="true" order="1" />
+
+
+	<import resource="classpath:spring/server.xml"/>
+
+	<!-- Kafka -->
+	<int-kafka:zookeeper-connect id="zookeeperConnect" zk-connect="${zk-connect}" zk-connection-timeout="6000"
+		zk-session-timeout="6000" zk-sync-time="2000" />
+
+	<bean id="valueDecoder" class="com.aldogrand.kfc.integrationmodules.betting.util.MessageDecoder" />
+
+	<bean id="kafkaProducerProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="metadata.broker.list">${kafka.metadata.broker.list}</prop>
+				<prop key="serializer.class">${kafka.serializer.class}</prop>
+				<prop key="key.serializer.class">${kafka.key.serializer.class}</prop>
+				<prop key="producer.type">${kafka.producer.type}</prop>
+				<prop key="partitioner.class">${kafka.partitioner.class}</prop>
+				<prop key="request.required.acks">${kafka.request.required.acks}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="kafkaProducer" class="com.aldogrand.kfc.msg.producer.kafka.KafkaProducer">
+		<constructor-arg name="topicGenerator" ref="topicGenerator" />
+		<constructor-arg name="keyGenerator" ref="keyEventGenerator" />
+		<constructor-arg name="properties" ref="kafkaProducerProperties" type="java.util.Properties" />
+	</bean>
+
+	<bean id="kfcKafkaProducer" class="com.aldogrand.kfc.producer.KFCProducerImpl" />
+
+	<!-- Error Channel -->
+	<int:service-activator input-channel="errorChannel"	ref="errorHandler" method="handleError" />
+	<bean id="errorHandler" class="com.aldogrand.kfc.error.ErrorHandler" />
+	
+	<bean id="KFCEventFactory" class="com.aldogrand.kfc.msg.KFCEventFactoryImpl" />
+    <bean id="topicGenerator" class="com.aldogrand.kfc.kafka.generator.TopicGeneratorImpl"/>
+    <bean id="keyEventGenerator" class="com.aldogrand.kfc.kafka.generator.KeyGeneratorImpl"/>
+
+    <bean id="producer" class="com.aldogrand.kfc.msg.producer.kafka.KafkaProducer">
+        <constructor-arg name="topicGenerator" ref="topicGenerator"/>
+        <constructor-arg name="keyGenerator" ref="keyEventGenerator"/>
+        <constructor-arg name="properties" ref="kafkaProducerProperties" type="java.util.Properties"/>
+    </bean>
+    
+	 <!-- Processed Data Writer Service -->
+    <bean id="bettingRestService" class="com.aldogrand.kfc.integrationmodules.betting.rest.services.BettingRestService">
+        <property name="kafkaSenderService" ref="bettingKafkaSenderService"/>
+    </bean>
+    
+     <!-- Processed Data Writer Service -->
+    <bean id="bettingKafkaSenderService" class="com.aldogrand.kfc.integrationmodules.betting.services.BettingKafkaSenderService">
+    	<property name="bettingContentType" value="${kafka.betting.raw.contentType}"/>
+        <property name="producer" ref="producer"/>        
+    </bean>
+        
+    <bean id="bettingHeartbeatService" class="com.aldogrand.kfc.integrationmodules.betting.heartbeat.BettingHeartbeatService" init-method="start" destroy-method="stop">
+		 <constructor-arg ref="kfcKafkaProducer" />
+		 <constructor-arg ref="integrationModuleServiceInfo" />
+		 <constructor-arg value="betting" type="java.lang.String"/>
+		 <constructor-arg value="10000" type="java.lang.Long"/>
+		 <property name="intervalPeriod" value="25000"/>		       
+    </bean>
+        
+    <bean id="integrationModuleServiceInfo" class="com.aldogrand.kfc.integrationmodules.IntegrationModuleInfoServiceImpl">
+        <constructor-arg>
+        	<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        		<property name="properties">
+		            <props>
+		                <prop key="module-name">${betting.module.name}</prop>
+		                <prop key="module-id">10</prop>
+		                <prop key="module-instance">${xd.container.id}</prop>
+		            </props>
+		        </property>
+		    </bean>
+        </constructor-arg>
+    </bean>
+               
+    <!-- Kafka Consumer -->
+    <int-kafka:zookeeper-connect id="zookeeperConnect"
+        zk-connect="${zk-connect:localhost:2181}" zk-connection-timeout="60000" zk-session-timeout="60000"
+        zk-sync-time="2000" />
+
+    <int-kafka:consumer-context id="consumerContext" consumer-timeout="4000" zookeeper-connect="zookeeperConnect">
+        <int-kafka:consumer-configurations>
+            <int-kafka:consumer-configuration group-id="bettingKafka" value-decoder="valueDecoder" 
+            	key-decoder="valueDecoder" max-messages="200">               
+                <int-kafka:topic-filter pattern="${kafka.rest.service.message.topic}" streams="2"/>
+            </int-kafka:consumer-configuration>
+        </int-kafka:consumer-configurations>
+    </int-kafka:consumer-context>
+
+    <int-kafka:inbound-channel-adapter id="kafkaInboundChannelAdapter"
+        kafka-consumer-context-ref="consumerContext" auto-startup="true" channel="kafka" group-id="bettingKafka">
+        <int:poller fixed-delay="50" time-unit="MILLISECONDS" />
+    </int-kafka:inbound-channel-adapter>
+
+    <bean id="kafkaSplitter" class="com.aldogrand.kfc.consumer.Splitter"/>
+    
+    <!-- Integration components -->
+    <int:channel id="kafka"/>
+    <int:splitter input-channel="kafka" output-channel="input" ref="kafkaSplitter" method="splitKafkaMessage"/>
+
+    <int:channel id="input"/>
+    <int:transformer input-channel="input" output-channel="requests" ref="xmlToKFCEventTransformer" method="transform"/>
+    
+    <int:channel id="requests"/>
+    <int:header-value-router input-channel="requests" header-name="contentType" resolution-required="false" default-output-channel="nullChannel">
+    	<int:mapping value="${kafka.betting.raw.contentType}" channel="bettingConnectorChannel"/>
+    </int:header-value-router>
+
+    <int:channel id="bettingConnectorChannel"/>
+    <int:outbound-channel-adapter channel="bettingConnectorChannel" ref="bettingConnector" method="process"/>
+    
+    <bean id="xmlToKFCEventTransformer" class="com.aldogrand.kfc.integrationmodules.betting.services.XMLToKFCEventTransformer">       
+    </bean>    
+    
+    <bean id="bettingTransformationServiceImpl" class="com.aldogrand.kfc.integrationmodules.betting.services.BettingTransformationServiceImpl">
+    </bean>        
+        
+	<bean id="bettingConnector" class="com.aldogrand.kfc.integrationmodules.betting.BettingConnector">
+		<property name="enabled" value="true" />
+		<property name="integrationModuleServiceInfo" ref="integrationModuleServiceInfo" />
+        <property name ="bettingTransformationService" ref="bettingTransformationServiceImpl" />
+    </bean>
+         
+	<bean id="bettingInPlayConnector" class="com.aldogrand.kfc.integrationmodules.betting.inplay.BettingInPlayConnector">
+		<property name="enabled" value="true" />
+		<property name="integrationModuleServiceInfo" ref="integrationModuleServiceInfo" />
+        <property name ="bettingTransformationService" ref="bettingTransformationServiceImpl" />
+    </bean>
+    
+     <bean id="bettingKeyGenerator" class="com.aldogrand.kfc.integrationmodules.betting.msg.BettingKeyGeneratorImpl">       
+    </bean>
+        
+    <!-- ******************************************************************* -->
+    <!-- * Bean listeners for Inplay                                       * -->
+    <!-- ******************************************************************* -->
+    <bean id="bettingFootballMessageListener" class="com.aldogrand.kfc.integrationmodules.betting.inplay.listener.BettingFootballMessageListener">
+    	<property name = "bettingInPlayConnector" ref="bettingInPlayConnector" />
+    </bean>
+    
+     <bean id="bettingTennisMessageListener" class="com.aldogrand.kfc.integrationmodules.betting.inplay.listener.BettingTennisMessageListener">
+      	<property name = "bettingInPlayConnector" ref="bettingInPlayConnector" />
+    </bean>
+    
+    <!-- RabbitMQ Config -->
+    <rabbit:connection-factory id="cachingConnectionFactory" host="${betting.inplay.host}" username="${betting.inplay.username}" 
+    password="${betting.inplay.password}" port="${betting.inplay.port}" />
+
+	<rabbit:admin connection-factory="cachingConnectionFactory" auto-startup="${betting.inplay.enabled}"/>
+
+	<rabbit:listener-container connection-factory="cachingConnectionFactory" concurrency="1">		
+	    <rabbit:listener ref="bettingFootballMessageListener" method="onMessage" queue-names="${betting.inplay.queue.football}"/>
+	    <!--  rabbit:listener ref="bettingTennisMessageListener" method="onMessage" queue-names="${betting.inplay.queue.football}" /> -->
+	</rabbit:listener-container>
+</beans>

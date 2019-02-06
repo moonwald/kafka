@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Updategram xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.betgenius.com/2009/07/integration">
+	<Product>
+		<Id>1</Id>
+		<Name>Event Management</Name>
+	</Product>
+	<ChannelId>0</ChannelId>
+	<CustomerId>6355</CustomerId>
+	<CreateEventCommand>
+		<Event>
+			<Id>3019216</Id>
+			<Name>Universidad Catlica v Palestino</Name>
+			<EventType>Match</EventType>
+			<StartTime>2015-02-08T23:30:00</StartTime>
+			<Sport>
+				<Id>10</Id>
+				<Name>Football</Name>
+			</Sport>
+			<Season>
+				<Id>43648</Id>
+				<Name>Campeonato Nacional Scotiabank 2015</Name>
+				<Competition>
+					<Id>185</Id>
+					<Name>Campeonato Nacional Scotiabank</Name>
+					<Region>
+						<Id>125</Id>
+						<Name>Chile</Name>
+					</Region>
+				</Competition>
+			</Season>
+			<Round>
+				<Id>200037</Id>
+				<Name>Round 6</Name>
+			</Round>
+			<Teams>
+				<Team>
+					<Id>108335</Id>
+					<Name>Universidad Catlica</Name>
+					<Position>Home</Position>
+					<Players>
+						<Player>
+							<Id>543234</Id>
+							<FirstName>Layvin</FirstName>
+							<LastName>Kurzawa</LastName>
+							<Name>Kurzawa, L</Name>
+						</Player>
+						<Player>
+							<Id>548432</Id>
+							<FirstName>Valere</FirstName>
+							<LastName>Germain</LastName>
+							<Name>Germain, V</Name>
+						</Player>
+					</Players>
+				</Team>
+				<Team>
+					<Id>88274</Id>
+					<Name>Palestino</Name>
+					<Position>Away</Position>
+					<Players>
+						<Player>
+							<Id>543523</Id>
+							<FirstName>Lay</FirstName>
+							<LastName>Kurzawak</LastName>
+							<Name>Kurzawak, L</Name>
+						</Player>
+						<Player>
+							<Id>548233</Id>
+							<FirstName>Valeree</FirstName>
+							<LastName>Germainn</LastName>
+							<Name>Germainn, V</Name>
+						</Player>
+					</Players>
+				</Team>
+			</Teams>
+			<MatchState>
+				<Phase>PreMatch</Phase>
+				<ElapsedTimeInHalf>PT0S</ElapsedTimeInHalf>
+				<HomeTeam>
+					<Goals>0</Goals>
+					<Corners>0</Corners>
+					<YellowCards>0</YellowCards>
+					<RedCards>0</RedCards>
+				</HomeTeam>
+				<AwayTeam>
+					<Goals>0</Goals>
+					<Corners>0</Corners>
+					<YellowCards>0</YellowCards>
+					<RedCards>0</RedCards>
+				</AwayTeam>
+				<FirstHalf>
+					<StartTime>1753-01-01T12:00:01</StartTime>
+					<StoppageTime>PT0S</StoppageTime>
+				</FirstHalf>
+				<SecondHalf>
+					<StartTime>1753-01-01T12:00:01</StartTime>
+					<StoppageTime>PT0S</StoppageTime>
+				</SecondHalf>
+				<SuspendedMarketGroups>
+					<Goals>true</Goals>
+					<Corners>true</Corners>
+					<Bookings>true</Bookings>
+				</SuspendedMarketGroups>
+				<EventSource>Automatic</EventSource>
+				<MatchEvents />
+			</MatchState>
+		</Event>
+	</CreateEventCommand>
+	<CreateMarketCommands>
+		<CreateMarket>
+			<Market>
+				<Id>100029162</Id>
+				<Name>Match Result</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2015-02-08T23:30:00</Expiry>
+				<MarketType>
+					<Id>2</Id>
+					<Name>Match Result</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>3019216</EventId>
+				<TradingStatus>New</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>300075156</Id>
+						<Name>Universidad Catlica</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>108335</CompetitorId>
+						<TradingStatus>Suspended</TradingStatus>
+						<Numerator>0</Numerator>
+						<Denominator>0</Denominator>
+						<European>0</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>300075157</Id>
+						<Name>Palestino</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>88274</CompetitorId>
+						<TradingStatus>Suspended</TradingStatus>
+						<Numerator>0</Numerator>
+						<Denominator>0</Denominator>
+						<European>0</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</CreateMarket>
+	</CreateMarketCommands>
+	<UpdateEventCommand i:nil="true" />
+	<UpdateMarketCommands i:nil="true" />
+	<CreateResultCommand i:nil="true" />
+</Updategram>

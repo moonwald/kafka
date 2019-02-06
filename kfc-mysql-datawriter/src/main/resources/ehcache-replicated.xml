@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         name="kfc-mysql-datawriter-cache-manager" updateCheck="false" 
+         monitoring="autodetect" dynamicConfig="true" 
+         maxBytesLocalHeap="${ehcache.heap.max}"
+         maxBytesLocalOffHeap="${ehcache.bigmem.max}">
+    
+    <cacheManagerPeerProviderFactory
+           class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+           properties="hostName=localhost, peerDiscovery=automatic, 
+                       multicastGroupAddress=230.0.0.2, 
+                       multicastGroupPort=4546, 
+                       timeToLive=32" />
+
+    <cacheManagerPeerListenerFactory 
+           class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+           properties="hostName=localhost, port=41001, 
+                       remoteObjectPort=41002, 
+                       socketTimeoutMillis=120000" />
+   
+    <!-- ******************************************************************* -->
+    <!-- ** Caches                                                        ** -->
+    <!-- ******************************************************************* -->
+
+    <!-- Default Cache 
+         (All automatically created caches will have this config) -->
+    <defaultCache 
+           eternal="false" timeToLiveSeconds="120"
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+                                 
+    </defaultCache>
+    
+    <!-- Security Context Cache -->
+    <cache name="security-context-cache"
+           eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+        
+    </cache>
+
+    <!-- Offer Locking Cache -->
+    <cache name="offer-locking-cache"
+           eternal="false" timeToLiveSeconds="5" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=200,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+             
+    </cache>
+
+    <!-- Language Translation Cache -->
+    <cache name="language-translations"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="43200"
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true" >
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+    </cache>
+    
+    <!-- API Throttle Limit Cache -->
+    <cache name="throttle-limit-cache"
+           eternal="false" timeToIdleSeconds="600" timeToLiveSeconds="1800"
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true" >
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+    </cache>
+    
+    <!-- API Throttle Count Cache -->
+    <cache name="throttle-count-cache"
+           eternal="false" timeToLiveSeconds="60"
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true" >
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+    </cache>
+
+    
+    <!-- ******************************************************************* -->
+    <!-- * Spring Service Method Level Caches                              * -->
+    <!-- ******************************************************************* -->
+
+    <!-- Location Service -->
+    <cache name="service.location"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="3600"
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true" >
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+    </cache>
+
+    
+    <!-- ******************************************************************* -->
+    <!-- * Hibernate Caches                                                * -->
+    <!-- ******************************************************************* -->
+
+    <!-- Hibernate Query Cache --> 
+    <cache name="org.hibernate.cache.internal.StandardQueryCache" 
+           eternal="false" timeToLiveSeconds="60"
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=false, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=false,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+    </cache>
+        
+    <!-- Hibernate Update Timestamp Cache 
+          (Used to invalidate query cache entries on updates) -->
+    <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+           eternal="true" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="3600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+        
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=false, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=false,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=500,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+    </cache>
+
+
+    <!-- Hibernate Entity Caches -->
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.AccountDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.AccountPropertyDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="43200" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.BetDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="43200" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.BettingPlatformDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+    
+    <cache name="com.aldogrand.sbpc.dataaccess.model.ConnectorDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="43200" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+    
+    <cache name="com.aldogrand.sbpc.dataaccess.model.EventDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.MarketDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="43200" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.MetaTagDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.NameVariantDto"
+           eternal="false" timeToIdleSeconds="600" timeToLiveSeconds="3600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.OfferDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.ParticipantDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="43200" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.PositionDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.PriceDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.RunnerDto"
+           eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="86400" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="600" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.SourceEventDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.SourceMarketDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.SourceRunnerDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.SourceEventParticipantDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.SourceEventIncidentDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.CurrentScoreDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+
+        
+
+    </cache>
+
+    <cache name="com.aldogrand.sbpc.dataaccess.model.SettledBetDto"
+           eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="600" 
+           memoryStoreEvictionPolicy="LFU" diskExpiryThreadIntervalSeconds="120" 
+           diskSpoolBufferSizeMB="30" copyOnRead="true" copyOnWrite="true" 
+           logging="true" statistics="true">
+
+        <cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=true, 
+                            replicatePuts=true, replicatePutsViaCopy=true, 
+                            replicateUpdates=true, replicateUpdatesViaCopy=true,
+                            replicateRemovals=true,
+                            asynchronousReplicationIntervalMillis=1000,
+                            asynchronousReplicationMaximumBatchSize=5000" />
+    </cache>
+    
+</ehcache>

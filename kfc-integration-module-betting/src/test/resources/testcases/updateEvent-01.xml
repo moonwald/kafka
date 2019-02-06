@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Updategram xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.betgenius.com/2009/07/integration">
+	<Product>
+		<Id>1</Id>
+		<Name>Event Management</Name>
+	</Product>
+	<ChannelId>0</ChannelId>
+	<CustomerId>6355</CustomerId>
+	<CreateEventCommand i:nil="true" />
+	<CreateMarketCommands i:nil="true" />
+	<UpdateEventCommand>
+		<Event>
+			<Id>2811461</Id>
+			<Name>Everton v Liverpool</Name>
+			<EventType>Match</EventType>
+			<StartTime>2015-02-07T17:30:00</StartTime>
+			<Sport>
+				<Id>10</Id>
+				<Name>Football</Name>
+			</Sport>
+			<Season>
+				<Id>39948</Id>
+				<Name>Barclays Premier League 2014-2015</Name>
+				<Competition>
+					<Id>36</Id>
+					<Name>Barclays Premier League</Name>
+					<Region>
+						<Id>3795032</Id>
+						<Name>England</Name>
+					</Region>
+				</Competition>
+			</Season>
+			<Round>
+				<Id>171257</Id>
+				<Name>Round 24</Name>
+			</Round>
+			<Teams>
+				<Team>
+					<Id>10143</Id>
+					<Name>Everton</Name>
+					<Position>Home</Position>
+					<Players>
+						<Player>
+							<Id>84474</Id>
+							<FirstName>Tony</FirstName>
+							<LastName>Hibbert</LastName>
+							<Name>Hibbert, T</Name>
+						</Player>
+						<Player>
+							<Id>84918</Id>
+							<FirstName>Phil</FirstName>
+							<LastName>Jagielka</LastName>
+							<Name>Jagielka, P</Name>
+						</Player>
+						<Player>
+							<Id>87969</Id>
+							<FirstName>Leon</FirstName>
+							<LastName>Osman</LastName>
+							<Name>Osman, L</Name>
+						</Player>
+						<Player>
+							<Id>104420</Id>
+							<FirstName>Tim</FirstName>
+							<LastName>Howard</LastName>
+							<Name>Howard, T</Name>
+						</Player>
+						<Player>
+							<Id>89271</Id>
+							<FirstName>Steven</FirstName>
+							<LastName>Pienaar</LastName>
+							<Name>Pienaar, S</Name>
+						</Player>
+						<Player>
+							<Id>93099</Id>
+							<FirstName>Leighton</FirstName>
+							<LastName>Baines</LastName>
+							<Name>Baines, L</Name>
+						</Player>
+						<Player>
+							<Id>501209</Id>
+							<FirstName>Seamus</FirstName>
+							<LastName>Coleman</LastName>
+							<Name>Coleman, S</Name>
+						</Player>
+						<Player>
+							<Id>83215</Id>
+							<FirstName>Sylvain</FirstName>
+							<LastName>Distin</LastName>
+							<Name>Distin, S</Name>
+						</Player>
+						<Player>
+							<Id>514910</Id>
+							<FirstName>Luke</FirstName>
+							<LastName>Garbutt</LastName>
+							<Name>Garbutt, L</Name>
+						</Player>
+						<Player>
+							<Id>543107</Id>
+							<FirstName>Ross</FirstName>
+							<LastName>Barkley</LastName>
+							<Name>Barkley, R</Name>
+						</Player>
+						<Player>
+							<Id>128062</Id>
+							<FirstName>Darron</FirstName>
+							<LastName>Gibson</LastName>
+							<Name>Gibson, D</Name>
+						</Player>
+						<Player>
+							<Id>118828</Id>
+							<FirstName>Steven</FirstName>
+							<LastName>Naismith</LastName>
+							<Name>Naismith, S</Name>
+						</Player>
+						<Player>
+							<Id>2525</Id>
+							<FirstName>Kevin</FirstName>
+							<LastName>Mirallas</LastName>
+							<Name>Mirallas, K</Name>
+						</Player>
+						<Player>
+							<Id>508918</Id>
+							<FirstName>Bryan</FirstName>
+							<LastName>Oviedo</LastName>
+							<Name>Oviedo, B</Name>
+						</Player>
+						<Player>
+							<Id>730039</Id>
+							<FirstName>Tyias</FirstName>
+							<LastName>Browning</LastName>
+							<Name>Browning, T</Name>
+						</Player>
+						<Player>
+							<Id>560558</Id>
+							<FirstName>John</FirstName>
+							<LastName>Stones</LastName>
+							<Name>Stones, J</Name>
+						</Player>
+						<Player>
+							<Id>2492</Id>
+							<FirstName>Arouna</FirstName>
+							<LastName>Kon?</LastName>
+							<Name>Kon?, A</Name>
+						</Player>
+						<Player>
+							<Id>542497</Id>
+							<FirstName>Joel</FirstName>
+							<LastName>Robles Blazquez</LastName>
+							<Name>Joel</Name>
+						</Player>
+						<Player>
+							<Id>159476</Id>
+							<FirstName>Antolin</FirstName>
+							<LastName>Alcar?z</LastName>
+							<Name>Alcar?z, A</Name>
+						</Player>
+						<Player>
+							<Id>144917</Id>
+							<FirstName>James</FirstName>
+							<LastName>McCarthy</LastName>
+							<Name>McCarthy, J</Name>
+						</Player>
+						<Player>
+							<Id>501997</Id>
+							<FirstName>Romelu</FirstName>
+							<LastName>Lukaku</LastName>
+							<Name>Lukaku, R</Name>
+						</Player>
+						<Player>
+							<Id>93615</Id>
+							<FirstName>Gareth</FirstName>
+							<LastName>Barry</LastName>
+							<Name>Barry, G</Name>
+						</Player>
+						<Player>
+							<Id>100062</Id>
+							<FirstName>Aiden</FirstName>
+							<LastName>McGeady</LastName>
+							<Name>McGeady, A</Name>
+						</Player>
+						<Player>
+							<Id>773111</Id>
+							<FirstName>Jindrich</FirstName>
+							<LastName>Stan?k</LastName>
+							<Name>Stanek, J</Name>
+						</Player>
+						<Player>
+							<Id>780481</Id>
+							<FirstName>Ryan</FirstName>
+							<LastName>Ledson</LastName>
+							<Name>Ledson, R</Name>
+						</Player>
+						<Player>
+							<Id>540224</Id>
+							<FirstName>Muhamed</FirstName>
+							<LastName>Be?ic</LastName>
+							<Name>Be?ic, M</Name>
+						</Player>
+						<Player>
+							<Id>561276</Id>
+							<FirstName>Christian</FirstName>
+							<LastName>Atsu</LastName>
+							<Name>Atsu, C</Name>
+						</Player>
+						<Player>
+							<Id>796590</Id>
+							<FirstName>David</FirstName>
+							<LastName>Henen</LastName>
+							<Name>Henen, D</Name>
+						</Player>
+						<Player>
+							<Id>807049</Id>
+							<FirstName>Jonjoe</FirstName>
+							<LastName>Kenny</LastName>
+							<Name>Kenny, J</Name>
+						</Player>
+						<Player>
+							<Id>807053</Id>
+							<FirstName>Gethin</FirstName>
+							<LastName>Jones</LastName>
+							<Name>Jones, Gethin</Name>
+						</Player>
+						<Player>
+							<Id>807054</Id>
+							<FirstName>Joe</FirstName>
+							<LastName>Williams</LastName>
+							<Name>Williams, Joe</Name>
+						</Player>
+						<Player>
+							<Id>807056</Id>
+							<FirstName>Kieran</FirstName>
+							<LastName>Dowell</LastName>
+							<Name>Dowell, K</Name>
+						</Player>
+						<Player>
+							<Id>807057</Id>
+							<FirstName>Russel</FirstName>
+							<LastName>Griffiths</LastName>
+							<Name>Griffiths, Russel</Name>
+						</Player>
+						<Player>
+							<Id>98886</Id>
+							<FirstName>Aaron</FirstName>
+							<LastName>Lennon</LastName>
+							<Name>Lennon, A</Name>
+						</Player>
+					</Players>
+				</Team>
+				<Team>
+					<Id>10069</Id>
+					<Name>Liverpool</Name>
+					<Position>Away</Position>
+					<Players>
+						<Player>
+							<Id>98078</Id>
+							<FirstName>Steven</FirstName>
+							<LastName>Gerrard</LastName>
+							<Name>Gerrard, S</Name>
+						</Player>
+						<Player>
+							<Id>126157</Id>
+							<FirstName>Lucas Pezzini</FirstName>
+							<LastName>Leiva</LastName>
+							<Name>Lucas</Name>
+						</Player>
+						<Player>
+							<Id>128924</Id>
+							<FirstName>Martin</FirstName>
+							<LastName>?krtel</LastName>
+							<Name>?krtel, M</Name>
+						</Player>
+						<Player>
+							<Id>85479</Id>
+							<FirstName>Glen</FirstName>
+							<LastName>Johnson</LastName>
+							<Name>Johnson, G</Name>
+						</Player>
+						<Player>
+							<Id>126187</Id>
+							<FirstName>Bradley</FirstName>
+							<LastName>Jones</LastName>
+							<Name>Jones, Bradley</Name>
+						</Player>
+						<Player>
+							<Id>548807</Id>
+							<FirstName>John</FirstName>
+							<LastName>Flanagan</LastName>
+							<Name>Flanagan, J</Name>
+						</Player>
+						<Player>
+							<Id>554258</Id>
+							<FirstName>Raheem</FirstName>
+							<LastName>Sterling</LastName>
+							<Name>Sterling, R</Name>
+						</Player>
+						<Player>
+							<Id>442641</Id>
+							<FirstName>Jordan</FirstName>
+							<LastName>Henderson</LastName>
+							<Name>Henderson, J</Name>
+						</Player>
+						<Player>
+							<Id>127185</Id>
+							<FirstName>Jos?</FirstName>
+							<LastName>Enrique</LastName>
+							<Name>Enrique, J</Name>
+						</Player>
+						<Player>
+							<Id>577101</Id>
+							<FirstName>Jordon</FirstName>
+							<LastName>Ibe</LastName>
+							<Name>Ibe, J</Name>
+						</Player>
+						<Player>
+							<Id>576493</Id>
+							<FirstName>Danny</FirstName>
+							<LastName>Ward </LastName>
+							<Name>Ward, Danny</Name>
+						</Player>
+						<Player>
+							<Id>505668</Id>
+							<FirstName>Fabio</FirstName>
+							<LastName>Borini</LastName>
+							<Name>Borini, F</Name>
+						</Player>
+						<Player>
+							<Id>713648</Id>
+							<FirstName>Ryan</FirstName>
+							<LastName>McLaughlin</LastName>
+							<Name>McLaughlin, Ryan</Name>
+						</Player>
+						<Player>
+							<Id>141469</Id>
+							<FirstName>Joe</FirstName>
+							<LastName>Allen</LastName>
+							<Name>Allen, J</Name>
+						</Player>
+						<Player>
+							<Id>586292</Id>
+							<FirstName>Samed</FirstName>
+							<LastName>Yesil</LastName>
+							<Name>Yesil, S</Name>
+						</Player>
+						<Player>
+							<Id>721813</Id>
+							<FirstName>Jerome</FirstName>
+							<LastName>Sinclair</LastName>
+							<Name>Sinclair, Jerome</Name>
+						</Player>
+						<Player>
+							<Id>91695</Id>
+							<FirstName>Daniel</FirstName>
+							<LastName>Sturridge</LastName>
+							<Name>Sturridge, D</Name>
+						</Player>
+						<Player>
+							<Id>471371</Id>
+							<FirstName>Philippe</FirstName>
+							<LastName>Coutinho Correia</LastName>
+							<Name>Coutinho</Name>
+						</Player>
+						<Player>
+							<Id>122428</Id>
+							<FirstName>Kolo</FirstName>
+							<LastName>Tour?</LastName>
+							<Name>Tour?, K</Name>
+						</Player>
+						<Player>
+							<Id>160151</Id>
+							<FirstName>Simon</FirstName>
+							<LastName>Mignolet</LastName>
+							<Name>Mignolet, S</Name>
+						</Player>
+						<Player>
+							<Id>128697</Id>
+							<FirstName>Mamadou</FirstName>
+							<LastName>Sakho</LastName>
+							<Name>Sakho, M</Name>
+						</Player>
+						<Player>
+							<Id>770329</Id>
+							<FirstName>Jordan</FirstName>
+							<LastName>Rossiter</LastName>
+							<Name>Rossiter, J</Name>
+						</Player>
+						<Player>
+							<Id>770882</Id>
+							<FirstName>Cameron</FirstName>
+							<LastName>Brannagan</LastName>
+							<Name>Brannagan, C</Name>
+						</Player>
+						<Player>
+							<Id>98337</Id>
+							<FirstName>Rickie</FirstName>
+							<LastName>Lambert</LastName>
+							<Name>Lambert, R</Name>
+						</Player>
+						<Player>
+							<Id>140038</Id>
+							<FirstName>Adam</FirstName>
+							<LastName>Lallana</LastName>
+							<Name>Lallana, A</Name>
+						</Player>
+						<Player>
+							<Id>571054</Id>
+							<FirstName>Emre</FirstName>
+							<LastName>Can</LastName>
+							<Name>Can, E</Name>
+						</Player>
+						<Player>
+							<Id>569431</Id>
+							<FirstName>Lazar</FirstName>
+							<LastName>Markovi?</LastName>
+							<Name>Markovic, L</Name>
+						</Player>
+						<Player>
+							<Id>790585</Id>
+							<FirstName>Adam</FirstName>
+							<LastName>Phillips</LastName>
+							<Name>Phillips, Adam</Name>
+						</Player>
+						<Player>
+							<Id>447102</Id>
+							<FirstName>Dejan</FirstName>
+							<LastName>Lovren</LastName>
+							<Name>Lovren, D</Name>
+						</Player>
+						<Player>
+							<Id>704529</Id>
+							<FirstName>Javi</FirstName>
+							<LastName>Manquillo</LastName>
+							<Name>Manquillo, J</Name>
+						</Player>
+						<Player>
+							<Id>730782</Id>
+							<FirstName>Alberto</FirstName>
+							<LastName>Moreno</LastName>
+							<Name>Moreno, Alberto</Name>
+						</Player>
+						<Player>
+							<Id>147431</Id>
+							<FirstName>Mario</FirstName>
+							<LastName>Balotelli</LastName>
+							<Name>Balotelli, M</Name>
+						</Player>
+						<Player>
+							<Id>581557</Id>
+							<FirstName>Emiliano</FirstName>
+							<LastName>Alfaro Toscano</LastName>
+							<Name>Alfaro Toscano, E</Name>
+						</Player>
+						<Player>
+							<Id>798809</Id>
+							<FirstName>Jordan</FirstName>
+							<LastName>Williams</LastName>
+							<Name>Williams, Jordan</Name>
+						</Player>
+					</Players>
+				</Team>
+			</Teams>
+			<MatchState>
+				<Phase>PreMatch</Phase>
+				<ElapsedTimeInHalf>PT0S</ElapsedTimeInHalf>
+				<HomeTeam>
+					<Goals>0</Goals>
+					<Corners>0</Corners>
+					<YellowCards>0</YellowCards>
+					<RedCards>0</RedCards>
+				</HomeTeam>
+				<AwayTeam>
+					<Goals>0</Goals>
+					<Corners>0</Corners>
+					<YellowCards>0</YellowCards>
+					<RedCards>0</RedCards>
+				</AwayTeam>
+				<FirstHalf>
+					<StartTime>1753-01-01T12:00:01</StartTime>
+					<StoppageTime>PT0S</StoppageTime>
+				</FirstHalf>
+				<SecondHalf>
+					<StartTime>1753-01-01T12:00:01</StartTime>
+					<StoppageTime>PT0S</StoppageTime>
+				</SecondHalf>
+				<SuspendedMarketGroups>
+					<Goals>true</Goals>
+					<Corners>true</Corners>
+					<Bookings>true</Bookings>
+				</SuspendedMarketGroups>
+				<EventSource>Automatic</EventSource>
+				<MatchEvents />
+			</MatchState>
+		</Event>
+	</UpdateEventCommand>
+	<UpdateMarketCommands i:nil="true" />
+	<CreateResultCommand i:nil="true" />
+</Updategram>

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Updategram xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.betgenius.com/2009/07/integration">
+	<Product>
+		<Id>1</Id>
+		<Name>Event Management</Name>
+	</Product>
+	<ChannelId>0</ChannelId>
+	<CustomerId>15</CustomerId>
+	<CreateEventCommand i:nil="true" />
+	<CreateMarketCommands i:nil="true" />
+	<UpdateEventCommand i:nil="true" />
+	<UpdateMarketCommands i:nil="true" />
+	<CreateResultCommand>
+		<Market>
+			<Id>90845443</Id>
+			<Name>Correct Score</Name>
+			<Handicap i:nil="true" />
+			<Sequence i:nil="true" />
+			<Expiry>2010-05-21T14:35:00</Expiry>
+			<MarketType>
+				<Id>91</Id>
+				<Name>Correct Score</Name>
+				<IsHandicap>false</IsHandicap>
+				<IsOverUnder>false</IsOverUnder>
+			</MarketType>
+			<EventId>90090201</EventId>
+			<TradingStatus>Resulted</TradingStatus>
+			<Selections>
+				<Selection>
+					<Id>905160167</Id>
+					<Name>Arsenal [Test] 1-0</Name>
+					<DisplayOrder>10100</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>0.00</High>
+						<Low>1.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160168</Id>
+					<Name>Arsenal [Test] 2-0</Name>
+					<DisplayOrder>10200</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>0.00</High>
+						<Low>2.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160169</Id>
+					<Name>Arsenal [Test] 2-1</Name>
+					<DisplayOrder>10201</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>1.00</High>
+						<Low>2.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160170</Id>
+					<Name>Arsenal [Test] 3-0</Name>
+					<DisplayOrder>10300</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>0.00</High>
+						<Low>3.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160171</Id>
+					<Name>Arsenal [Test] 3-1</Name>
+					<DisplayOrder>10301</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>1.00</High>
+						<Low>3.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160172</Id>
+					<Name>Arsenal [Test] 3-2</Name>
+					<DisplayOrder>10302</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>2.00</High>
+						<Low>3.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160173</Id>
+					<Name>Arsenal [Test] 4-0</Name>
+					<DisplayOrder>10400</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>0.00</High>
+						<Low>4.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160174</Id>
+					<Name>Arsenal [Test] 4-1</Name>
+					<DisplayOrder>10401</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>1.00</High>
+						<Low>4.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160175</Id>
+					<Name>Arsenal [Test] 4-2</Name>
+					<DisplayOrder>10402</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>2.00</High>
+						<Low>4.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160176</Id>
+					<Name>Arsenal [Test] 4-3</Name>
+					<DisplayOrder>10403</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>3.00</High>
+						<Low>4.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160177</Id>
+					<Name>Arsenal [Test] 5-0</Name>
+					<DisplayOrder>10500</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>0.00</High>
+						<Low>5.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160178</Id>
+					<Name>Arsenal [Test] 5-1</Name>
+					<DisplayOrder>10501</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>1.00</High>
+						<Low>5.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160179</Id>
+					<Name>Arsenal [Test] 5-2</Name>
+					<DisplayOrder>10502</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>2.00</High>
+						<Low>5.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160180</Id>
+					<Name>Arsenal [Test] 5-3</Name>
+					<DisplayOrder>10503</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>3.00</High>
+						<Low>5.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160181</Id>
+					<Name>Arsenal [Test] 6-0</Name>
+					<DisplayOrder>10600</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>0.00</High>
+						<Low>6.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160182</Id>
+					<Name>Arsenal [Test] 6-1</Name>
+					<DisplayOrder>10601</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>1.00</High>
+						<Low>6.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160183</Id>
+					<Name>Arsenal [Test] 6-2</Name>
+					<DisplayOrder>10602</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>2.00</High>
+						<Low>6.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160184</Id>
+					<Name>Arsenal [Test] 6-3</Name>
+					<DisplayOrder>10603</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>3.00</High>
+						<Low>6.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160185</Id>
+					<Name>Draw 0-0</Name>
+					<DisplayOrder>20000</DisplayOrder>
+					<CompetitorId i:nil="true" />
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>0.00</High>
+						<Low>0.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160186</Id>
+					<Name>Draw 1-1</Name>
+					<DisplayOrder>20101</DisplayOrder>
+					<CompetitorId i:nil="true" />
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>1.00</High>
+						<Low>1.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160187</Id>
+					<Name>Draw 2-2</Name>
+					<DisplayOrder>20202</DisplayOrder>
+					<CompetitorId i:nil="true" />
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>2.00</High>
+						<Low>2.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160188</Id>
+					<Name>Draw 3-3</Name>
+					<DisplayOrder>20303</DisplayOrder>
+					<CompetitorId i:nil="true" />
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>3.00</High>
+						<Low>3.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160189</Id>
+					<Name>Manchester United [Test] 1-0</Name>
+					<DisplayOrder>30100</DisplayOrder>
+					<CompetitorId>90004079</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>1.00</High>
+						<Low>0.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160190</Id>
+					<Name>Manchester United [Test] 2-0</Name>
+					<DisplayOrder>30200</DisplayOrder>
+					<CompetitorId>90004079</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>2.00</High>
+						<Low>0.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160191</Id>
+					<Name>Manchester United [Test] 2-1</Name>
+					<DisplayOrder>30201</DisplayOrder>
+					<CompetitorId>90004079</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>2.00</High>
+						<Low>1.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160192</Id>
+					<Name>Manchester United [Test] 3-0</Name>
+					<DisplayOrder>30300</DisplayOrder>
+					<CompetitorId>90004079</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>3.00</High>
+						<Low>0.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160193</Id>
+					<Name>Manchester United [Test] 3-1</Name>
+					<DisplayOrder>30301</DisplayOrder>
+					<CompetitorId>90004079</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Winner</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>3.00</High>
+						<Low>1.00</Low>
+					</Range>
+				</Selection>
+				<Selection>
+					<Id>905160194</Id>
+					<Name>Manchester United [Test] 3-2</Name>
+					<DisplayOrder>30302</DisplayOrder>
+					<CompetitorId>90004079</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Range>
+						<High>3.00</High>
+						<Low>2.00</Low>
+					</Range>
+				</Selection>
+			</Selections>
+		</Market>
+	</CreateResultCommand>
+</Updategram>

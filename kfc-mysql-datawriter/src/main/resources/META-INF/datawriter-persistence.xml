@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <persistence-unit name="persistence-datawriter" transaction-type="RESOURCE_LOCAL">
+        <class>com.aldogrand.sbpc.dataaccess.model.AbstractDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.AbstractFetchableDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.AccountDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.AccountPropertyDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.BetDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.BettingPlatformDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.ConnectorDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.EventDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.GFeedMidPointDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.GFeedSettingDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.InterestedClientDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.MarketDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.MetaTagDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.NameVariantDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.OfferDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.ParticipantDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.PositionDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.PriceDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.RunnerDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.SourceEventDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.SourceMarketDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.SourceRunnerDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.SourceEventParticipantDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.SourceEventIncidentDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.ScoreDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.SettledBetDto</class>
+        <class>com.aldogrand.sbpc.dataaccess.model.ReportJobInfoDto</class>
+                 
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        
+        <shared-cache-mode>NONE</shared-cache-mode>
+        <validation-mode>NONE</validation-mode>
+    </persistence-unit>
+</persistence>

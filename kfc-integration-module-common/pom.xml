@@ -1,0 +1,247 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.aldogrand</groupId>
+		<artifactId>kfc</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>kfc-integration-module-common</artifactId>
+	<version>1.1.0-SNAPSHOT</version>
+	<name>kfc Integration Module Common</name>
+	<description>kfc Integration Module Common pom</description>
+	<packaging>jar</packaging>
+
+	<properties>
+		<!--Version Properties. -->
+		<jersey.version>2.12</jersey.version>
+		<apache.http.client.version>4.3.5</apache.http.client.version>
+		<jersey1.version>1.11</jersey1.version>
+		<jackson1.version>1.9.2</jackson1.version>
+		<jackson.version>2.4.2</jackson.version>
+		<commons.lang3.version>3.3.2</commons.lang3.version>
+		<netty.version>4.0.23.Final</netty.version>
+		<com.aldogrand.utils.version>0.0.4</com.aldogrand.utils.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>kfc-core</artifactId>
+			<version>1.1.0-SNAPSHOT</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-jcl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-slf4j-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>kfc-kafka-producer</artifactId>
+			<version>1.1.0-SNAPSHOT</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-jcl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-slf4j-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>kfc-kafka-generator</artifactId>
+			<version>1.1.0-SNAPSHOT</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-jcl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-slf4j-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>kfc-error-handler</artifactId>
+			<version>1.1.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>utils</artifactId>
+			<version>${com.aldogrand.utils.version}</version>
+		</dependency>
+
+		<!-- Netty -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>${netty.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Jackson JSON Marshaller -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<version>${jackson.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Jersey Client -->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${jersey.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.connectors</groupId>
+			<artifactId>jersey-apache-connector</artifactId>
+			<version>${jersey.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${apache.http.client.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<!-- Jackson - JSON marshalling / unmarshalling -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>${jackson.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Jersey Version 1 Client - For GlassFish v3.1.22 compatability -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+			<version>${jersey1.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${jersey1.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-apache-client4</artifactId>
+			<version>${jersey1.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Jackson 1 used by Jersey 1 to marshal JSON -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>${jackson1.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-xc</artifactId>
+			<version>${jackson1.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Commons Lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>repository.springframework.maven.release</id>
+			<name>Spring Framework Maven Release Repository</name>
+			<url>http://maven.springframework.org/milestone/</url>
+			<releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
+      <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
+		</repository>
+		<repository>
+			<id>org.springframework</id>
+			<url> http://maven.springframework.org/snapshot</url>
+			<releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
+      <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestone</id>
+			<name>Spring Maven MILESTONE Repository</name>
+			<url>http://repo.spring.io/libs-milestone</url>
+			<releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
+      <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
+		</repository>
+		<repository>
+			<id>spring-release</id>
+			<name>Spring Maven RELEASE Repository</name>
+			<url>http://repo.spring.io/libs-release</url>
+			<releases><enabled>true</enabled><updatePolicy>always</updatePolicy></releases>
+      <snapshots><enabled>true</enabled><updatePolicy>always</updatePolicy></snapshots>
+		</repository>
+	</repositories>
+</project>

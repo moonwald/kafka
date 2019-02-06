@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.aldogrand</groupId>
+		<artifactId>kfc</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>kfc-core</artifactId>
+	<version>1.1.0-SNAPSHOT</version>
+	<name>kfc Core</name>
+	<description>kfc Core pom</description>
+	<packaging>jar</packaging>
+
+
+	<dependencies>
+		<!-- <dependency> <artifactId>messaging</artifactId> <groupId>com.aldogrand</groupId> 
+			<version>0.2.1</version> <type>jar</type> </dependency> -->
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.minnal</groupId>
+			<artifactId>autopojo</artifactId>
+			<version>0.0.8</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+
+
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>autopojo-repo</id>
+			<url>https://raw.github.com/minnal/mvn-repo/master/releases</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Updategram xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.betgenius.com/2009/07/integration">
+	<Product>
+		<Id>1</Id>
+		<Name>Event Management</Name>
+	</Product>
+	<ChannelId>0</ChannelId>
+	<CustomerId>15</CustomerId>
+	<CreateEventCommand i:nil="true" />
+	<CreateMarketCommands i:nil="true" />
+	<UpdateEventCommand i:nil="true" />
+	<UpdateMarketCommands i:nil="true" />
+	<CreateResultCommand>
+		<Market>
+			<Id>90845442</Id>
+			<Name>Handicap Result</Name>
+			<Handicap>0.25</Handicap>
+			<Sequence i:nil="true" />
+			<Expiry>2010-05-21T14:35:00</Expiry>
+			<MarketType>
+				<Id>105</Id>
+				<Name>Handicap</Name>
+				<IsHandicap>true</IsHandicap>
+				<IsOverUnder>false</IsOverUnder>
+			</MarketType>
+			<EventId>90090201</EventId>
+			<TradingStatus>Resulted</TradingStatus>
+			<Selections>
+				<Selection>
+					<Id>905160164</Id>
+					<Name>Arsenal [Test]</Name>
+					<DisplayOrder>0</DisplayOrder>
+					<CompetitorId>90004060</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Outcome>
+						<Id>4</Id>
+						<Description>Home</Description>
+						<OutcomeType>Simple</OutcomeType>
+					</Outcome>
+				</Selection>
+				<Selection>
+					<Id>905160165</Id>
+					<Name>Manchester United [Test]</Name>
+					<DisplayOrder>1</DisplayOrder>
+					<CompetitorId>90004079</CompetitorId>
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Winner</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Outcome>
+						<Id>5</Id>
+						<Description>Away</Description>
+						<OutcomeType>Simple</OutcomeType>
+					</Outcome>
+				</Selection>
+				<Selection>
+					<Id>905160166</Id>
+					<Name>Handicap Tie</Name>
+					<DisplayOrder>2</DisplayOrder>
+					<CompetitorId i:nil="true" />
+					<TradingStatus>Trading</TradingStatus>
+					<Numerator>23</Numerator>
+					<Denominator>25</Denominator>
+					<European>1.92</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Outcome>
+						<Id>6</Id>
+						<Description>Handicap Tie</Description>
+						<OutcomeType>Abstract</OutcomeType>
+					</Outcome>
+				</Selection>
+			</Selections>
+		</Market>
+	</CreateResultCommand>
+</Updategram>

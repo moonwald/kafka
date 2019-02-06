@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:int-kafka="http://www.springframework.org/schema/integration"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <bean id="KFCEventFactory" class="com.aldogrand.kfc.msg.KFCEventFactoryImpl"></bean>
+    <bean id="keyEventGenerator" class="com.aldogrand.kfc.kafka.generator.KeyGeneratorImpl">
+    	<constructor-arg name="property" ref="keyDefinition"></constructor-arg>
+    </bean>
+	<bean id="topicGenerator" class="com.aldogrand.kfc.kafka.generator.TopicGeneratorImpl">
+    	<constructor-arg name="property" ref="topics"></constructor-arg>
+    </bean>
+
+    <bean id="keyDefinition" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="ACCOUNT_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="ACCOUNT_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="ACCOUNT_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="POSITION_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="POSITION_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="POSITION_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="BETTING_PLATFORM_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="BETTING_PLATFORM_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="BETTING_PLATFORM_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SETTLED_BETS_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+				<prop key="CONNECTOR_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="CONNECTOR_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="CONNECTOR_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="OFFER_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="OFFER_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="OFFER_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_INCIDENT_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_INCIDENT_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_INCIDENT_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_CLOSED_STATUS_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="PRICE_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="PRICE_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="PRICE_REMOVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_MAPPED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_MAP_FOUND">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_MAP_NEW">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_NOT_MAPPED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="EVENT_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_EVENT_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_EVENT_PROCESSED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_EVENT_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_EVENT_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="MARKET_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="MARKET_MAPPED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="MARKET_MAP_FOUND">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="MARKET_MAP_NEW">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="MARKET_NOT_MAPPED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="MARKET_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_MARKETS_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_MARKET_PROCESSED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_MARKET_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_MARKET_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="RUNNER_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="RUNNER_MAPPED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="RUNNER_MAP_FOUND">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="RUNNER_MAP_NEW">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="RUNNER_NOT_MAPPED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="RUNNER_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_RUNNER_RECEIVED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_RUNNER_PROCESSED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_RUNNER_CREATED">#message.getPayload().getIntegrationModuleId()</prop>
+                <prop key="SOURCE_RUNNER_UPDATED">#message.getPayload().getIntegrationModuleId()</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="topics" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="ACCOUNT_RECEIVED">"ACCOUNT_RECEIVED_1"</prop>
+                <prop key="ACCOUNT_CREATED">"ACCOUNT_CREATED_1"</prop>
+                <prop key="ACCOUNT_UPDATED">"ACCOUNT_UPDATED_1"</prop>
+                <prop key="POSITION_RECEIVED">"POSITION_RECEIVED_1"</prop>
+                <prop key="POSITION_CREATED">"POSITION_CREATED_1"</prop>
+                <prop key="POSITION_UPDATED">"POSITION_UPDATED_1"</prop>
+                <prop key="BETTING_PLATFORM_RECEIVED">"BETTING_PLATFORM_RECEIVED_1"</prop>
+                <prop key="BETTING_PLATFORM_CREATED">"BETTING_PLATFORM_CREATED_1"</prop>
+                <prop key="BETTING_PLATFORM_UPDATED">"BETTING_PLATFORM_UPDATED_1"</prop>
+                <prop key="SETTLED_BETS_RECEIVED">"SETTLED_BETS_RECEIVED_1"</prop>
+				<prop key="CONNECTOR_RECEIVED">"SETTLED_BETS_RECEIVED_1"</prop>
+                <prop key="CONNECTOR_CREATED">"CONNECTOR_CREATED_1"</prop>
+                <prop key="CONNECTOR_UPDATED">"CONNECTOR_UPDATED_1"</prop>
+                <prop key="OFFER_RECEIVED">"OFFER_RECEIVED_1"</prop>
+                <prop key="OFFER_CREATED">"OFFER_CREATED_1"</prop>
+                <prop key="OFFER_UPDATED">"OFFER_UPDATED_1"</prop>
+                <prop key="EVENT_INCIDENT_RECEIVED">"EVENT_INCIDENT_RECEIVED_1"</prop>
+                <prop key="EVENT_INCIDENT_CREATED">"EVENT_INCIDENT_CREATED_1"</prop>
+                <prop key="EVENT_INCIDENT_UPDATED">"EVENT_INCIDENT_UPDATED_1"</prop>
+                <prop key="EVENT_CLOSED_STATUS_RECEIVED">"EVENT_CLOSED_STATUS_RECEIVED_1"</prop>
+                <prop key="PRICE_RECEIVED">"PRICE_RECEIVED_1"</prop>
+                <prop key="PRICE_CREATED">"PRICE_CREATED_1"</prop>
+                <prop key="PRICE_REMOVED">"PRICE_REMOVED_1"</prop>
+                <prop key="EVENT_CREATED">"EVENT_CREATED_1"</prop>
+                <prop key="EVENT_MAPPED">"EVENT_MAPPED_1"</prop>
+                <prop key="EVENT_MAP_FOUND">"EVENT_MAP_FOUND_1"</prop>
+                <prop key="EVENT_MAP_NEW">"EVENT_MAP_NEW_1"</prop>
+                <prop key="EVENT_NOT_MAPPED">"EVENT_NOT_MAPPED_1"</prop>
+                <prop key="EVENT_UPDATED">"EVENT_UPDATED_1"</prop>
+                <prop key="SOURCE_EVENT_RECEIVED">"SOURCE_EVENT_RECEIVED_1"</prop>
+                <prop key="SOURCE_EVENT_PROCESSED">"SOURCE_EVENT_PROCESSED_1"</prop>
+                <prop key="SOURCE_EVENT_CREATED">"SOURCE_EVENT_CREATED_1"</prop>
+                <prop key="SOURCE_EVENT_UPDATED">"SOURCE_EVENT_UPDATED_1"</prop>
+                <prop key="MARKET_CREATED">"MARKET_CREATED_1"</prop>
+                <prop key="MARKET_MAPPED">"MARKET_MAPPED_1"</prop>
+                <prop key="MARKET_MAP_FOUND">"MARKET_MAP_FOUND_1"</prop>
+                <prop key="MARKET_MAP_NEW">"MARKET_MAP_NEW_1"</prop>
+                <prop key="MARKET_NOT_MAPPED">"MARKET_NOT_MAPPED_1"</prop>
+                <prop key="MARKET_UPDATED">"MARKET_UPDATED_1"</prop>
+                <prop key="SOURCE_MARKETS_RECEIVED">"SOURCE_MARKETS_RECEIVED_1"</prop>
+                <prop key="SOURCE_MARKET_PROCESSED">"SOURCE_MARKET_PROCESSED_1"</prop>
+                <prop key="SOURCE_MARKET_CREATED">"SOURCE_MARKET_CREATED_1"</prop>
+                <prop key="SOURCE_MARKET_UPDATED">"SOURCE_MARKET_UPDATED_1"</prop>
+                <prop key="RUNNER_CREATED">"RUNNER_CREATED_1"</prop>
+                <prop key="RUNNER_MAPPED">"RUNNER_MAPPED_1"</prop>
+                <prop key="RUNNER_MAP_FOUND">"RUNNER_MAP_FOUND_1"</prop>
+                <prop key="RUNNER_MAP_NEW">"RUNNER_MAP_NEW_1"</prop>
+                <prop key="RUNNER_NOT_MAPPED">"RUNNER_NOT_MAPPED_1"</prop>
+                <prop key="RUNNER_UPDATED">"RUNNER_UPDATED_1"</prop>
+                <prop key="SOURCE_RUNNER_RECEIVED">"SOURCE_RUNNER_RECEIVED_1"</prop>
+                <prop key="SOURCE_RUNNER_PROCESSED">"SOURCE_RUNNER_PROCESSED_1"</prop>
+                <prop key="SOURCE_RUNNER_CREATED">"SOURCE_RUNNER_CREATED_1"</prop>
+                <prop key="SOURCE_RUNNER_UPDATED">"SOURCE_RUNNER_UPDATED_1"</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Updategram 
+	xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://schemas.betgenius.com/2009/07/integration">
+        <Product>
+                <Id>1</Id>
+                <Name>Event Management</Name>
+        </Product>
+        <ChannelId>0</ChannelId>
+        <CustomerId>6355</CustomerId>
+        <CreateEventCommand>
+                <Event>
+                        <Id>339793686</Id>
+                        <Name>South Africa vs Ghana</Name>
+                        <EventType>Match</EventType>
+                        <StartTime>2015-02-18T16:33:44.665876</StartTime>
+                        <Sport>
+                                <Id>10</Id>
+                                <Name>Soccer</Name>
+                        </Sport>
+                        <Season>
+                                <Id>37555</Id>
+                                <Name>test_1</Name>
+                                <Competition>
+                                        <Id>215</Id>
+                                        <Name>test_comp_1</Name>
+                                        <Region>
+                                                <Id>2</Id>
+                                                <Name>test_1</Name>
+                                        </Region>
+                                </Competition>
+                        </Season>
+                        <Round>
+                                <Id>152331</Id>
+                                <Name>TestQuarterfinals</Name>
+                        </Round>
+                        <Teams>
+                                <Team>
+                                        <Id>10043</Id>
+<!--                                         <Name>{{team1}}</Name> -->
+                                        <Name>team1</Name>
+                                        <Position>Home</Position>
+                                        <Players>
+                                                <Player>
+                                                        <Id>99649</Id>
+                                                        <FirstName>Javier</FirstName>
+                                                        <LastName>Mascherano</LastName>
+                                                        <Name>Mascherano, J</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>1084</Id>
+                                                        <FirstName>Maxi</FirstName>
+                                                        <LastName>Rodríguez</LastName>
+                                                        <Name>Rodríguez, M</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>100539</Id>
+                                                        <FirstName>Lionel</FirstName>
+                                                        <LastName>Messi</LastName>
+                                                        <Name>Messi, L</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>128031</Id>
+                                                        <FirstName>Sergio</FirstName>
+                                                        <LastName>Romero</LastName>
+                                                        <Name>Romero, S</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>127753</Id>
+                                                        <FirstName>Ezequiel</FirstName>
+                                                        <LastName>Garay</LastName>
+                                                        <Name>Garay, E</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>2943</Id>
+                                                        <FirstName>Fernando</FirstName>
+                                                        <LastName>Gago</LastName>
+                                                        <Name>Gago, F</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>127336</Id>
+                                                        <FirstName>Ezequiel</FirstName>
+                                                        <LastName>Lavezzi</LastName>
+                                                        <Name>Lavezzi, E</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>128056</Id>
+                                                        <FirstName>Rodrigo</FirstName>
+                                                        <LastName>Palacio</LastName>
+                                                        <Name>Palacio, R</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>82767</Id>
+                                                        <FirstName>Martín</FirstName>
+                                                        <LastName>Demichelis</LastName>
+                                                        <Name>Demichelis, M</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>127619</Id>
+                                                        <FirstName>Sergio</FirstName>
+                                                        <LastName>Agüero</LastName>
+                                                        <Name>Agüero, S</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>101020</Id>
+                                                        <FirstName>Pablo</FirstName>
+                                                        <LastName>Zabaleta</LastName>
+                                                        <Name>Zabaleta, P</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>127532</Id>
+                                                        <FirstName>Ángel</FirstName>
+                                                        <LastName>di María</LastName>
+                                                        <Name>di María, Á</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>150718</Id>
+                                                        <FirstName>Agustín</FirstName>
+                                                        <LastName>Orión</LastName>
+                                                        <Name>Orión, A</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>453166</Id>
+                                                        <FirstName>Mariano</FirstName>
+                                                        <LastName>Andújar</LastName>
+                                                        <Name>Andújar, M</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>2945</Id>
+                                                        <FirstName>Gonzalo</FirstName>
+                                                        <LastName>Higuaín</LastName>
+                                                        <Name>Higuaín, G</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>453234</Id>
+                                                        <FirstName>Enzo</FirstName>
+                                                        <LastName>Pérez</LastName>
+                                                        <Name>Pérez, Enzo</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>2055</Id>
+                                                        <FirstName>Lucas</FirstName>
+                                                        <LastName>Biglia</LastName>
+                                                        <Name>Biglia, L</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>486389</Id>
+                                                        <FirstName>Marcos</FirstName>
+                                                        <LastName>Rojo</LastName>
+                                                        <Name>Rojo, M</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>103729</Id>
+                                                        <FirstName>Federico</FirstName>
+                                                        <LastName>Fernández</LastName>
+                                                        <Name>Fernández, F</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>452741</Id>
+                                                        <FirstName>Ricardo</FirstName>
+                                                        <LastName>Álvarez</LastName>
+                                                        <Name>Álvarez, R</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>150738</Id>
+                                                        <FirstName>Augusto</FirstName>
+                                                        <LastName>Fernandéz</LastName>
+                                                        <Name>Fernandéz, Augusto</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>127431</Id>
+                                                        <FirstName>Hugo</FirstName>
+                                                        <LastName>Campagnaro</LastName>
+                                                        <Name>Campagnaro, H</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>454921</Id>
+                                                        <FirstName>José María</FirstName>
+                                                        <LastName>Basanta</LastName>
+                                                        <Name>Basanta, JM</Name>
+                                                </Player>
+                                        </Players>
+                                </Team>
+                                <Team>
+                                        <Id>93933</Id>
+<!--                                         <Name>{{team2}}</Name> -->
+                                        <Name>team2</Name>
+                                        <Position>Away</Position>
+                                        <Players>
+                                                <Player>
+                                                        <Id>137928</Id>
+                                                        <FirstName>Jan</FirstName>
+                                                        <LastName>Vertonghen</LastName>
+                                                        <Name>Vertonghen, J</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>108623</Id>
+                                                        <FirstName>Daniel</FirstName>
+                                                        <LastName>van Buyten</LastName>
+                                                        <Name>van Buyten, D</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>117142</Id>
+                                                        <FirstName>Vincent</FirstName>
+                                                        <LastName>Kompany</LastName>
+                                                        <Name>Kompany, V</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>3117</Id>
+                                                        <FirstName>Moussa</FirstName>
+                                                        <LastName>Dembélé</LastName>
+                                                        <Name>Dembélé, M</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>138589</Id>
+                                                        <FirstName>Marouane</FirstName>
+                                                        <LastName>Fellaini</LastName>
+                                                        <Name>Fellaini, M</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>138586</Id>
+                                                        <FirstName>Steven</FirstName>
+                                                        <LastName>Defour</LastName>
+                                                        <Name>Defour, S</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>2525</Id>
+                                                        <FirstName>Kevin</FirstName>
+                                                        <LastName>Mirallas</LastName>
+                                                        <Name>Mirallas, K</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>159014</Id>
+                                                        <FirstName>Axel</FirstName>
+                                                        <LastName>Witsel</LastName>
+                                                        <Name>Witsel, A</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>2034</Id>
+                                                        <FirstName>Anthony</FirstName>
+                                                        <LastName>Vanden Borre</LastName>
+                                                        <Name>Vanden Borre, A</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>1913</Id>
+                                                        <FirstName>Thomas</FirstName>
+                                                        <LastName>Vermaelen</LastName>
+                                                        <Name>Vermaelen, T</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>151080</Id>
+                                                        <FirstName>Eden</FirstName>
+                                                        <LastName>Hazard</LastName>
+                                                        <Name>Hazard, E</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>458471</Id>
+                                                        <FirstName>Toby</FirstName>
+                                                        <LastName>Alderweireld</LastName>
+                                                        <Name>Alderweireld, T</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>138354</Id>
+                                                        <FirstName>Nicolas</FirstName>
+                                                        <LastName>Lombaerts</LastName>
+                                                        <Name>Lombaerts, N</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>501997</Id>
+                                                        <FirstName>Romelu</FirstName>
+                                                        <LastName>Lukaku</LastName>
+                                                        <Name>Lukaku, R</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>159029</Id>
+                                                        <FirstName>Laurent</FirstName>
+                                                        <LastName>Ciman</LastName>
+                                                        <Name>Ciman, L</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>460150</Id>
+                                                        <FirstName>Kevin</FirstName>
+                                                        <LastName>De Bruyne</LastName>
+                                                        <Name>De Bruyne, K</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>160151</Id>
+                                                        <FirstName>Simon</FirstName>
+                                                        <LastName>Mignolet</LastName>
+                                                        <Name>Mignolet, S</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>442835</Id>
+                                                        <FirstName>Nacer</FirstName>
+                                                        <LastName>Chadli</LastName>
+                                                        <Name>Chadli, N</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>181194</Id>
+                                                        <FirstName>Dries</FirstName>
+                                                        <LastName>Mertens</LastName>
+                                                        <Name>Mertens, D</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>495555</Id>
+                                                        <FirstName>Thibaut</FirstName>
+                                                        <LastName>Courtois</LastName>
+                                                        <Name>Courtois, T</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>732686</Id>
+                                                        <FirstName>Divock</FirstName>
+                                                        <LastName>Origi</LastName>
+                                                        <Name>Origi, D</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>743400</Id>
+                                                        <FirstName>Adnan</FirstName>
+                                                        <LastName>Januzaj</LastName>
+                                                        <Name>Januzaj, A</Name>
+                                                </Player>
+                                                <Player>
+                                                        <Id>160105</Id>
+                                                        <FirstName>Sammy</FirstName>
+                                                        <LastName>Bossut</LastName>
+                                                        <Name>Bossut, S</Name>
+                                                </Player>
+                                        </Players>
+                                </Team>
+                        </Teams>
+                        <MatchState i:nil="true" />
+                </Event>
+        </CreateEventCommand>
+        <UpdateEventCommand i:nil="true" />
+        <UpdateMarketCommands i:nil="true" />
+        <CreateResultCommand i:nil="true" />
+</Updategram>

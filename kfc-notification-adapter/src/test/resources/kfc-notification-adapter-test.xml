@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:amq="http://activemq.apache.org/schema/core"
+	   xmlns:jms="http://www.springframework.org/schema/jms"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jms
+		http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+    <context:annotation-config />
+	<bean id="KFCEventFactory" class="com.aldogrand.kfc.msg.KFCEventFactoryImpl" />
+    <!-- Integration components -->
+    <amq:connectionFactory id="connectionFactory" brokerURL="vm://localhost"/>
+
+    <amq:broker useJmx="false" persistent="false">
+        <amq:transportConnectors>
+            <amq:transportConnector uri="tcp://localhost:0" />
+        </amq:transportConnectors>
+    </amq:broker>
+
+    <jms:listener-container container-type="default" acknowledge="auto">
+        <jms:listener destination="${service.notification.jms.topic.event.name}" ref="testMessageListener" method="onMessage" />
+        <jms:listener destination="${service.notification.jms.topic.market.name}" ref="testMessageListener" method="onMessage" />
+        <jms:listener destination="${service.notification.jms.topic.runner.name}" ref="testMessageListener" method="onMessage" />
+        <jms:listener destination="${service.notification.jms.topic.offer.name}" ref="testMessageListener" method="onMessage" />
+        <jms:listener destination="${service.notification.jms.topic.price.name}" ref="testMessageListener" method="onMessage" />
+    </jms:listener-container>
+</beans>

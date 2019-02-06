@@ -1,0 +1,304 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.aldogrand</groupId>
+		<artifactId>kfc</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<artifactId>kfc-util-file-to-kafka</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>kfc Utility - File to Kafka</name>
+	<description>Standalone app to send file to a kafka topic</description>
+	<packaging>jar</packaging>
+
+	<organization>
+		<name>AldoGrand Consultancy</name>
+		<url>http://www.aldogrand.com</url>
+	</organization>
+
+	<properties>
+		<!-- Maven Properties -->
+		<jira.project.key>DATACLOUD</jira.project.key>
+		<git.repo.name>kfc</git.repo.name>
+
+		<!--Version Properties. -->
+		<kryo.version>3.0.0</kryo.version>
+		<kfc.version>0.0.1</kfc.version>
+		<junit.version>4.11</junit.version>
+		<json.version>2.3</json.version>
+
+		<!--Version Properties for Log4j. -->
+		<log4j.version>2.0.2</log4j.version>
+		<slf4j.version>1.7.7</slf4j.version>
+
+		<!--Version Properties for Kafka. -->
+		<kafka.version>0.8.1.1</kafka.version>
+		<commonsio.version>1.3.2</commonsio.version>
+		<commonslang3.version>3.3.2</commonslang3.version>
+		<zookeeper.version>3.4.6</zookeeper.version>
+
+		<!--Version Properties for Spring. -->
+		<spring.version>4.1.4.RELEASE</spring.version>
+
+		<!--Version Properties for Kafka Testing. -->
+		<netflix.curator.version>1.3.3</netflix.curator.version>
+		<curator.version>2.6.0</curator.version>
+		<mockito.version>1.9.5</mockito.version>
+		
+    	<java.version>1.7</java.version>
+	</properties>
+
+	
+
+  <build>
+	<sourceDirectory>src/main/java</sourceDirectory>
+	<testSourceDirectory>src/test/java</testSourceDirectory>
+	<resources>
+		<resource>
+			<directory>src/main/resources</directory>
+		</resource>
+	</resources>
+	<testResources>
+		<testResource>
+			<directory>src/test/resources</directory>
+		</testResource>
+	</testResources>
+	
+    <plugins>        
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+      
+		<plugin>
+			<!-- Compile zip with dependencies -->
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>2.4</version>
+			<configuration>
+				<descriptors>
+					<descriptor>src/main/assembly/assembly.xml</descriptor>
+				</descriptors>
+			</configuration>
+			<executions>
+				<execution>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+      
+    </plugins>
+  </build>
+
+	<issueManagement>
+		<system>JIRA</system>
+		<url>https://xcl-mb.jira.com/browse/${jira.project.key}</url>
+	</issueManagement>
+
+	<scm>
+		<connection>scm:git:https://bitbucket.org/xcl-mb/${git.repo.name}.git</connection>
+		<developerConnection>scm:git:https://bitbucket.org/xcl-mb/${git.repo.name}.git</developerConnection>
+		<url>https://bitbucket.org/xcl-mb/${git.repo.name}</url>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>kfc-core</artifactId>
+			<version>${kfc.version}</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-jcl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-slf4j-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>kfc-kafka-producer</artifactId>
+			<version>${kfc.version}</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-jcl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-slf4j-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>kfc-kafka-generator</artifactId>
+			<version>${kfc.version}</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-jcl</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-slf4j-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.aldogrand</groupId>
+			<artifactId>kfc-error-handler</artifactId>
+			<version>${kfc.version}</version>
+		</dependency>
+
+		<!-- Log4j -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<!-- Spring Framework -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Apache commons -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commonsio.version}</version>
+		</dependency>
+
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Kafka -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.10</artifactId>
+			<version>${kafka.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.zookeeper</groupId>
+					<artifactId>zookeeper</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<!-- Kafka Testing -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>java.net</id>
+			<name>java.net</name>
+			<url>http://download.java.net/maven/2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>org.jboss</id>
+			<name>JBoss</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-release</id>
+			<url>http://maven.springframework.org/release</url>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<url>http://repo.springsource.org/libs-milestone/</url>
+		</repository>
+		<repository>
+			<id>Maven Respository</id>
+			<url>http://mvnrepository.com/</url>
+		</repository>
+		<repository>
+			<id>temp</id>
+			<url>file:${project.basedir}/lib</url>
+		</repository>
+		
+	</repositories>
+</project>

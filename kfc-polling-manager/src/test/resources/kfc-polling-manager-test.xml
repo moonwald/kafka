@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+    xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+        http://www.springframework.org/schema/integration/kafka http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd"
+    default-lazy-init="true" default-init-method="init" default-destroy-method="dispose">
+
+    <import resource="kfc-polling-manager.xml" />
+
+    
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="2" />
+        <property name="maxPoolSize" value="4" />
+        <property name="queueCapacity" value="25" />
+    </bean>
+
+    <bean id="watcher" class="com.aldogrand.kfc.pollingmanager.service.impl.WatchDirectoryImpl" init-method="startWatch"
+        destroy-method="stopWatch">
+        <constructor-arg name="taskExecutor" ref="taskExecutor" />
+        <constructor-arg name="path" value="src/test/resources/rules" />
+        <constructor-arg name="recursive" value="true" />
+    </bean>
+
+    <bean id="watchDirectoryTest" class="com.aldogrand.kfc.pollingmanager.service.impl.WatchDirectoryTestImpl">
+    </bean>
+
+    <int:channel id="RulesLoaderInputChannel" />
+    <int:service-activator input-channel="RulesLoaderInputChannel" ref="watchDirectoryTest" method="processTestEntryEvent" />
+
+    
+</beans>

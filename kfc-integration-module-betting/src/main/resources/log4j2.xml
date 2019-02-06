@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" monitorInterval="120" packages="com.aldogrand.utils.logging" verbose="false">
+
+    <!-- Properties -->
+    <Properties>
+        <Property name="log_location">logs</Property>
+    </Properties>
+    
+    <!-- Log Appenders -->
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="consoleLog" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS z}{UTC} || %-5level || [%c{1}] - %m%n" />
+        </Console>
+        
+        <!-- Default File Appender -->
+        <RollingRandomAccessFile name="fileLog" 
+                fileName="${log_location}/betgenius-im.log" 
+                filePattern="${log_location}/betgenius-im_%d{yyyy-MM-dd}-%i.log.gz" 
+                immediateFlush="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS z}{UTC} || %-5level || [%c{1}] - %m%n" />
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="25 MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="40" />
+        </RollingRandomAccessFile>
+      
+    </Appenders>
+    
+    <!-- Loggers -->
+    <Loggers>
+        <!-- Application Logs -->
+        <asyncLogger name="com.aldogrand" level="DEBUG" />
+     
+        <!-- Root Logger -->
+        <asyncRoot level="INFO">
+            <AppenderRef ref="consoleLog" />
+            <AppenderRef ref="fileLog" />     
+        </asyncRoot>
+    </Loggers>
+    
+</Configuration>

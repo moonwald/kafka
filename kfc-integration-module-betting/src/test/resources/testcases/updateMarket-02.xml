@@ -1,0 +1,1879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Updategram xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.betgenius.com/2009/07/integration">
+	<Product>
+		<Id>1</Id>
+		<Name>Event Management</Name>
+	</Product>
+	<ChannelId>0</ChannelId>
+	<CustomerId>15</CustomerId>
+	<CreateEventCommand i:nil="true" />
+	<CreateMarketCommands i:nil="true" />
+	<UpdateEventCommand i:nil="true" />
+	<UpdateMarketCommands>
+		<UpdateMarket>
+			<Market>
+				<Id>90845639</Id>
+				<Name>1st Half Handicap</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>8</Id>
+					<Name>1st Half Handicap</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160686</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160687</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160688</Id>
+						<Name>Handicap Tie</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>13</Numerator>
+						<Denominator>8</Denominator>
+						<European>2.625</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>6</Id>
+							<Description>Handicap Tie</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845289</Id>
+				<Name>Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>103</Id>
+					<Name>Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905158919</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905158920</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845640</Id>
+				<Name>Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>106</Id>
+					<Name>Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160689</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160690</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845641</Id>
+				<Name>Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>263</Id>
+					<Name>Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160691</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160692</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845642</Id>
+				<Name>1st Quarter Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>264</Id>
+					<Name>1st Quarter Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160693</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160694</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845643</Id>
+				<Name>2nd Quarter Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>265</Id>
+					<Name>2nd Quarter Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160695</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160696</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845644</Id>
+				<Name>3rd Quarter Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>266</Id>
+					<Name>3rd Quarter Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160697</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160698</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845645</Id>
+				<Name>4th Quarter Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>267</Id>
+					<Name>4th Quarter Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160699</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160700</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845646</Id>
+				<Name>First Team to Score</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6539</Id>
+					<Name>First Team to Score</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160701</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160702</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845647</Id>
+				<Name>Half-time/Full-time</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6551</Id>
+					<Name>Half-time/Full-time</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160703</Id>
+						<Name>New England Patriots [Test]/New England Patriots [Test]</Name>
+						<DisplayOrder>11</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>10</Id>
+							<Description>Home/Home</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160704</Id>
+						<Name>New England Patriots [Test]/Draw</Name>
+						<DisplayOrder>12</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>11</Id>
+							<Description>Home/Draw</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160705</Id>
+						<Name>New England Patriots [Test]/Houston Texans [Test]</Name>
+						<DisplayOrder>13</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>12</Id>
+							<Description>Home/Away</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160706</Id>
+						<Name>Draw/New England Patriots [Test]</Name>
+						<DisplayOrder>21</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>13</Id>
+							<Description>Draw/Home</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160707</Id>
+						<Name>Draw/Draw</Name>
+						<DisplayOrder>22</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>14</Id>
+							<Description>Draw/Draw</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160708</Id>
+						<Name>Draw/Houston Texans [Test]</Name>
+						<DisplayOrder>23</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>15</Id>
+							<Description>Draw/Away</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160709</Id>
+						<Name>Houston Texans [Test]/New England Patriots [Test]</Name>
+						<DisplayOrder>31</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>16</Id>
+							<Description>Away/Home</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160710</Id>
+						<Name>Houston Texans [Test]/Draw</Name>
+						<DisplayOrder>32</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>17</Id>
+							<Description>Away/Draw</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160711</Id>
+						<Name>Houston Texans [Test]/Houston Texans [Test]</Name>
+						<DisplayOrder>33</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>18</Id>
+							<Description>Away/Away</Description>
+							<OutcomeType>Composite</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845648</Id>
+				<Name>1st Quarter Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6552</Id>
+					<Name>1st Quarter Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160712</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160713</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845649</Id>
+				<Name>First Team to Score Wins Game</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6559</Id>
+					<Name>First Team to Score Wins Game</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160714</Id>
+						<Name>Yes</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>39</Id>
+							<Description>Yes</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160715</Id>
+						<Name>No</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>40</Id>
+							<Description>No</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845650</Id>
+				<Name>Match Result</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6571</Id>
+					<Name>Match Result</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160716</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160717</Id>
+						<Name>Draw</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>2</Id>
+							<Description>Draw</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160718</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>13</Numerator>
+						<Denominator>8</Denominator>
+						<European>2.625</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845651</Id>
+				<Name>2nd Quarter Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6572</Id>
+					<Name>2nd Quarter Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160719</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160720</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845652</Id>
+				<Name>3rd Quarter Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6573</Id>
+					<Name>3rd Quarter Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160721</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160722</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845653</Id>
+				<Name>4th Quarter Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6574</Id>
+					<Name>4th Quarter Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160723</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160724</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845654</Id>
+				<Name>2nd Half Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6640</Id>
+					<Name>2nd Half Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160725</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160726</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845655</Id>
+				<Name>1st Half Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6766</Id>
+					<Name>1st Half Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160727</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160728</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845656</Id>
+				<Name>1st Half Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6767</Id>
+					<Name>1st Half Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160729</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160730</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845657</Id>
+				<Name>Odd or Even Total</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6788</Id>
+					<Name>Odd or Even Total</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160731</Id>
+						<Name>Even</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>32</Id>
+							<Description>Even</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160732</Id>
+						<Name>Odd</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>33</Id>
+							<Description>Odd</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845658</Id>
+				<Name>Handicap Result</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6789</Id>
+					<Name>Handicap Result</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160733</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160734</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160735</Id>
+						<Name>Handicap Tie</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>13</Numerator>
+						<Denominator>8</Denominator>
+						<European>2.625</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>6</Id>
+							<Description>Handicap Tie</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845659</Id>
+				<Name>Highest Scoring Quarter</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6792</Id>
+					<Name>Highest Scoring Quarter</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160736</Id>
+						<Name>First Quarter</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>44</Id>
+							<Description>First Quarter</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160737</Id>
+						<Name>Second Quarter</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>45</Id>
+							<Description>Second Quarter</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160738</Id>
+						<Name>Third Quarter</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>46</Id>
+							<Description>Third Quarter</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160739</Id>
+						<Name>Fourth Quarter</Name>
+						<DisplayOrder>3</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>5</Denominator>
+						<European>2.4</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>47</Id>
+							<Description>Fourth Quarter</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845661</Id>
+				<Name>1st Half Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6801</Id>
+					<Name>1st Half Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160742</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160743</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845662</Id>
+				<Name>1st Quarter Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6805</Id>
+					<Name>1st Quarter Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160744</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160745</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845663</Id>
+				<Name>2nd Quarter Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6806</Id>
+					<Name>2nd Quarter Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160746</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160747</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845664</Id>
+				<Name>3rd Quarter Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6807</Id>
+					<Name>3rd Quarter Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160748</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160749</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845665</Id>
+				<Name>4th Quarter Money Line</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6808</Id>
+					<Name>4th Quarter Money Line</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160750</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160751</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845666</Id>
+				<Name>Last Team to Score</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6809</Id>
+					<Name>Last Team to Score</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160752</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160753</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845667</Id>
+				<Name>Half-time Result</Name>
+				<Handicap i:nil="true" />
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>6834</Id>
+					<Name>Half-time Result</Name>
+					<IsHandicap>false</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160754</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>1</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160755</Id>
+						<Name>Draw</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>13</Numerator>
+						<Denominator>8</Denominator>
+						<European>2.625</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>2</Id>
+							<Description>Draw</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160756</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>2</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>7</Numerator>
+						<Denominator>4</Denominator>
+						<European>2.75</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>3</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845668</Id>
+				<Name>2nd Half Total Points</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>8251</Id>
+					<Name>2nd Half Total Points</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>true</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160757</Id>
+						<Name>Over</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>30</Id>
+							<Description>Over</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160758</Id>
+						<Name>Under</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId i:nil="true" />
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>31</Id>
+							<Description>Under</Description>
+							<OutcomeType>Abstract</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+		<UpdateMarket>
+			<Market>
+				<Id>90845669</Id>
+				<Name>2nd Half Point Spread</Name>
+				<Handicap>25.00</Handicap>
+				<Sequence i:nil="true" />
+				<Expiry>2010-05-21T15:00:00</Expiry>
+				<MarketType>
+					<Id>8259</Id>
+					<Name>2nd Half Point Spread</Name>
+					<IsHandicap>true</IsHandicap>
+					<IsOverUnder>false</IsOverUnder>
+				</MarketType>
+				<EventId>90090221</EventId>
+				<TradingStatus>Open</TradingStatus>
+				<Selections>
+					<Selection>
+						<Id>905160759</Id>
+						<Name>New England Patriots [Test]</Name>
+						<DisplayOrder>0</DisplayOrder>
+						<CompetitorId>90004152</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>4</Id>
+							<Description>Home</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+					<Selection>
+						<Id>905160760</Id>
+						<Name>Houston Texans [Test]</Name>
+						<DisplayOrder>1</DisplayOrder>
+						<CompetitorId>90004153</CompetitorId>
+						<TradingStatus>Trading</TradingStatus>
+						<Numerator>5</Numerator>
+						<Denominator>6</Denominator>
+						<European>1.833333333333334</European>
+						<ResultStatus>None</ResultStatus>
+						<AdditionalResultData i:nil="true" />
+						<Outcome>
+							<Id>5</Id>
+							<Description>Away</Description>
+							<OutcomeType>Simple</OutcomeType>
+						</Outcome>
+					</Selection>
+				</Selections>
+			</Market>
+		</UpdateMarket>
+	</UpdateMarketCommands>
+	<CreateResultCommand i:nil="true" />
+</Updategram>

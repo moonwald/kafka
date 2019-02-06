@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+	xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+        http://www.springframework.org/schema/integration/jms
+        http://www.springframework.org/schema/integration/jms/spring-integration-jms.xsd
+        http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core.xsd
+        http://www.springframework.org/schema/integration/kafka
+        http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.aldogrand.kfc">
+		<context:include-filter type="regex"
+			expression=".*Event" />
+	</context:component-scan>
+
+	<!--Load properties from properties files -->
+	<context:property-placeholder
+		location="classpath:kfc-notification-config.properties,file:${xd.home}/modules/source/kfc-notification-adapter/config/kfc-notification-config.properties"
+		ignore-resource-not-found="true" order="1" />
+	<!-- Kafka -->
+	<int-kafka:zookeeper-connect id="zookeeperConnect"
+		zk-connect="${zk-connect:localhost:2181}" zk-connection-timeout="6000"
+		zk-session-timeout="6000" zk-sync-time="2000" />
+
+	<bean id="consumerProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="auto.offset.reset">largest</prop>
+			</props>
+		</property>
+	</bean>
+<!-- Target_DATA_UPDATED -->    
+    <int-kafka:consumer-context id="ConsumerContextTargetDataUpdated" consumer-timeout="4000" zookeeper-connect="zookeeperConnect" consumer-properties="consumerProperties">
+        <int-kafka:consumer-configurations>
+            <int-kafka:consumer-configuration group-id="notificationTargetDataUpdated"
+                value-decoder="valueDecoder" key-decoder="valueDecoder" max-messages="1000">
+                <int-kafka:topic id="TARGET_DATA_UPDATED" streams="13"/>
+            </int-kafka:consumer-configuration>
+        </int-kafka:consumer-configurations>
+    </int-kafka:consumer-context>
+    
+    <int-kafka:inbound-channel-adapter id="kafkaInboundChannelAdapterTargetDataUpdated"
+        kafka-consumer-context-ref="ConsumerContextTargetDataUpdated" auto-startup="true" channel="targetDataUpdatedChannel" group-id="notificationTargetDataUpdated">
+        <int:poller fixed-delay="50" time-unit="MILLISECONDS" />
+    </int-kafka:inbound-channel-adapter>
+	
+	<int:channel id="LMAXInputChanneltargetDataUpdated" />
+	<int:splitter input-channel="targetDataUpdatedChannel" output-channel="LMAXInputChanneltargetDataUpdated" ref="kafkaSplitter" method="splitKafkaMessage" />
+
+	<bean id="LMaxServicetargetDataUpdated" class="com.aldogrand.kfc.lmax.LMAXServiceImpl" destroy-method="destroy">
+		<constructor-arg name="numThreads" value="5" />
+		<constructor-arg name="channel" ref="input" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<int:service-activator input-channel="LMAXInputChanneltargetDataUpdated" ref="LMaxServicetargetDataUpdated" method="onData" />
+<!-- TARGET_DATA_CREATED TargetDataCreated -->
+    <int-kafka:consumer-context id="ConsumerContextTargetDataCreated" consumer-timeout="4000" zookeeper-connect="zookeeperConnect" consumer-properties="consumerProperties">
+        <int-kafka:consumer-configurations>
+            <int-kafka:consumer-configuration group-id="notificationTargetDataCreated"
+                value-decoder="valueDecoder" key-decoder="valueDecoder" max-messages="1000">
+                <int-kafka:topic id="TARGET_DATA_CREATED" streams="13"/>
+            </int-kafka:consumer-configuration>
+        </int-kafka:consumer-configurations>
+    </int-kafka:consumer-context>
+    
+    <int-kafka:inbound-channel-adapter id="kafkaInboundChannelAdapterTargetDataCreated"
+        kafka-consumer-context-ref="ConsumerContextTargetDataCreated" auto-startup="true" channel="targetDataCreatedChannel" group-id="notificationTargetDataCreated">
+        <int:poller fixed-delay="50" time-unit="MILLISECONDS" />
+    </int-kafka:inbound-channel-adapter>
+	
+	<int:channel id="LMAXInputChanneltargetDataCreated" />
+	<int:splitter input-channel="targetDataCreatedChannel" output-channel="LMAXInputChanneltargetDataCreated" ref="kafkaSplitter" method="splitKafkaMessage" />
+
+	<bean id="LMaxServicetargetDataCreated" class="com.aldogrand.kfc.lmax.LMAXServiceImpl" destroy-method="destroy">
+		<constructor-arg name="numThreads" value="5" />
+		<constructor-arg name="channel" ref="input" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<int:service-activator input-channel="LMAXInputChanneltargetDataCreated"
+		ref="LMaxServicetargetDataCreated" method="onData" />
+
+<!-- DATA_MAPPED DataMapped -->
+    <int-kafka:consumer-context id="ConsumerContextDataMapped" consumer-timeout="4000" zookeeper-connect="zookeeperConnect" consumer-properties="consumerProperties">
+        <int-kafka:consumer-configurations>
+            <int-kafka:consumer-configuration group-id="notificationDataMapped"
+                value-decoder="valueDecoder" key-decoder="valueDecoder" max-messages="1000">
+                <int-kafka:topic id="DATA_MAPPED" streams="13"/>
+            </int-kafka:consumer-configuration>
+        </int-kafka:consumer-configurations>
+    </int-kafka:consumer-context>
+    
+    <int-kafka:inbound-channel-adapter id="kafkaInboundChannelAdapterDataMapped"
+        kafka-consumer-context-ref="ConsumerContextDataMapped" auto-startup="true" channel="DataMappedChannel" group-id="notificationDataMapped">
+        <int:poller fixed-delay="50" time-unit="MILLISECONDS" />
+    </int-kafka:inbound-channel-adapter>
+	
+	<int:channel id="LMAXInputChannelDataMapped" />
+	<int:splitter input-channel="DataMappedChannel" output-channel="LMAXInputChannelDataMapped" ref="kafkaSplitter" method="splitKafkaMessage" />
+
+	<bean id="LMaxServiceDataMapped" class="com.aldogrand.kfc.lmax.LMAXServiceImpl" destroy-method="destroy">
+		<constructor-arg name="numThreads" value="5" />
+		<constructor-arg name="channel" ref="input" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<int:service-activator input-channel="LMAXInputChannelDataMapped"
+		ref="LMaxServiceDataMapped" method="onData" />
+
+<!-- DATA_IN_SAVED -->
+    <int-kafka:consumer-context id="consumerContextDataInSaved" consumer-timeout="4000" zookeeper-connect="zookeeperConnect" consumer-properties="consumerProperties">
+        <int-kafka:consumer-configurations>
+            <int-kafka:consumer-configuration group-id="notificationDataInSaved"
+                value-decoder="valueDecoder" key-decoder="valueDecoder" max-messages="4000">
+                <int-kafka:topic id="DATA_IN_SAVED" streams="13"/>
+            </int-kafka:consumer-configuration>
+        </int-kafka:consumer-configurations>
+    </int-kafka:consumer-context>
+
+    <int-kafka:inbound-channel-adapter id="kafkaInboundChannelAdapterDataInSaved"
+        kafka-consumer-context-ref="consumerContextDataInSaved" auto-startup="true" channel="dataInSavedChannel" group-id="notificationDataInSaved">
+        <int:poller fixed-delay="50" time-unit="MILLISECONDS" />
+    </int-kafka:inbound-channel-adapter>
+	
+	<int:channel id="LMAXInputChannelDataInSaved" />
+	<int:splitter input-channel="dataInSavedChannel" output-channel="LMAXInputChannelDataInSaved" ref="kafkaSplitter" method="splitKafkaMessage" />
+
+	<bean id="LMaxServiceDataInSaved" class="com.aldogrand.kfc.lmax.LMAXServiceImpl" destroy-method="destroy">
+		<constructor-arg name="numThreads" value="30" />
+		<constructor-arg name="channel" ref="input" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+
+	<int:service-activator input-channel="LMAXInputChannelDataInSaved"
+		ref="LMaxServiceDataInSaved" method="onData" />
+<!-- Consumer config ends -->
+	<bean id="kfcNotificationService"
+		class="com.aldogrand.kfc.notification.service.impl.kfcNotificationServiceImpl">
+		<property name="eventNotificationTopicName" value="${service.notification.jms.topic.event.name}" />
+		<property name="marketNotificationTopicName"
+			value="${service.notification.jms.topic.market.name}" />
+		<property name="runnerNotificationTopicName"
+			value="${service.notification.jms.topic.runner.name}" />
+		<property name="priceNotificationTopicName" value="${service.notification.jms.topic.price.name}" />
+		<property name="offerNotificationTopicName" value="${service.notification.jms.topic.offer.name}" />
+	</bean>
+
+	<!-- Active MQ -->
+	<amq:connectionFactory id="connectionFactory"
+		brokerURL="${amq.broker.url}" />
+	
+	<!-- kfc Notification Adapter and splitter-->
+	<bean id="kafkaSplitter" class="com.aldogrand.kfc.consumer.Splitter" />
+    <bean id="valueDecoder" class="com.aldogrand.kfc.consumer.MessageDecoder"/>
+
+
+	<bean id="jsonToKFCEventTransformer"
+		class="com.aldogrand.kfc.consumer.JSONToKFCEventTransformer">
+		<property name="objectMapper">
+			<bean class="org.codehaus.jackson.map.ObjectMapper" />
+		</property>
+	</bean>
+	<int:channel id="input" />
+	<int:transformer input-channel="input" output-channel="requests"
+		ref="jsonToKFCEventTransformer" method="transform" />
+
+	<int:channel id="requests" />
+	<int:header-value-router input-channel="requests"
+		header-name="contentType" resolution-required="false"
+		default-output-channel="nullChannel">
+		<int:mapping value="EVENT_CREATED" channel="notification" />
+		<int:mapping value="MARKET_CREATED" channel="notification" />
+		<int:mapping value="RUNNER_CREATED" channel="notification" />
+		<int:mapping value="EVENT_UPDATED" channel="notification" />
+		<int:mapping value="MARKET_UPDATED" channel="notification" />
+		<int:mapping value="RUNNER_UPDATED" channel="notification" />
+		<int:mapping value="EVENT_MAPPED" channel="notification" />
+		<int:mapping value="MARKET_MAPPED" channel="notification" />
+		<int:mapping value="RUNNER_MAPPED" channel="notification" />
+		<int:mapping value="PRICE_CREATED" channel="notification" />
+		<int:mapping value="PRICE_UPDATED" channel="notification" />
+		<int:mapping value="OFFER_CREATED" channel="notification" />
+		<int:mapping value="OFFER_UPDATED" channel="notification" />
+	</int:header-value-router>
+
+	<int:channel id="notification" />
+	<int:transformer input-channel="notification"
+		output-channel="output" ref="kfcNotificationService" method="notify" />
+
+	<int:channel id="output" />
+	<int-jms:outbound-channel-adapter
+		channel="output" destination-expression="headers.topic_name" />
+	<!-- Error Channel -->
+	<int:service-activator input-channel="errorChannel"
+		ref="errorHandler" method="handleError" />
+	<bean id="errorHandler" class="com.aldogrand.kfc.error.ErrorHandler" />
+
+</beans>

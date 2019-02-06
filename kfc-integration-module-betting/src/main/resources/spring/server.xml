@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+    default-lazy-init="true" 
+    default-init-method="init"
+    default-destroy-method="dispose">
+        
+    <bean id="httpServer" class="com.aldogrand.kfc.integrationmodules.http.server.HttpServer"
+          init-method="start" destroy-method="stop" lazy-init="false">
+        <!-- <property name="host" value="" /> -->
+        <property name="port" value="${http.server.port}" />
+        <property name="httpRequestHandler" ref="httpRequestHandler" />
+        <property name="acceptorThreads" value="${http.server.acceptor.threads}" />
+        <property name="workerThreads" value="${http.server.worker.threads}" />
+    </bean>
+     
+    <bean id="httpRequestHandler" class="com.aldogrand.kfc.integrationmodules.betting.http.server.bettingHttpRequestHandler">        
+        <property name="objectMapper">
+            <bean class="com.fasterxml.jackson.databind.ObjectMapper"/>
+        </property>
+        <property name="moduleTopicName" value="${kafka.rest.service.message.topic}"/>
+        <property name="heartbeatTopicName" value="${kafka.rest.service.heartbeat.topic}"/> 
+        <property name="kafkaSenderService" ref="bettingKafkaSenderService"/>
+    </bean>
+    
+</beans>

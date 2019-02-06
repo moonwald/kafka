@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/integration/kafka
+        http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.aldogrand.kfc">
+		<context:include-filter type="regex"
+			expression=".*Event" />
+	</context:component-scan>
+
+	<!-- Load properties from properties files -->
+<!-- 	<context:property-placeholder -->
+<!-- 		location="classpath:application-kfcproducer-context-test.properties,file:${xd.home}/modules/source/kfc-core/config/application-kfcproducer-context-test.properties" -->
+<!-- 		ignore-resource-not-found="false" order="1" /> -->
+	<context:property-placeholder
+		location="classpath:kfc-application-producer-test.properties"
+		ignore-resource-not-found="false" order="1" />
+
+
+
+	<!-- kafka producer -->
+   <bean id="kafkaProducerProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="metadata.broker.list">${kafka.metadata.broker.list}</prop>
+                <prop key="serializer.class">${kafka.serializer.class}</prop>
+                <prop key="key.serializer.class">${kafka.key.serializer.class}</prop>
+                <prop key="producer.type">${kafka.producer.type}</prop>
+                <prop key="partitioner.class">${kafka.partitioner.class}</prop>
+                <prop key="request.required.acks">${kafka.request.required.acks}</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="KFCEventFactory" class="com.aldogrand.kfc.msg.KFCEventFactoryImpl" />
+	<bean id="topicGenerator"
+		class="com.aldogrand.kfc.kafka.generator.TopicGeneratorImpl" />
+	<bean id="keyEventGenerator"
+		class="com.aldogrand.kfc.kafka.generator.KeyGeneratorImpl" />
+
+	<bean id="kafkaProducer"
+		class="com.aldogrand.kfc.msg.producer.kafka.KafkaProducer">
+		<constructor-arg name="topicGenerator" ref="topicGenerator" />
+		<constructor-arg name="keyGenerator" ref="keyEventGenerator" />
+		<constructor-arg name="properties" ref="kafkaProducerProperties"
+			type="java.util.Properties" />
+	</bean>
+
+	<bean id="valueDecoder" class="com.aldogrand.kfc.consumer.MessageDecoder" />
+	<bean id="kfcKafkaProducer" class="com.aldogrand.kfc.producer.KFCProducerImpl" />
+	<bean id="kafkaSplitter" class="com.aldogrand.kfc.consumer.Splitter" />
+
+
+    <int:channel id="kafka"></int:channel>
+
+	<bean id="kfcKafkaConvertingMessageHandler" class="com.aldogrand.kfc.msg.consumer.kafka.kfcKafkaConvertingMessageHandler">
+		<property name="channel" ref="kafka"/>
+		<property name="transformer" ref="jsonToKFCEventTransformer"/>
+	</bean>
+	
+    <bean id="jsonToKFCEventTransformer" class="com.aldogrand.kfc.consumer.JSONToKFCEventTransformer">
+        <property name="objectMapper">
+            <bean class="org.codehaus.jackson.map.ObjectMapper"/>
+        </property>
+    </bean>
+    <bean id="errorHandler" class="com.aldogrand.kfc.error.ErrorHandler"/>
+
+	<!-- Error Channel -->
+	<int:service-activator input-channel="errorChannel"
+		ref="errorHandler" method="handleError" />
+
+</beans>

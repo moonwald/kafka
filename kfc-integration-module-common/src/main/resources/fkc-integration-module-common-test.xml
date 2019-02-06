@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd 
+        http://www.springframework.org/schema/integration/kafka http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+        default-lazy-init="true" 
+		default-init-method="init"
+		default-destroy-method="dispose">
+ 
+     
+    <bean id="kfcKafkaProducer" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.aldogrand.kfc.interfaces.KFCProducer" />
+    </bean>
+    
+    <bean id="topicGenerator" class="com.aldogrand.kfc.kafka.generator.TopicGeneratorImpl">
+    	<constructor-arg name="property" ref="topics"></constructor-arg>
+    </bean>
+    
+    <bean id="integrationModuleServiceInfo" class="com.aldogrand.kfc.integrationmodules.IntegrationModuleInfoServiceImpl">
+        <constructor-arg>
+        	<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        		<property name="properties">
+		            <props>
+		                <prop key="module-name">HeartBeatTest</prop>
+		                <prop key="module-id">1</prop>
+		                <prop key="module-instance">${xd.container.id}</prop>
+		            </props>
+		        </property>
+		    </bean>
+        </constructor-arg>
+    </bean>
+
+	<bean id="heartBeat" class="com.aldogrand.kfc.integrationmodules.heartbeat.HeartBeatServiceTest" init-method="start" destroy-method="stop">
+		 <constructor-arg ref="kfcKafkaProducer" />
+		 <constructor-arg ref="integrationModuleServiceInfo" />
+		 <constructor-arg value="heartBeat1" type=""/>
+		 <constructor-arg value="25000" type="java.lang.Long"/>
+	</bean>
+ 
+</beans>

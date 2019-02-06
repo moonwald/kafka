@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task.xsd
+        http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+        http://www.springframework.org/schema/integration/kafka
+        http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.aldogrand.kfc.msg.producer" />
+    <context:property-placeholder location="classpath:test.properties"/>
+
+    <bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="metadata.broker.list">0:20002</prop>
+                <prop key="serializer.class">com.aldogrand.kfc.msg.producer.kafka.kfcMessageSerializer</prop>
+                <prop key="key.serializer.class">kafka.serializer.StringEncoder</prop>
+                <prop key="producer.type">sync</prop>
+                <prop key="partitioner.class">com.aldogrand.kfc.msg.producer.kafka.DefaultPartitioner</prop>
+                <prop key="request.required.acks">1</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="topicGenerator" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.aldogrand.kfc.msg.interfaces.TopicGenerator" />
+    </bean>
+
+    <bean id="keyGenerator" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.aldogrand.kfc.msg.interfaces.KeyGenerator" />
+    </bean>
+
+    <bean id="producer" class="com.aldogrand.kfc.msg.producer.kafka.KafkaProducer">
+        <constructor-arg name="topicGenerator" ref="topicGenerator"/>
+        <constructor-arg name="keyGenerator" ref="keyGenerator"/>
+        <constructor-arg name="properties" ref="properties" type="java.util.Properties"/>
+    </bean>
+
+    <!-- KAFKA Consumer configuration for testing porpoises.-->
+    <bean id="valueDecoder" class="com.aldogrand.kfc.msg.producer.kafka.kfcMessageSerializer"/>
+
+    <bean class="com.aldogrand.kfc.msg.producer.kafka.KafkaLocalServer">
+        <property name="port" value="20002"/>
+        <property name="zkPort" value="${zk-port}"/>
+    </bean>
+
+    <bean id="consumerProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="auto.offset.reset">smallest</prop>
+            </props>
+        </property>
+    </bean>
+
+    <int-kafka:zookeeper-connect id="zookeeperConnect"
+                                 zk-connect="localhost:${zk-port}" zk-connection-timeout="6000" zk-session-timeout="6000"
+                                 zk-sync-time="2000" />
+
+    <int-kafka:consumer-context id="consumerContext" consumer-timeout="4000" zookeeper-connect="zookeeperConnect"
+                                consumer-properties="consumerProperties">
+        <int-kafka:consumer-configurations>
+            <int-kafka:consumer-configuration group-id="default"
+                                              value-decoder="valueDecoder" key-decoder="valueDecoder" max-messages="5000">
+                <int-kafka:topic id="${topic}" streams="1" />
+            </int-kafka:consumer-configuration>
+        </int-kafka:consumer-configurations>
+    </int-kafka:consumer-context>
+</beans>

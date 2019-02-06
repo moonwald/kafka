@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:int="http://www.springframework.org/schema/integration"
+    xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+    xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:amq="http://activemq.apache.org/schema/core"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/integration
+        http://www.springframework.org/schema/integration/spring-integration.xsd
+        http://www.springframework.org/schema/jdbc
+        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/integration/jms
+        http://www.springframework.org/schema/integration/jms/spring-integration-jms.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core.xsd
+        http://www.springframework.org/schema/integration/kafka
+        http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd
+        http://www.springframework.org/schema/data/mongo
+        http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+ 	<!-- Load properties from properties files -->
+    <context:property-placeholder location="classpath:kfc-error-manager.properties,file:${xd.home}/modules/source/kfc-error-manager/config/kfc-error-manager.properties"
+            ignore-resource-not-found="true" order="1" />
+            
+	<context:annotation-config />
+	
+    <context:component-scan base-package="com.aldogrand.kfc.msg">
+        <context:include-filter type="regex" expression=".*Error"/>
+    </context:component-scan>
+        
+    <bean class="com.aldogrand.kfc.error.ErrorHandler"/>
+    
+    <mongo:mongo host="${mongo.host}" port="${mongo.port}">
+	    <mongo:options connections-per-host="${mongo.connectionsPerHost}"
+	                   threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+	                   connect-timeout="${mongo.connectTimeout}"
+	                   max-wait-time="${mongo.maxWaitTime}"
+	                   auto-connect-retry="${mongo.autoConnectRetry}"
+	                   socket-keep-alive="${mongo.socketKeepAlive}"
+	                   socket-timeout="${mongo.socketTimeout}"
+	                   slave-ok="${mongo.slaveOk}"
+	                   write-number="1"
+	                   write-timeout="0"
+	                   write-fsync="true"/>
+	</mongo:mongo>
+	
+	<mongo:db-factory id="mongoDbFactory" dbname="kfcErrors" mongo-ref="mongo" username="kfc" password="kfc"/>
+
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+	</bean>
+
+	<mongo:repositories base-package="com.aldogrand.kfc.error.repository" />
+	
+   <!--  <jpa:repositories base-package="com.aldogrand.kfc.error.repository" factory-class="mongoDbFactory"/> -->
+    
+</beans>

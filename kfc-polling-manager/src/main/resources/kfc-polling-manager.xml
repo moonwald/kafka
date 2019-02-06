@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+    xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+        http://www.springframework.org/schema/integration/kafka http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd"
+    default-lazy-init="true" default-init-method="init" default-destroy-method="dispose">
+
+    <context:annotation-config />
+
+    <!--Load properties from properties files -->
+    <context:property-placeholder
+        location="classpath:/settings/kfc-polling-manager.properties,file:${xd.home}/modules/source/kfc-polling-manager/config/settings/kfc-polling-manager.properties"
+        ignore-resource-not-found="true" order="1" />
+
+    <import resource="classpath:/settings/persistence-context.xml" />
+
+    <context:component-scan base-package="com.aldogrand.kfc.pollingmanager">
+        <context:include-filter type="regex" expression=".*Rule" />
+    </context:component-scan>
+
+    <bean id="ruleManager" class="com.aldogrand.kfc.pollingmanager.rules.manager.impl.RuleFileSystemManagerImpl">
+    </bean>
+
+    <bean id="application" class="com.aldogrand.kfc.pollingmanager.service.Application">
+    </bean>
+
+    <bean id="ruleLoaderService" class="com.aldogrand.kfc.pollingmanager.service.impl.RulesLoaderFileSystemServiceImpl">
+        <constructor-arg name="rulesPath" value="${rules.path:}" />
+        <constructor-arg name="rulesReader" ref="rulesReader" />
+    </bean>
+
+    <bean id="rulesReader" class="com.aldogrand.kfc.pollingmanager.service.impl.RulesReaderServiceImpl">
+    </bean>
+
+    <bean id="jsonToRuleTransformer" class="com.aldogrand.kfc.pollingmanager.service.JsonToRuleTransformer">
+        <property name="objectMapper">
+            <bean class="com.fasterxml.jackson.databind.ObjectMapper" />
+        </property>
+    </bean>
+
+    <bean id="msgDecoder" class="com.aldogrand.kfc.pollingmanager.service.MessageDecoder">
+    </bean>
+
+    <bean id="ruleService" class="com.aldogrand.kfc.pollingmanager.service.impl.RuleFileSystemServiceImpl">
+    </bean>
+
+    <bean id="schedulerManager" class="com.aldogrand.kfc.pollingmanager.scheduler.impl.SchedulerManagerImpl" init-method="start">
+        <constructor-arg name="taskManager" ref="taskManager" />
+        <constructor-arg name="toServiceChannel" ref="to-filter-service" />
+    </bean>
+
+    <bean id="taskManager" class="com.aldogrand.kfc.pollingmanager.scheduler.impl.TaskManagerImpl">
+    </bean>
+
+    <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    </bean>
+
+    <bean name="jobDetailFactory" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.aldogrand.kfc.pollingmanager.scheduler.model.RuleJob" />
+    </bean>
+    <bean id="simpleTriggerFactory" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetailFactory" />
+    </bean>
+
+    <int:channel id="transformerInputChannel" />
+    <int:chain id="ruleServiceChain" input-channel="transformerInputChannel" output-channel="ruleServiceInputChannel">
+        <int:service-activator ref="msgDecoder" method="stringToJsonNode" />
+        <int:transformer ref="jsonToRuleTransformer" method="transform" />
+    </int:chain>
+
+    <!-- Integration components -->
+    <int:channel id="ruleServiceInputChannel" />
+    <int:service-activator id="ruleServiceActivator" input-channel="ruleServiceInputChannel" ref="ruleService" method="processRule" />
+
+    <int:channel id="to-scheduler-manager" />
+    <int:service-activator id="schedulerManagerActivator" input-channel="to-scheduler-manager" ref="schedulerManager"
+        method="scheduleRule" />
+
+    <!-- Publishing to Kafka -->
+    <int:channel id="to-filter-service" />
+    <int:chain id="filterServiceChain" input-channel="to-filter-service" output-channel="to-account-splitter">
+        <int:service-activator ref="filterService" method="decorateRule" />
+    </int:chain>
+
+    <bean id="filterService" class="com.aldogrand.kfc.pollingmanager.service.FilterService">
+        <constructor-arg ref="eventRepository" />
+        <constructor-arg ref="marketRepository" />
+        <constructor-arg ref="runnerRepository" />
+    </bean>
+
+    <int:splitter input-channel="to-account-splitter" output-channel="to-account-service" id="account-splitter" />
+
+    <int:channel id="to-account-splitter" />
+    <int:channel id="to-account-service" />
+
+    <int:service-activator id="pm-account-service" input-channel="to-account-service" output-channel="to-connection-splitter"
+        ref="accountService" method="decorateEventAttributes" />
+    <bean id="accountService" class="com.aldogrand.kfc.pollingmanager.service.AccountService">
+        <constructor-arg ref="accountRepository" />
+    </bean>
+
+    <int:splitter input-channel="to-connection-splitter" output-channel="to-connection-service" id="connection-splitter" />
+
+    <int:channel id="to-connection-splitter" />
+    <int:channel id="to-connection-service" />
+
+    <int:service-activator id="pm-connection-service" input-channel="to-connection-service" output-channel="to-generator-splitter"
+        ref="connectionService" method="decorateEventAttributes" />
+    <bean id="connectionService" class="com.aldogrand.kfc.pollingmanager.service.ConnectionService" >
+        <constructor-arg ref="connectionRepository" />
+    </bean>
+
+    <int:splitter input-channel="to-generator-splitter" output-channel="to-command-generator" id="generator-splitter" />
+
+    <int:channel id="to-generator-splitter" />
+    <int:channel id="to-command-generator" />
+
+    <int:service-activator id="pm-command-generator" input-channel="to-command-generator" output-channel="to-kafka-writer"
+        ref="commandGenerator" method="generateCommands" />
+    <bean id="commandGenerator" class="com.aldogrand.kfc.pollingmanager.service.generator.CommandGenerator" />
+
+    <int:channel id="to-kafka-writer" />
+
+    <int:outbound-channel-adapter channel="to-kafka-writer" ref="kafkaProducer" method="send"
+        id="pm-kafka-producer-activator" />
+    <bean id="kafkaProducer" class="com.aldogrand.kfc.msg.producer.kafka.KafkaProducer">
+        <constructor-arg name="topicGenerator" ref="topicGenerator" />
+        <constructor-arg name="keyGenerator" ref="keyGenerator" />
+        <constructor-arg name="properties" ref="producerProperties" type="java.util.Properties" />
+    </bean>
+
+    <bean id="keyGenerator" class="com.aldogrand.kfc.kafka.generator.KeyGeneratorImpl">
+        <constructor-arg name="property" ref="keyDefinitions" />
+    </bean>
+
+    <bean id="topicGenerator" class="com.aldogrand.kfc.pollingmanager.service.generator.EventTopicGenerator" />
+
+    <bean id="producerProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="metadata.broker.list">localhost:9092</prop>
+                <prop key="serializer.class">com.aldogrand.kfc.pollingmanager.service.generator.MessageSerializer</prop>
+                <prop key="key.serializer.class">kafka.serializer.StringEncoder</prop>
+                <prop key="producer.type">sync</prop>
+                <prop key="partitioner.class">com.aldogrand.kfc.msg.producer.kafka.DefaultPartitioner</prop>
+                <prop key="request.required.acks">-1</prop>
+                <prop key="retry.backoff.ms">1000</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="keyDefinitions" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="FETCH_EVENTS_COMMAND">#message.getPayload().getType()</prop>
+                <prop key="FETCH_EVENT_COMMAND">#message.getPayload().getType()</prop>
+                <prop key="FETCH_MARKETS_COMMAND">#message.getPayload().getType()</prop>
+                <prop key="FETCH_MARKET_COMMAND">#message.getPayload().getType()</prop>
+                <prop key="FETCH_RUNNERS_COMMAND">#message.getPayload().getType()</prop>
+                <prop key="FETCH_RUNNER_COMMAND">#message.getPayload().getType()</prop>
+                <prop key="FETCH_PRICES_COMMAND">#message.getPayload().getType()</prop>
+                <prop key="FETCH_POSITIONS_COMMAND">#message.getPayload().getType()</prop>
+            </props>
+        </property>
+    </bean>
+    
+     <!-- JMX services -->
+    <context:mbean-export/>
+    
+    
+
+    <bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">
+        <property name="locateExistingServerIfPossible" value="true"/>
+    </bean>
+    
+    <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
+        <property name="server" ref="mbeanServer"/>
+        <property name="beans">
+            <map>
+                <entry key="sean:name=jmxRulesInMemory" value-ref="jmxRulesInMemory"/>
+            </map>
+        </property>
+    </bean>
+    
+    <bean id="jmxRulesInMemory" class="com.aldogrand.kfc.pollingmanager.jmx.JmxRuleFileSystemManagerImpl">       
+    </bean>
+
+</beans>
+

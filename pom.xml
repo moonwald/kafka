@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.aldogrand</groupId>
+	<artifactId>kfc</artifactId>
+	<version>1.1.0-SNAPSHOT</version>
+	<name>Kafka Data Cloud</name>
+	<description>Parent project of all AldoGrand Data Cloud components</description>
+	<packaging>pom</packaging>
+
+
+	<modules>
+		<module>kfc-core</module>
+		<module>kfc-mysql-dataaccess</module>
+		<module>kfc-kafka-producer</module>
+		<module>kfc-kafka-generator</module>
+		<module>kfc-mysql-datawriter</module>
+		<module>kfc-notification-adapter</module>
+		<module>kfc-error-handler</module>
+		<module>kfc-error-manager</module>
+		<module>kfc-integration-module-common</module>
+		<module>kfc-integration-module-betting</module>
+		<module>kfc-polling-manager</module>
+		<module>kfc-integration-module-mb-messaging</module>
+	</modules>
+
+	<properties>
+		<!-- Maven Properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<build.timestamp>${maven.build.timestamp}</build.timestamp>
+		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss.SSSz</maven.build.timestamp.format>
+		<build.revision>${buildNumber}</build.revision>
+		<jira.project.key>DATACLOUD</jira.project.key>
+		<git.repo.name>kfc</git.repo.name>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!--Version Properties. -->
+		<kryo.version>3.0.0</kryo.version>
+		<kfc.version>0.0.1</kfc.version>
+		<httpclient.version>4.3.3</httpclient.version>
+		<junit.version>4.11</junit.version>
+		<json.version>2.3</json.version>
+
+		<!--Version Properties for Log4j. -->
+		<log4j.version>2.0.2</log4j.version>
+		<slf4j.version>1.7.7</slf4j.version>
+
+		<!--Version Properties for Kafka. -->
+		<kafka.version>0.8.1.1</kafka.version>
+		<commonsio.version>1.3.2</commonsio.version>
+		<commonslang3.version>3.3.2</commonslang3.version>
+		<zookeeper.version>3.4.6</zookeeper.version>
+
+		<!--Version Properties for Spring. -->
+		<spring.test.version>4.1.4.RELEASE</spring.test.version>
+		<spring.version>4.1.4.RELEASE</spring.version>
+		<spring.integration.version>4.1.2.RELEASE</spring.integration.version>
+		<spring.xd.version>1.0.3.RELEASE</spring.xd.version>
+		<spring.integration.kafka.version>1.0.0.RELEASE</spring.integration.kafka.version>
+
+		<!--Version Properties for Kafka Testing. -->
+		<netflix.curator.version>1.3.3</netflix.curator.version>
+		<curator.version>2.6.0</curator.version>
+		<mongo.test.version>0.7.9</mongo.test.version>
+		<mockito.version>1.9.5</mockito.version>
+
+		<!-- Jackson version -->
+		<jackson.version>2.4.2</jackson.version>
+	</properties>
+
+
+
+
+	<dependencies>
+
+		<!-- Log4j -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<!-- Spring Framework -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Apache commons -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commonsio.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commonslang3.version}</version>
+		</dependency>
+
+		<!-- Spring Integration -->
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-xml</artifactId>
+			<version>${spring.integration.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-core</artifactId>
+			<version>${spring.integration.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-kafka</artifactId>
+			<version>${spring.integration.kafka.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.kafka</groupId>
+					<artifactId>kafka_2.10</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Spring XD -->
+		<dependency>
+			<groupId>org.springframework.xd</groupId>
+			<artifactId>spring-xd-module</artifactId>
+			<version>${spring.xd.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- HTTP Client -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+
+		<!-- Jersey -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<!-- Jersey + Spring -->
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-spring</artifactId>
+			<version>1.8</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Kafka -->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.10</artifactId>
+			<version>${kafka.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.zookeeper</groupId>
+					<artifactId>zookeeper</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>${zookeeper.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jline</groupId>
+					<artifactId>jline</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.esotericsoftware</groupId>
+			<artifactId>kryo</artifactId>
+			<version>${kryo.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>${curator.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<!-- Kafka Testing -->
+		<dependency>
+			<groupId>com.netflix.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>${netflix.curator.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.curator</groupId>
+			<artifactId>curator-test</artifactId>
+			<version>${netflix.curator.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${json.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.wagon/wagon-provider-api -->
+		<dependency>
+			<groupId>org.apache.maven.wagon</groupId>
+			<artifactId>wagon-provider-api</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>org.eclipse.m2e</groupId>
+			<artifactId>lifecycle-mapping</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+        -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin 
+			<dependency> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> 
+			<version>0.7.1.201405082137</version> </dependency> -->
+	</dependencies>
+
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <artifactId>maven-assembly-plugin</artifactId> <version>2.4</version> 
+				<configuration> <archive> <manifest> <mainClass>com.mapr.examples.Run</mainClass> 
+				</manifest> </archive> <descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
+				</descriptorRefs> </configuration> <executions> <execution> <id>make-assembly</id> 
+				<phase>package</phase> <goals> <goal>single</goal> </goals> </execution> 
+				</executions> </plugin> <plugin> <groupId>org.skife.maven</groupId> <artifactId>really-executable-jar-maven-plugin</artifactId> 
+				<version>1.1.0</version> <configuration> <programFile>kafka-example</programFile> 
+				</configuration> <executions> <execution> <phase>package</phase> <goals> 
+				<goal>really-executable-jar</goal> </goals> </execution> </executions> </plugin> -->
+		</plugins>
+	</build>
+
+	<repositories>
+
+
+		<repository>
+			<id>mavencentral</id>
+			<name>mavencentral</name>
+			<url>http://central.maven.org/maven2/</url>
+
+		</repository>
+
+
+		<repository>
+			<id>org.jboss</id>
+			<name>JBoss</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-release</id>
+			<url>http://maven.springframework.org/release</url>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<url>http://repo.springsource.org/libs-milestone/</url>
+		</repository>
+		<repository>
+			<id>Maven Respository</id>
+			<url>http://mvnrepository.com/</url>
+		</repository>
+
+	</repositories>
+</project>

@@ -1,0 +1,62 @@
+{
+  "periodicity": { 
+    "duration" : 5,
+    "unit": "SECONDS"
+  },
+  "ruleType": "ALL",
+  "dataType": "EVENT",
+  "startDate": "2015-04-10T08:25:43.511Z",
+  "accounts": [ 
+    "matchbook-soccer", 
+    "3et-soccer"
+  ],
+  "filters": [
+   {
+   "@filter": "event-status",
+   "values": [ 
+     "OPEN"
+   ]
+   },
+   {
+   "@filter": "meta-tag",
+   "key": "SPORT",
+   "values": [ "Soccer", "Football" ]
+   },
+   {
+   "@filter": "meta-tag",
+   "key": "COMPETITION",
+   "values": [ "Premier League" ]
+   },
+   {
+   "@filter": "start-time",
+   "from": { 
+     "duration" :-10,
+     "unit": "HOURS"
+   },
+   "to": { 
+     "duration" :10,
+     "unit": "MINUTES"
+   }
+   },
+   {
+   "@filter": "market-type",
+   "values": [ "THREE_WAY", "ASIAN_HANDICAP" ]
+   },
+   {
+   "@filter": "include",
+   "dataType": "MARKET",
+   "value": false
+   },
+   {
+   "@filter": "include",
+   "dataType": "RUNNER",
+   "value": false
+   },
+   {
+   "@filter": "module",
+   "values": [ 
+     "matchbook"
+   ]
+   }
+  ]
+}

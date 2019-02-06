@@ -1,0 +1,16 @@
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+*.settings
+*.mvn
+*.project
+*.classpath
+*/target/**
+.classpath
+.project
+.settings/
+target/
+.metadata
+.plugins
+/target/**
+/.class

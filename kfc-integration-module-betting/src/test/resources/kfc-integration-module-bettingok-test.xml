@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+	xmlns:int-http="http://www.springframework.org/schema/integration/http"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration/http http://www.springframework.org/schema/integration/http/spring-integration-http.xsd
+		http://www.springframework.org/schema/integration/kafka http://www.springframework.org/schema/integration/kafka/spring-integration-kafka.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd">
+
+
+	<!-- Load properties from properties files -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.aldogrand.kfc">
+		<context:include-filter type="regex" expression=".*Event" />
+	</context:component-scan>
+
+	<!-- Load properties from properties files -->
+	<context:property-placeholder
+		location="classpath:kfc-integration-module-betting.properties,file:${xd.home}/modules/source/kfc-integration-module-betting/config/kfc-integration-module-betting.properties"
+		ignore-resource-not-found="true" order="1" />
+      
+    <bean id="bettingTransformationService" class="com.aldogrand.kfc.integrationmodules.betting.services.bettingTransformationServiceImpl">       
+    </bean>
+    
+    <bean id="bettingKeyGenerator" class="com.aldogrand.kfc.integrationmodules.betting.msg.bettingKeyGeneratorImpl">       
+    </bean>
+     
+    <bean id="xmlToKFCEventTransformer" class="com.aldogrand.kfc.integrationmodules.betting.services.XMLToKFCEventTransformer">       
+    </bean>   
+    
+    <!-- Error Channel -->
+	<int:service-activator input-channel="errorChannel"	ref="errorHandler" method="handleError" />
+	<bean id="errorHandler" class="com.aldogrand.kfc.error.ErrorHandler" />
+     
+    <bean id="integrationModuleServiceInfo" class="com.aldogrand.kfc.integrationmodules.IntegrationModuleInfoServiceImpl">
+        <constructor-arg>
+        	<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        		<property name="properties">
+		            <props>
+		                <prop key="module-name">${betting.module.name}</prop>
+		                <prop key="module-id">10</prop>
+		                <prop key="module-instance">${xd.container.id}</prop>
+		            </props>
+		        </property>
+		    </bean>
+        </constructor-arg>
+    </bean>
+    
+</beans>

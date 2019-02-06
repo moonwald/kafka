@@ -1,0 +1,108 @@
+{
+  "fathers" : [
+    {
+      "id" : 0,
+      "married" : true,
+      "name" : "Richard Thompson",
+      "sons" : null,
+      "daughters" : [
+        {
+          "age" : 25,
+          "name" : "Maria"
+          },
+        {
+          "age" : 21,
+          "name" : "Carol"
+          }
+        ]
+      },
+    {
+      "id" : 1,
+      "married" : false,
+      "name" : "Jason Lewis",
+      "sons" : null,
+      "daughters" : [
+        {
+          "age" : 2,
+          "name" : "Shirley"
+          },
+        {
+          "age" : 0,
+          "name" : "Donna"
+          }
+        ]
+      },
+    {
+      "id" : 2,
+      "married" : true,
+      "name" : "Kevin Thomas",
+      "sons" : null,
+      "daughters" : [
+        {
+          "age" : 30,
+          "name" : "Lisa"
+          },
+        {
+          "age" : 12,
+          "name" : "Sharon"
+          }
+        ]
+      },
+    {
+      "id" : 3,
+      "married" : true,
+      "name" : "Matthew Perez",
+      "sons" : null,
+      "daughters" : [
+        {
+          "age" : 11,
+          "name" : "Mary"
+          },
+        {
+          "age" : 20,
+          "name" : "Lisa"
+          }
+        ]
+      },
+    {
+      "id" : 4,
+      "married" : true,
+      "name" : "Eric Allen",
+      "sons" : null,
+      "daughters" : [
+        {
+          "age" : 4,
+          "name" : "Kimberly"
+          }
+        ]
+      },
+    {
+      "id" : 5,
+      "married" : false,
+      "name" : "Paul Garcia",
+      "sons" : null,
+      "daughters" : [
+        ]
+      },
+    {
+      "id" : 6,
+      "married" : false,
+      "name" : "Mark Gonzalez",
+      "sons" : null,
+      "daughters" : [
+        {
+          "age" : 8,
+          "name" : "Susan"
+          },
+        {
+          "age" : 23,
+          "name" : "Cynthia"
+          },
+        {
+          "age" : 10,
+          "name" : "Ruth"
+          }
+        ]
+      }
+    ]
+  }

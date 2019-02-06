@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd 
+        http://www.springframework.org/schema/integration/kafka http://www.springframework.org/schema/integration/kafka/spring-integration-kafka-1.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd"
+        default-lazy-init="true" 
+		default-init-method="init"
+		default-destroy-method="dispose">
+
+	<context:property-placeholder location="classpath:kfc-mysql-datawriter-test.properties"/>
+
+	<!-- Set any System properties that are required to configure other beans -->
+	<bean id="systemPropertyConfigurator" class="com.aldogrand.kfc.utils.configuration.SystemPropertyConfiguratorBean"
+	      lazy-init="false">
+		<property name="properties">
+			<props>
+				<!-- Ehcache properties -->
+				<prop key="net.sf.ehcache.disabled">${ehcache.disabled}</prop>
+				<prop key="ehcache.heap.max">${ehcache.heap.max}</prop>
+                <prop key="ehcache.bigmem.max">${ehcache.bigmem.max}</prop>
+				<prop key="ehcache.logging">${ehcache.logging}</prop>
+				<prop key="ehcache.statistics">${ehcache.statistics}</prop>
+				<prop key="ehcache.host">${ehcache.host}</prop>
+				<prop key="ehcache.multicast.address">${ehcache.multicast.address}</prop>
+				<prop key="ehcache.multicast.port">${ehcache.multicast.port}</prop>
+				<prop key="ehcache.rmi.port">${ehcache.rmi.port}</prop>
+				<prop key="ehcache.rmi.remoteObjectPort">${ehcache.rmi.remoteObjectPort}</prop>				
+                <prop key="ehcache.management.enabled">${ehcache.management.enabled}</prop>
+                <prop key="ehcache.management.port">${ehcache.management.port}</prop>
+			</props>
+		</property>
+	</bean>
+	
+    <bean class="com.aldogrand.kfc.datawriter.KafkaLocalServer">
+        <property name="port" value="9098"/>
+        <property name="zkPort" value="${zk-connect}"/>
+    </bean>
+    
+    <bean id="KFCEventFactory" class="com.aldogrand.kfc.msg.KFCEventFactoryImpl" />
+    
+<!--    <bean id="testEventWriter" class="com.aldogrand.kfc.datawriter.TestEventWriter"/>-->
+    
+    <bean id="kfcKafkaProducer" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.aldogrand.kfc.interfaces.KFCProducer" />
+    </bean>
+    
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy"
+        lazy-init="false">
+      <property name="targetDataSource">
+          <bean class="org.apache.commons.dbcp.BasicDataSource" lazy-init="false" destroy-method="close">
+              <property name="driverClassName" value="${jdbc.driverClassName}" />
+              <property name="url" value="${jdbc.url}" />
+              <property name="username" value="${jdbc.username}" />
+              <property name="password" value="${jdbc.password}" />
+              <property name="initialSize" value="${jdbc.pool.min}" />
+              <property name="maxIdle" value="${jdbc.pool.idle}" />
+              <property name="maxActive" value="${jdbc.pool.max}" />
+              <property name="maxWait" value="${jdbc.pool.wait}" />
+              <property name="defaultAutoCommit" value="true" />
+          </bean>
+      </property>
+  	</bean>
+  	
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="persistenceUnitName" value="persistence-datawriter" />
+        <property name="persistenceXmlLocation" value="classpath:/META-INF/datawriter-persistence.xml" />
+        <property name="jpaDialect">
+            <bean class="com.aldogrand.kfc.utils.database.IsolationAwareHibernateJpaDialect" />
+        </property>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="generateDdl" value="${jdbc.hibernate.generateDdl:true}" />
+                <property name="showSql" value="false" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">${jdbc.hibernate.dialect:org.hibernate.dialect.MySQLDialect}</prop>
+                <prop key="hibernate.id.new_generator_mappings">${jdbc.hibernate.id.new_generator_mappings:false}</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache:true}</prop>
+                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache:true}</prop>
+                <prop key="hibernate.cache.use_minimal_puts">true</prop>
+                <prop key="hibernate.generate_statistics">${hibernate.cache.generate_statistics:true}</prop>
+                <prop key="hibernate.cache.use_structured_entries">true</prop>
+                <prop key="net.sf.ehcache.configurationResourceName">/${ehcache.config.file}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txManager" />
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+    
+	<bean id="accountDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.AccountDaoJpaImpl" />
+	<bean id="betDao" class="com.aldogrand.sbpc.dataaccess.jpa.BetDaoJpaImpl" />
+	<bean id="bettingPlatformDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.BettingPlatformDaoJpaImpl" />
+	<bean id="connectorDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.ConnectorDaoJpaImpl" />
+	<bean id="eventDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.EventDaoJpaImpl" />
+	<bean id="gFeedMidPointDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.GFeedMidPointDaoJpaImpl" />
+	<bean id="gFeedSettingDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.GFeedSettingDaoJpaImpl" />
+	<bean id="marketDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.MarketDaoJpaImpl" />
+	<bean id="metaTagDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.MetaTagDaoJpaImpl" />
+	<bean id="offerDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.OfferDaoJpaImpl" />
+	<bean id="participantDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.ParticipantDaoJpaImpl" />
+	<bean id="positionDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.PositionDaoJpaImpl" />
+	<bean id="priceDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.PriceDaoJpaImpl" />
+	<bean id="runnerDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.RunnerDaoJpaImpl" />
+	<bean id="sourceEventDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.SourceEventDaoJpaImpl" />
+	<bean id="sourceMarketDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.SourceMarketDaoJpaImpl" />
+	<bean id="sourceRunnerDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.SourceRunnerDaoJpaImpl" />
+		
+	<bean id="sourceEventIncidentDao" class="com.aldogrand.sbpc.dataaccess.jpa.SourceEventIncidentDaoJpaImpl" />
+	
+	<bean id="reportJobInfoDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.ReportJobInfoDaoJpaImpl" />
+	<bean id="settledBetDao"
+		class="com.aldogrand.sbpc.dataaccess.jpa.SettledBetDaoJpaImpl" />
+
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+   
+    <bean id="sourceDataWriter"
+		class="com.aldogrand.kfc.services.mysql.impl.SourceDataWriterServiceImpl">
+		<property name="kafkaPublisher" ref="kfcKafkaProducer" />
+		<property name="connectorDao" ref="connectorDao" />
+		<property name="accountDao" ref="accountDao" />
+		<property name="bettingPlatformDao" ref="bettingPlatformDao" />
+		<property name="eventDao" ref="eventDao" />
+		<property name="sourceEventDao" ref="sourceEventDao" />
+		<property name="metaTagDao" ref="metaTagDao" />
+		<property name="marketDao" ref="marketDao" />
+		<property name="sourceMarketDao" ref="sourceMarketDao" />
+		<property name="runnerDao" ref="runnerDao" />
+		<property name="sourceRunnerDao" ref="sourceRunnerDao" />
+		<property name="priceDao" ref="priceDao" />
+		<property name="positionDao" ref="positionDao" />
+		<property name="offerDao" ref="offerDao" />
+		<property name="betDao" ref="betDao" />
+		<property name="reportJobInfoDao" ref="reportJobInfoDao" />
+		<property name="sourceEventIncidentDao" ref="sourceEventIncidentDao" />
+		<property name="settledBetDao" ref="settledBetDao"></property>
+	</bean>
+    
+	<int:channel id="LMAXInputChannelDataProcessor"/>
+    <bean id="LMaxDataProcessorService" class="com.aldogrand.kfc.lmax.LMAXServiceImpl" destroy-method="destroy">
+		<constructor-arg name="numThreads" value="3" />
+		<constructor-arg name="channel" ref="dataProcessorInputChannel" />
+		<constructor-arg name="bufferSize" value="65536" />
+	</bean>
+	<int:service-activator input-channel="LMAXInputChannelDataProcessor" ref="LMaxDataProcessorService" method="onData"/>
+	
+	<int:channel id="dataProcessorInputChannel"/>
+	<int:service-activator input-channel="dataProcessorInputChannel" output-channel="processed-requests" ref="dataProcessService" method="process"/>
+	
+ 	<!-- Data Process Service Service -->
+    <bean id="dataProcessService" class="com.aldogrand.kfc.services.impl.DataProcessServiceImpl">
+        <constructor-arg name="connectorDao" ref="connectorDao" />
+        <constructor-arg name="sourceEventDao" ref="sourceEventDao" />
+        <constructor-arg name="sourceMarketDao" ref="sourceMarketDao" />
+        <constructor-arg name="sourceRunnerDao" ref="sourceRunnerDao" />
+    </bean>	
+	
+    <!-- Processed Data Writer Service -->
+    <bean id="processDataWriterService" class="com.aldogrand.kfc.services.mysql.impl.ProcessDataWriterServiceImpl">
+        <property name="kafkaPublisher" ref="kfcKafkaProducer"/>
+        <property name="eventDao" ref="eventDao" />
+        <property name="marketDao" ref="marketDao" />
+        <property name="runnerDao" ref="runnerDao" />
+    </bean>
+	
+    <!-- Error Channel -->
+    <int:service-activator input-channel="errorChannel" ref="errorHandler" method="handleError"/>
+    <bean id="errorHandler" class="com.aldogrand.kfc.error.ErrorHandler"/>
+    
+    <int:channel id="processed-requests">
+	</int:channel>
+	<int:service-activator input-channel="processed-requests"
+		ref="processDataWriterService" method="update">
+	</int:service-activator>
+		<int:channel id="KafkaProducerChannel">
+		<int:interceptors>
+			<int:wire-tap channel="wireTapChannel" />
+		</int:interceptors>
+	</int:channel>
+	<int:service-activator input-channel="KafkaProducerChannel"
+		ref="kfcKafkaProducer" method="send" />
+			<int:logging-channel-adapter id="wireTapChannel"
+		expression="'payload: ' + getPayload()" level="DEBUG" logger-name="WIRETAP" />
+</beans>

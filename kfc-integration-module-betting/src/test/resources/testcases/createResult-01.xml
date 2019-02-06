@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Updategram xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.betgenius.com/2009/07/integration">
+	<Product>
+		<Id>2</Id>
+		<Name>In Running</Name>
+	</Product>
+	<ChannelId>0</ChannelId>
+	<CustomerId>15</CustomerId>
+	<CreateEventCommand i:nil="true" />
+	<CreateMarketCommands i:nil="true" />
+	<UpdateEventCommand i:nil="true" />
+	<UpdateMarketCommands i:nil="true" />
+	<CreateResultCommand>
+		<Market>
+			<Id>90848364</Id>
+			<Name>First Corner Team</Name>
+			<Handicap i:nil="true" />
+			<Sequence>0</Sequence>
+			<Expiry>2010-05-24T13:24:15</Expiry>
+			<MarketType>
+				<Id>7106</Id>
+				<Name>Next Corner Team</Name>
+				<IsHandicap>false</IsHandicap>
+				<IsOverUnder>false</IsOverUnder>
+			</MarketType>
+			<EventId>589632</EventId>
+			<TradingStatus>Resulted</TradingStatus>
+			<Selections>
+				<Selection>
+					<Id>905173595</Id>
+					<Name>Vegalta Sendai</Name>
+					<DisplayOrder>0</DisplayOrder>
+					<CompetitorId>129602</CompetitorId>
+					<TradingStatus>Suspended</TradingStatus>
+					<Numerator>0</Numerator>
+					<Denominator>1</Denominator>
+					<European>1.00</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Outcome>
+						<Id>1</Id>
+						<Description>Home</Description>
+						<OutcomeType>Simple</OutcomeType>
+					</Outcome>
+				</Selection>
+				<Selection>
+					<Id>905173596</Id>
+					<Name>FC Tokyo</Name>
+					<DisplayOrder>2</DisplayOrder>
+					<CompetitorId>103580</CompetitorId>
+					<TradingStatus>Suspended</TradingStatus>
+					<Numerator>0</Numerator>
+					<Denominator>1</Denominator>
+					<European>1.00</European>
+					<ResultStatus>Winner</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Outcome>
+						<Id>3</Id>
+						<Description>Away</Description>
+						<OutcomeType>Simple</OutcomeType>
+					</Outcome>
+				</Selection>
+				<Selection>
+					<Id>905173597</Id>
+					<Name>No Corner</Name>
+					<DisplayOrder>2147483647</DisplayOrder>
+					<CompetitorId i:nil="true" />
+					<TradingStatus>Suspended</TradingStatus>
+					<Numerator>0</Numerator>
+					<Denominator>1</Denominator>
+					<European>1.00</European>
+					<ResultStatus>Loser</ResultStatus>
+					<AdditionalResultData i:nil="true" />
+					<Outcome>
+						<Id>34</Id>
+						<Description>No Corner</Description>
+						<OutcomeType>Abstract</OutcomeType>
+					</Outcome>
+				</Selection>
+			</Selections>
+		</Market>
+	</CreateResultCommand>
+</Updategram>
