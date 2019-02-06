@@ -2,7 +2,6 @@ package com.aldogrand.kfc.msg.consumer.kafka;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -18,7 +17,6 @@ import kafka.message.MessageAndMetadata;
 import kafka.serializer.StringDecoder;
 import kafka.utils.VerifiableProperties;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
@@ -32,11 +30,8 @@ import org.codehaus.jackson.JsonNode;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHandler;
 
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadFactory;
-
 import com.aldogrand.kfc.consumer.MessageDecoder;
-import com.aldogrand.kfc.msg.consumer.kafka.leshan.eclipse.NamedThreadFactory;
+import com.aldogrand.kfc.msg.consumer.kafka.utils.NamedThreadFactory;
 
 /**
  * <p>

@@ -3,7 +3,7 @@ package com.aldogrand.kfc.integrationmodules.http.server;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.aldogrand.utils.concurrency.NamedThreadFactory;
+import com.aldogrand.kfc.integrationmodules.http.server.utils.NamedThreadFactory;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -143,8 +143,10 @@ public class HttpServer
     {
         logger.info("Starting Netty HTTP Server listening on port {}.", port);
         
-        bossGroup = new NioEventLoopGroup(acceptorThreads, new NamedThreadFactory("netty-acceptor"));
-        workerGroup = new NioEventLoopGroup(workerThreads, new NamedThreadFactory("netty-worker"));
+        bossGroup = new NioEventLoopGroup(acceptorThreads,new NamedThreadFactory(Thread.NORM_PRIORITY)) ;
+        workerGroup = new NioEventLoopGroup(workerThreads, new NamedThreadFactory(Thread.MAX_PRIORITY));
+        
+        
 
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)

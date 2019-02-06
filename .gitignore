@@ -11,6 +11,7 @@
 .settings/
 target/
 .metadata
+/metadata/**
 .plugins
 /target/**
 /.class
